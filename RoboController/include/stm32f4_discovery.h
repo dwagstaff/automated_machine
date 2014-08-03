@@ -180,7 +180,7 @@ typedef enum
 /*############################# I2C1 #########################################*/
 /* I2C clock speed configuration (in Hz) */
 #ifndef I2C_SPEED
- #define I2C_SPEED                            100000
+ #define I2C_SPEED                            400000
 #endif /* I2C_SPEED */
 
 /* I2C peripheral configuration defines (control interface of the audio codec) */
