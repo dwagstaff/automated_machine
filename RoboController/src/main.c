@@ -9,9 +9,13 @@
 #include "diag/Trace.h"
 #include "stm32f4_discovery.h"
 
-#include "Timer.h"
+//#include "Timer.h"
 #include "BlinkLed.h"
 #include "Servo.h"
+#include "EasyVR.h"
+#include "AX12.h"
+
+
 
 // ----------------------------------------------------------------------------
 //
@@ -39,8 +43,8 @@
 // ----- Timing definitions -------------------------------------------------
 
 // Keep the LED on for 2/3 of a second.
-#define BLINK_ON_TICKS  (TIMER_FREQUENCY_HZ * 2 / 3)
-#define BLINK_OFF_TICKS (TIMER_FREQUENCY_HZ - BLINK_ON_TICKS)
+//#define BLINK_ON_TICKS  (TIMER_FREQUENCY_HZ * 2 / 3)
+//#define BLINK_OFF_TICKS (TIMER_FREQUENCY_HZ - BLINK_ON_TICKS)
 
 // ----- main() ---------------------------------------------------------------
 
@@ -53,6 +57,7 @@
 
 
 
+#if 0
 void Test_Servo() {
 
 #define SERVO_ON_TICKS  (TIMER_FREQUENCY_HZ / 100)
@@ -78,6 +83,7 @@ void Test_Servo() {
 		}
 	}
 }
+#endif
 
 
 
@@ -86,7 +92,36 @@ int
 main(int argc, char* argv[])
 {
 
-	// Perform floating point test
+	  /* STM32F4xx HAL library initialization:
+	       - Configure the Flash prefetch, Flash preread and Buffer caches
+	       - Systick timer is configured by default as source of time base, but user
+	             can eventually implement his proper time base source (a general purpose
+	             timer for example or other time source), keeping in mind that Time base
+	             duration should be kept 1ms since PPP_TIMEOUT_VALUEs are defined and
+	             handled in milliseconds basis.
+	       - Low Level Initialization
+	     */
+	  static uint32_t i;
+	  HAL_Init();
+
+	  i= HAL_RCC_GetPCLK1Freq();
+
+	  AX12_init();
+
+	  EasyVR_init();
+
+		BSP_LED_Init(LED4);
+		while(1) {
+			BSP_LED_On(LED4);
+			HAL_Delay(1000);
+			BSP_LED_Off(LED4);
+			HAL_Delay(1000);
+//			BSP_LED_Init(LED5);
+//			BSP_LED_On(LED5);
+		}
+
+
+	  // Perform floating point test
 //	int i, j;
 //	for(j= 0; j < 50; j++) {
 //		for(i= 0; i < 30000; i++) {
@@ -111,11 +146,6 @@ main(int argc, char* argv[])
 //		timer_sleep(TIMER_FREQUENCY_HZ * 2);
 //	}
 
-	BSP_LED_Init(LED4);
-	BSP_LED_On(LED4);
-	BSP_LED_Init(LED5);
-	BSP_LED_On(LED5);
-	BSP_LED_Off(LED4);
 
   // By customising __initialize_args() it is possible to pass arguments,
   // for example when running tests with semihosting you can pass various
@@ -142,20 +172,20 @@ main(int argc, char* argv[])
   uint32_t seconds = 0;
 
   // Infinite loop
-  while (1)
-    {
-      blink_led_on();
-      timer_sleep(BLINK_ON_TICKS);
-
-      blink_led_off();
-      timer_sleep(BLINK_OFF_TICKS);
-
-      ++seconds;
-
-      // Count seconds on the trace device.
-      //trace_printf("Second %u\n", seconds);
-    }
-  // Infinite loop, never return.
+//  while (1)
+//    {
+//      blink_led_on();
+//      timer_sleep(BLINK_ON_TICKS);
+//
+//      blink_led_off();
+//      timer_sleep(BLINK_OFF_TICKS);
+//
+//      ++seconds;
+//
+//      // Count seconds on the trace device.
+//      //trace_printf("Second %u\n", seconds);
+//    }
+//  // Infinite loop, never return.
 }
 
 #pragma GCC diagnostic pop
