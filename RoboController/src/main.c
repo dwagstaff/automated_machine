@@ -105,7 +105,8 @@ main(int argc, char* argv[])
 	  HAL_Init();
 
 	  i= HAL_RCC_GetPCLK1Freq();
-
+	  printf("Done\n");
+	  trace_puts("Dave\n");
 	  AX12_init();
 
 	  EasyVR_init();
