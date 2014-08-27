@@ -13,6 +13,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.net.ssl.SSLContext;
 import javax.xml.bind.JAXBContext;
@@ -38,6 +39,7 @@ import com.wagstaffnet.tivo.masterlist.TiVoContainer;
  *
  */
 public class TivoAppAdaptor {
+	private static Logger log= Logger.getLogger(TivoAppAdaptor.class.getCanonicalName());
 
 	/**
 	 * 
@@ -55,6 +57,8 @@ public class TivoAppAdaptor {
 	 * @throws KeyManagementException 
 	 */
 	public static void main(String[] args) throws JAXBException, IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+		log.info("Starting Operation");
+		
 		// First open the sample file
 		InputStream inps= TivoAppAdaptor.class.getResourceAsStream("TivoMasterList.xml");
 		System.out.println("inps= " + inps.toString());
