@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TvBusMarshalledStruct:TvBusEnvelope
+	xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:TvBusMarshalledStruct="http://tivo.com/developer/xml/idl/TvBusMarshalledStruct"
+	xmlns:TvPgdRecording="http://tivo.com/developer/xml/idl/TvPgdRecording"
+	xmlns:TvBusDuration="http://tivo.com/developer/xml/idl/TvBusDuration"
+	xmlns:TvPgdShowing="http://tivo.com/developer/xml/idl/TvPgdShowing"
+	xmlns:TvDbShowingBit="http://tivo.com/developer/xml/idl/TvDbShowingBit"
+	xmlns:TvBusDateTime="http://tivo.com/developer/xml/idl/TvBusDateTime"
+	xmlns:TvPgdProgram="http://tivo.com/developer/xml/idl/TvPgdProgram"
+	xmlns:TvDbColorCode="http://tivo.com/developer/xml/idl/TvDbColorCode"
+	xmlns:TvPgdSeries="http://tivo.com/developer/xml/idl/TvPgdSeries"
+	xmlns:TvDbShowType="http://tivo.com/developer/xml/idl/TvDbShowType"
+	xmlns:TvDbRecordQuality="http://tivo.com/developer/xml/idl/TvDbRecordQuality"
+	xmlns:TvDbBitstreamFormat="http://tivo.com/developer/xml/idl/TvDbBitstreamFormat"
+	xs:schemaLocation="http://tivo.com/developer/xml/idl/TvBusMarshalledStruct TvBusMarshalledStruct.xsd http://tivo.com/developer/xml/idl/TvPgdRecording TvPgdRecording.xsd http://tivo.com/developer/xml/idl/TvBusDuration TvBusDuration.xsd http://tivo.com/developer/xml/idl/TvPgdShowing TvPgdShowing.xsd http://tivo.com/developer/xml/idl/TvDbShowingBit TvDbShowingBit.xsd http://tivo.com/developer/xml/idl/TvBusDateTime TvBusDateTime.xsd http://tivo.com/developer/xml/idl/TvPgdProgram TvPgdProgram.xsd http://tivo.com/developer/xml/idl/TvDbColorCode TvDbColorCode.xsd http://tivo.com/developer/xml/idl/TvPgdSeries TvPgdSeries.xsd http://tivo.com/developer/xml/idl/TvDbShowType TvDbShowType.xsd http://tivo.com/developer/xml/idl/TvDbRecordQuality TvDbRecordQuality.xsd http://tivo.com/developer/xml/idl/TvDbBitstreamFormat TvDbBitstreamFormat.xsd"
+	xs:type="TvPgdRecording:TvPgdRecording">
+	<recordedDuration>PT1H58S</recordedDuration>
+	<vActualShowing>
+		<element>
+			<showingBits value="4099" />
+			<time>2014-08-25T02:00:00Z</time>
+			<duration>PT1H1M</duration>
+			<program>
+				<vActor />
+				<vAdvisory />
+				<showingBits value="0" />
+				<vChoreographer />
+				<colorCode value="4">COLOR</colorCode>
+				<description>Companies that collect, analyze and sell personal
+					information; the aftermath of the disaster in Fukushima, Japan;
+					efforts to save the humpback whale. Copyright Tribune Media
+					Services, Inc.</description>
+				<vDirector />
+				<vExecProducer />
+				<vProgramGenre>
+					<element />
+				</vProgramGenre>
+				<vGuestStar />
+				<vHost />
+				<isEpisode>true</isEpisode>
+				<originalAirDate>2014-08-24T00:00:00Z</originalAirDate>
+				<vProducer />
+				<series>
+					<isEpisodic>true</isEpisodic>
+					<vSeriesGenre>
+						<element />
+						<element />
+					</vSeriesGenre>
+					<seriesTitle>60 Minutes</seriesTitle>
+				</series>
+				<showType value="5">SERIES</showType>
+				<title>60 Minutes</title>
+				<vWriter />
+			</program>
+		</element>
+		<element>
+			<showingBits value="4099" />
+			<time>2014-08-25T03:01:00Z</time>
+			<duration>PT59M</duration>
+			<program>
+				<vActor>
+					<element>Borzotra|Amber</element>
+					<element>Brecht|Christine</element>
+					<element>Calafiore|Cody</element>
+					<element>Franzel|Nicole</element>
+					<element>Grande|Frankie</element>
+					<element>Levasseur|Derrick</element>
+					<element>Martinez|Brittany</element>
+					<element>Odom|Jocasta</element>
+					<element>Rafaeli|Victoria</element>
+					<element>Rance|Zach</element>
+					<element>Reynolds|Caleb</element>
+					<element>Shea|Paola</element>
+					<element>Shepherd|Devin</element>
+					<element>Thompson|Donny</element>
+					<element>Pelt|Joey Van</element>
+					<element>Voss|Hayden</element>
+				</vActor>
+				<vAdvisory />
+				<showingBits value="0" />
+				<vChoreographer />
+				<colorCode value="4">COLOR</colorCode>
+				<description>The two new heads of households move into their rooms
+					and nominate two house guests for elimination; battle of the block
+					competition. Copyright Tribune Media Services, Inc.</description>
+				<vDirector />
+				<vExecProducer />
+				<vProgramGenre>
+					<element />
+				</vProgramGenre>
+				<vGuestStar />
+				<vHost>
+					<element>Chen|Julie</element>
+				</vHost>
+				<isEpisode>true</isEpisode>
+				<originalAirDate>2014-08-24T00:00:00Z</originalAirDate>
+				<vProducer />
+				<series>
+					<isEpisodic>true</isEpisodic>
+					<vSeriesGenre>
+						<element />
+						<element />
+					</vSeriesGenre>
+					<seriesTitle>Big Brother</seriesTitle>
+				</series>
+				<showType value="5">SERIES</showType>
+				<title>Big Brother</title>
+				<vWriter />
+			</program>
+		</element>
+	</vActualShowing>
+	<vBookmark />
+	<recordingQuality value="100">BEST</recordingQuality>
+	<showing>
+		<showingBits value="4099" />
+		<time>2014-08-25T02:00:00Z</time>
+		<duration>PT1H1M</duration>
+		<program>
+			<vActor />
+			<vAdvisory />
+			<showingBits value="0" />
+			<vChoreographer />
+			<colorCode value="4">COLOR</colorCode>
+			<description>Companies that collect, analyze and sell personal
+				information; the aftermath of the disaster in Fukushima, Japan;
+				efforts to save the humpback whale. Copyright Tribune Media
+				Services, Inc.</description>
+			<vDirector />
+			<vExecProducer />
+			<vProgramGenre>
+				<element />
+			</vProgramGenre>
+			<vGuestStar />
+			<vHost />
+			<isEpisode>true</isEpisode>
+			<originalAirDate>2014-08-24T00:00:00Z</originalAirDate>
+			<vProducer />
+			<series>
+				<isEpisodic>true</isEpisodic>
+				<vSeriesGenre>
+					<element />
+					<element />
+				</vSeriesGenre>
+				<seriesTitle>60 Minutes</seriesTitle>
+			</series>
+			<showType value="5">SERIES</showType>
+			<title>60 Minutes</title>
+			<vWriter />
+		</program>
+	</showing>
+	<startTime>2014-08-25T01:59:59Z</startTime>
+	<stopTime>2014-08-25T03:01:01Z</stopTime>
+	<bitstreamFormat>
+		<vFormat>
+			<element>
+				<vByte>
+					<base64>EjQAAwABAjoBywxXAAAADwAAAAQAAAACAAAAAwAAAA==</base64>
+				</vByte>
+			</element>
+		</vFormat>
+	</bitstreamFormat>
+	<expirationTime>2014-08-27T02:00:00Z</expirationTime>
+</TvBusMarshalledStruct:TvBusEnvelope>
