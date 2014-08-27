@@ -1,7 +1,7 @@
 <root>
   <facet id="jpt.jaxb">
     <node name="classgen">
-      <attribute name="package" value="com.wagstaffnet.tivo.detail"/>
+      <attribute name="package" value="com.wagstaffnet.tivo.masterlist"/>
     </node>
     <node name="libprov">
       <attribute name="provider-id" value="jaxb-jre-library-provider"/>
