@@ -39,6 +39,12 @@ import com.wagstaffnet.tivo.masterlist.TiVoContainer;
  *
  */
 public class TivoAppAdaptor {
+	/***
+	 * The number of show descriptors to download per request.
+	 * The system will continue to send request with increasing starting
+	 * points at this value number of items per request until all of the items
+	 * have been retrieved.
+	 */
 	private static final int SHOW_CHUNK_SIZE = 50;
 	private static Logger log= Logger.getLogger(TivoAppAdaptor.class.getCanonicalName());
 
