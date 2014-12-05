@@ -39,6 +39,13 @@ import com.wagstaffnet.tivo.masterlist.TiVoContainer;
  *
  */
 public class TivoAppAdaptor {
+	/***
+	 * The number of show descriptors to download per request.
+	 * The system will continue to send request with increasing starting
+	 * points at this value number of items per request until all of the items
+	 * have been retrieved.
+	 */
+	private static final int SHOW_CHUNK_SIZE = 50;
 	private static Logger log= Logger.getLogger(TivoAppAdaptor.class.getCanonicalName());
 
 	/**
@@ -65,18 +72,18 @@ public class TivoAppAdaptor {
 
 		parseTivoMasterList(inps);
 		
-		// Get Items, 50 at a time
+		// Get Items, SHOW_CHUNK_SIZE at a time
 		List<TiVoContainer.Item> shows= new ArrayList<TiVoContainer.Item>();
 		{
 			int startItem= 0;
 			List<TiVoContainer.Item> items;
 			do {
-				items= getTivoDetails(startItem, 50);
+				items= getTivoDetails(startItem, SHOW_CHUNK_SIZE);
 				shows.addAll(items);
 				startItem+= items.size();
 			} while(items.size() > 0 );
 		}
-		System.out.printf("Total shows loaded: %d\n", shows.size());
+		log.info(String.format("Total shows loaded: %d\n", shows.size()));
 	}
 
 	private static TiVoContainer parseTivoMasterList(InputStream inps)
@@ -87,15 +94,12 @@ public class TivoAppAdaptor {
 		TiVoContainer tiVoContainer= (TiVoContainer) unmarshaller.unmarshal(inps);
 		if( tiVoContainer == null )
 			System.out.println("Unable to parse xml");
-		else
-			System.out.println(tiVoContainer.getItemCount());
 		return tiVoContainer;
 	}
 	
 	public static List<TiVoContainer.Item> getTivoDetails(int itemStart, int itemCount) throws IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IllegalStateException, JAXBException {
 		TiVoContainer container= null;
-		
-		System.out.printf("Loading items %d - %d\n", itemStart, itemStart+itemCount);
+		log.info(String.format("Loading items %d - %d\n", itemStart, itemStart+itemCount));
 		
 		// Generate the URL that we are going to be using
 		String urlText= String.format("https://wagstaffgw.dyndns.org:4443/TiVoConnect?Command=QueryContainer&Container=/NowPlaying&Recurse=Yes&AnchorOffset=%d&ItemCount=%d", itemStart, itemCount);
@@ -123,11 +127,11 @@ public class TivoAppAdaptor {
         try {
             HttpGet httpget = new HttpGet(urlText);
 
-            System.out.println("Executing request " + httpget.getRequestLine());
+            log.fine("Executing request " + httpget.getRequestLine());
             CloseableHttpResponse response = httpclient.execute(httpget);
             try {
-                System.out.println("----------------------------------------");
-                System.out.println(response.getStatusLine());
+                log.fine("----------------------------------------");
+                log.fine("HTTP Status: " + response.getStatusLine());
                 container= parseTivoMasterList(response.getEntity().getContent());
                 //EntityUtils.consume(response.getEntity());
             } finally {
