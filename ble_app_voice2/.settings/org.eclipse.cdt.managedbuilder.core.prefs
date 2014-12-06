@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/buildEnvironmentInclude/0.854816632/CPATH/delimiter=;
+environment/buildEnvironmentInclude/0.854816632/CPATH/operation=remove
+environment/buildEnvironmentInclude/0.854816632/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/0.854816632/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/0.854816632/append=true
+environment/buildEnvironmentInclude/0.854816632/appendContributed=true
+environment/buildEnvironmentLibrary/0.854816632/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/0.854816632/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/0.854816632/append=true
+environment/buildEnvironmentLibrary/0.854816632/appendContributed=true

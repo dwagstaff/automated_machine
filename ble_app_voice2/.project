@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>ble_app_voice2</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.cdt.managedbuilder.core.ScannerConfigBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>NORDIC_SDK_DIR</name>
+			<type>2</type>
+			<locationURI>NORDIC_SDK_DIR</locationURI>
+		</link>
+		<link>
+			<name>nordic_sdk_include</name>
+			<type>2</type>
+			<locationURI>NORDIC_SDK_DIR/include</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>NORDIC_SDK_DIR</name>
+			<value>file:/C:/Users/davew/Google%20Drive/SDK/nrf51_sdk_v6_1_0_b2ec2e6/nrf51822</value>
+		</variable>
+	</variableList>
+</projectDescription>
