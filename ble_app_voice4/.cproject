@@ -133,14 +133,9 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.840691061.99647453" name="ble_flash.c" rcbsApplicability="disable" resourcePath="nordic_sdk/Source/ble/ble_flash.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1092062990.2123078877">
-						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1092062990.2123078877" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1092062990">
-							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1079777890" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
-						</tool>
-					</fileInfo>
 					<sourceEntries>
-						<entry excluding="app_common/app_uart.c|app_common/app_uart_fifo.c|app_common/hci_transport.c|app_common/hci_slip.c|app_common/hci_mem_pool.c|ble/ble_racp.c|ble/ble_services/ble_tps.c|ble/ble_services/ble_sc_ctrlpt.c|ble/ble_services/ble_rscs.c|ble/ble_services/ble_lls.c|ble/ble_services/ble_ias.c|ble/ble_services/ble_ias_c.c|ble/ble_services/ble_hts.c|ble/ble_services/ble_hids.c|ble/ble_services/ble_gls.c|ble/ble_services/ble_gls_db.c|ble/ble_services/ble_dfu.c|ble/ble_services/ble_cscs.c|ble/ble_services/ble_bps.c|ble/ble_services/ble_ans_c.c|ble/rpc|twi_master|spi_master|simple_uart|nrf_nvmc|nrf_ecb|gzp|ext_sensors|console|templates" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="nordic_sdk/Source"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="app_common/app_uart.c|app_common/app_uart_fifo.c|app_common/hci_transport.c|app_common/hci_slip.c|app_common/hci_mem_pool.c|ble/ble_racp.c|ble/ble_services/ble_sc_ctrlpt.c|ble/ble_services/ble_rscs.c|ble/ble_services/ble_hts.c|ble/ble_services/ble_hids.c|ble/ble_services/ble_gls.c|ble/ble_services/ble_gls_db.c|ble/ble_services/ble_dfu.c|ble/ble_services/ble_cscs.c|ble/ble_services/ble_bps.c|ble/ble_services/ble_ans_c.c|ble/rpc|twi_master|spi_master|simple_uart|nrf_nvmc|nrf_ecb|gzp|ext_sensors|console|templates" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="nordic_sdk/Source"/>
+						<entry excluding="battery.c|main_voice.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -278,9 +273,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.2008690463.1277354835" name="ble_flash.c" rcbsApplicability="disable" resourcePath="nordic_sdk/Source/ble/ble_flash.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1547388057.1258137803">
-						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1547388057.1258137803" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1547388057"/>
-					</fileInfo>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.2008690463.334392190" name="ble_bondmngr.c" rcbsApplicability="disable" resourcePath="nordic_sdk/Source/ble/ble_bondmngr.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1547388057.1427356195">
 						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1547388057.1427356195" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1547388057">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1517079924" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
@@ -303,7 +295,7 @@
 						</tool>
 					</fileInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="battery.c|main_voice.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

@@ -24,7 +24,7 @@
 #define BLE_BONDMNGR_CFG_H__
 
 /**@brief Number of CCCDs used in the GLS application. */
-#define BLE_BONDMNGR_CCCD_COUNT           2
+#define BLE_BONDMNGR_CCCD_COUNT           1
 
 /**@brief Maximum number of bonded masters. */
 #define BLE_BONDMNGR_MAX_BONDED_MASTERS   7
