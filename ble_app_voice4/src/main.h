@@ -25,7 +25,13 @@
 #define MAIN_H__
 
 /**@brief External reference to the Battery Service. */
-extern ble_bas_t                             bas;
+extern ble_bas_t bas;
+
+/**@brief Function for initializing the security parameters.
+ */
+static void sec_params_init(void) {
+
+}
 
 #endif // MAIN_H__
 

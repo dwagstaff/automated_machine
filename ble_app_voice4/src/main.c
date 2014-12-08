@@ -25,6 +25,7 @@
  * It demonstrates the use of fast and slow advertising intervals.
  */
 
+#include <simple_uart.h>
 #include <stdint.h>
 #include <string.h>
 #include "nordic_common.h"
@@ -41,6 +42,7 @@
 #include "ble_ias.h"
 #include "ble_lls.h"
 #include "ble_bas.h"
+#include "ble_lbs.h"
 #include "ble_conn_params.h"
 #include "ble_eval_board_pins.h"
 #include "ble_sensorsim.h"
@@ -54,6 +56,9 @@
 #include "ble_radio_notification.h"
 #include "ble_flash.h"
 #include "ble_debug_assert_handler.h"
+#include "boards.h"
+#include "nrf_delay.h"
+#include "EasyVR.h"
 
 
 #define SIGNAL_ALERT_BUTTON               EVAL_BOARD_BUTTON_0                               /**< Button used for send or cancel High Alert to the peer. */
@@ -62,7 +67,17 @@
 
 #define ALERT_PIN_NO                      EVAL_BOARD_LED_1                                  /**< Pin used as LED to signal an alert. */
 
-#define DEVICE_NAME                       "Nordic_Prox"                                     /**< Name of device. Will be included in the advertising data. */
+// Keypad lights and buttons
+#define KEYPAD_GREEN_LED  12
+#define KEYPAD_RED_LED    13
+#define KEYPAD_YELLOW_LED 14
+#define KEYPAD_BLUE_LED   15
+#define KEYPAD_GREEN_KEY   1
+#define KEYPAD_RED_KEY     0
+#define KEYPAD_YELLOW_KEY  3
+#define KEYPAD_BLUE_KEY    2
+
+#define DEVICE_NAME                       "DataV_HMI"                                     /**< Name of device. Will be included in the advertising data. */
 #define APP_ADV_INTERVAL_FAST             0x0028                                            /**< Fast advertising interval (in units of 0.625 ms. This value corresponds to 25 ms.). */
 #define APP_ADV_INTERVAL_SLOW             0x0C80                                            /**< Slow advertising interval (in units of 0.625 ms. This value corresponds to 2 seconds). */
 #define APP_SLOW_ADV_TIMEOUT              180                                               /**< The duration of the slow advertising period (in seconds). */
@@ -134,6 +149,8 @@ typedef enum
 static ble_tps_t                          m_tps;                                            /**< Structure used to identify the TX Power service. */
 static ble_ias_t                          m_ias;                                            /**< Structure used to identify the Immediate Alert service. */
 static ble_lls_t                          m_lls;                                            /**< Structure used to identify the Link Loss service. */
+static ble_lbs_t						  m_lbs;											// LED Service
+
 static bool                               m_is_link_loss_alerting;                          /**< Variable to indicate if a link loss has been detected. */
 static bool                               m_is_alert_led_blinking;                          /**< Variable to indicate if the alert LED is blinking (indicating a mild alert). */
 static bool                               m_is_adv_led_blinking;                            /**< Variable to indicate if the advertising LED is blinking. */
@@ -156,6 +173,14 @@ static void on_ias_c_evt(ble_ias_c_t * p_lls, ble_ias_c_evt_t * p_evt);
 static void on_bas_evt(ble_bas_t * p_bas, ble_bas_evt_t * p_evt);
 static void advertising_init(uint8_t adv_flags);
 
+/**
+ * Init the UART for communciations to the EZ-VR module
+ */
+void uart_init(void) {
+	simple_uart_config(RTS_PIN_NUMBER, TX_PIN_NUMBER, CTS_PIN_NUMBER, RX_PIN_NUMBER,false);
+	// Change the baud rate to 9600
+	NRF_UART0->BAUDRATE         = (UART_BAUDRATE_BAUDRATE_Baud9600 << UART_BAUDRATE_BAUDRATE_Pos);
+}
 
 /**@brief Function for error handling, which is called when an error has occurred. 
  *
@@ -510,6 +535,12 @@ static void adv_led_blink_timeout_handler(void * p_context)
         APP_ERROR_CHECK_BOOL(p_context != NULL);
 
         nrf_gpio_pin_toggle(ADVERTISING_LED_PIN_NO);
+        // Also blink all keyboard lights
+        nrf_gpio_pin_toggle(KEYPAD_BLUE_LED);
+        nrf_gpio_pin_toggle(KEYPAD_GREEN_LED);
+        nrf_gpio_pin_toggle(KEYPAD_YELLOW_LED);
+        nrf_gpio_pin_toggle(KEYPAD_RED_LED);
+
 
         p_is_led_on = (bool *)(p_context);
 
@@ -544,6 +575,14 @@ static void leds_init(void)
 {
     GPIO_LED_CONFIG(ADVERTISING_LED_PIN_NO);
     GPIO_LED_CONFIG(ALERT_PIN_NO);
+    GPIO_LED_CONFIG(KEYPAD_BLUE_LED);
+    nrf_gpio_pin_set(KEYPAD_BLUE_LED);
+    GPIO_LED_CONFIG(KEYPAD_GREEN_LED);
+    nrf_gpio_pin_set(KEYPAD_GREEN_LED);
+    GPIO_LED_CONFIG(KEYPAD_YELLOW_LED);
+    nrf_gpio_pin_set(KEYPAD_YELLOW_LED);
+    GPIO_LED_CONFIG(KEYPAD_RED_LED);
+    nrf_gpio_pin_set(KEYPAD_RED_LED);
 }
 
 
@@ -592,7 +631,7 @@ static void gap_params_init(void)
     err_code = sd_ble_gap_device_name_set(&sec_mode, (const uint8_t *)DEVICE_NAME, strlen(DEVICE_NAME));
     APP_ERROR_CHECK(err_code);
 
-    err_code = sd_ble_gap_appearance_set(BLE_APPEARANCE_GENERIC_KEYRING);
+    err_code = sd_ble_gap_appearance_set(BLE_APPEARANCE_GENERIC_HID);
     APP_ERROR_CHECK(err_code);
     
     memset(&gap_conn_params, 0, sizeof(gap_conn_params));
@@ -751,6 +790,44 @@ static void ias_client_init(void)
 }
 
 
+/**
+ * Handle BLE Write to LED characterstic
+ * @param p_lbs
+ * @param led_state
+ */
+static void led_write_handler(ble_lbs_t * p_lbs, uint8_t led_state)
+{
+#define PROC_LED(bit, led) if( led_state & bit ) nrf_gpio_pin_set(led); else nrf_gpio_pin_clear(led);
+	PROC_LED(0x01, KEYPAD_BLUE_LED);
+	PROC_LED(0x02, KEYPAD_GREEN_LED);
+	PROC_LED(0x04, KEYPAD_RED_LED);
+	PROC_LED(0x08, KEYPAD_YELLOW_LED);
+//    if (led_state)
+//    {
+//        nrf_gpio_pin_set(ALERT_PIN_NO);
+//    }
+//    else
+//    {
+//        nrf_gpio_pin_clear(ALERT_PIN_NO);
+//    }
+}
+
+
+/**
+ *
+ * Init the LED Service
+ */
+void lbs_init(void)
+{
+    uint32_t err_code;
+    ble_lbs_init_t init;
+
+    init.led_write_handler = led_write_handler;
+
+    err_code = ble_lbs_init(&m_lbs, &init);
+    APP_ERROR_CHECK(err_code);
+}
+
 /**@brief Function for initializing the services that will be used by the application.
  */
 static void services_init(void)
@@ -759,23 +836,9 @@ static void services_init(void)
     ias_init();
     lls_init();
     bas_init();
+    lbs_init();
     ias_client_init();
 }
-
-
-/**@brief Function for initializing the security parameters.
- */
-static void sec_params_init(void)
-{
-    m_sec_params.timeout      = SEC_PARAM_TIMEOUT;
-    m_sec_params.bond         = SEC_PARAM_BOND;
-    m_sec_params.mitm         = SEC_PARAM_MITM;
-    m_sec_params.io_caps      = SEC_PARAM_IO_CAPABILITIES;
-    m_sec_params.oob          = SEC_PARAM_OOB;  
-    m_sec_params.min_key_size = SEC_PARAM_MIN_KEY_SIZE;
-    m_sec_params.max_key_size = SEC_PARAM_MAX_KEY_SIZE;
-}
-
 
 /**@brief Function for handling a Connection Parameters error.
  *
@@ -880,6 +943,20 @@ static void on_lls_evt(ble_lls_t * p_lls, ble_lls_evt_t * p_evt)
         default:
             break;
     }
+}
+
+
+/**@brief Function for initializing the security parameters.
+ */
+static void sec_params_init(void)
+{
+    m_sec_params.timeout      = SEC_PARAM_TIMEOUT;
+    m_sec_params.bond         = SEC_PARAM_BOND;
+    m_sec_params.mitm         = SEC_PARAM_MITM;
+    m_sec_params.io_caps      = SEC_PARAM_IO_CAPABILITIES;
+    m_sec_params.oob          = SEC_PARAM_OOB;
+    m_sec_params.min_key_size = SEC_PARAM_MIN_KEY_SIZE;
+    m_sec_params.max_key_size = SEC_PARAM_MAX_KEY_SIZE;
 }
 
 
@@ -1048,6 +1125,7 @@ static void ble_evt_dispatch(ble_evt_t * p_ble_evt)
     ble_lls_on_ble_evt(&m_lls, p_ble_evt);
     ble_bas_on_ble_evt(&m_bas, p_ble_evt);
     ble_ias_c_on_ble_evt(&m_ias_c, p_ble_evt);
+    ble_lbs_on_ble_evt(&m_lbs, p_ble_evt);
     on_ble_evt(p_ble_evt);
 }
 
@@ -1112,6 +1190,14 @@ static void radio_notification_init(void)
 }
 
 
+static void keypad_button_event_hanlder(uint8_t button, uint8_t led) {
+	// Send the notification
+	ble_lbs_on_button_change(&m_lbs, button);
+	nrf_gpio_pin_set(led);
+	EasyVR_playPhoneTone(button, 5);
+	nrf_gpio_pin_clear(led);
+}
+
 /**@brief Function for handling button events.
  *
  * @param[in]   pin_no   The pin number of the button pressed.
@@ -1122,6 +1208,19 @@ static void button_event_handler(uint8_t pin_no)
 
     switch (pin_no)
     {
+    case KEYPAD_BLUE_KEY:
+    	keypad_button_event_hanlder(pin_no, KEYPAD_BLUE_LED);
+    	break;
+    case KEYPAD_RED_KEY:
+    	keypad_button_event_hanlder(pin_no, KEYPAD_RED_LED);
+    	break;
+    case KEYPAD_GREEN_KEY:
+    	keypad_button_event_hanlder(pin_no, KEYPAD_GREEN_LED);
+    	break;
+    case KEYPAD_YELLOW_KEY:
+    	keypad_button_event_hanlder(pin_no, KEYPAD_YELLOW_LED);
+    	break;
+
         case SIGNAL_ALERT_BUTTON:
             if (!m_is_high_alert_signalled)
             {
@@ -1172,6 +1271,10 @@ static void buttons_init(void)
 {
     static app_button_cfg_t buttons[] =
     {
+        {KEYPAD_BLUE_KEY,  false, NRF_GPIO_PIN_PULLUP, button_event_handler},
+        {KEYPAD_GREEN_KEY,  false, NRF_GPIO_PIN_PULLUP, button_event_handler},
+        {KEYPAD_RED_KEY,  false, NRF_GPIO_PIN_PULLUP, button_event_handler},
+        {KEYPAD_YELLOW_KEY,  false, NRF_GPIO_PIN_PULLUP, button_event_handler},
         {SIGNAL_ALERT_BUTTON,  false, NRF_GPIO_PIN_PULLUP, button_event_handler},
         {STOP_ALERTING_BUTTON, false, NRF_GPIO_PIN_PULLUP, button_event_handler}
     };
@@ -1199,10 +1302,32 @@ int main(void)
     timers_init();
     gpiote_init();
     buttons_init();
+	static uint8_t c;
+    uart_init();
+    {
+    	EasyVR_setLanguage(ENGLISH);
+    	EasyVR_setKnob(STRICT);
+    	EasyVR_setLevel(NORMAL);
+    	EasyVR_playSound(BEEP,VOL_DOUBLE);
+    	EasyVR_setTimeout(10);
+//    	EasyVR_recognizeWord(3);
+//    	EasyVR_hasFinished();
+    	c= EasyVR_getWord();
+    	for(int i= 0; i < 16; i++)
+    		EasyVR_playPhoneTone(i,4);
+//    	simple_uart_putstring("w@@B");
+//    	c= simple_uart_get();
+//    	nrf_delay_ms(100);
+//    	simple_uart_putstring("w@B_");
+//    	c= simple_uart_get();
+//    	nrf_delay_ms(100);
+//    	simple_uart_putstring("w@C_");
+//    	c= simple_uart_get();
+    }
     bond_manager_init();
     ble_stack_init();
     gap_params_init();
-    advertising_init(BLE_GAP_ADV_FLAGS_LE_ONLY_LIMITED_DISC_MODE);
+    advertising_init(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);
     services_init();
     conn_params_init();
     sec_params_init();

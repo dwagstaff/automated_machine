@@ -133,8 +133,37 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.840691061.1973020161" name="EasyVR.cpp" rcbsApplicability="disable" resourcePath="src/EasyVR.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.205951900">
+						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.205951900" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.2119296654" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
+								<listOptionValue builtIn="false" value="BLE_STACK_SUPPORT_REQUIRED"/>
+								<listOptionValue builtIn="false" value="S110_SUPPORT_REQUIRED"/>
+								<listOptionValue builtIn="false" value="NRF51"/>
+								<listOptionValue builtIn="false" value="BOARD_PCA10001"/>
+								<listOptionValue builtIn="false" value="NRF51822_QFAA_CA"/>
+								<listOptionValue builtIn="false" value="DEBUG"/>
+							</option>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.407130831" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="false" valueType="includePath">
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_app_voice4/nordic_sdk/Include}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_app_voice4/nordic_sdk/Include/gcc}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_app_voice4/nordic_sdk/Include/ble}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_app_voice4/nordic_sdk/Include/app_common}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_app_voice4/nordic_sdk/Include/ble/ble_services}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_app_voice4/nordic_sdk/Include/ble/softdevice}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_app_voice4/src}&quot;"/>
+							</option>
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.1165416981" name="Language standard" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.gnu99" valueType="enumerated"/>
+							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1167253595" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+						</tool>
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.358137340" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1398904477" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.495621802" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
-						<entry excluding="app_common/app_uart.c|app_common/app_uart_fifo.c|app_common/hci_transport.c|app_common/hci_slip.c|app_common/hci_mem_pool.c|ble/ble_racp.c|ble/ble_services/ble_sc_ctrlpt.c|ble/ble_services/ble_rscs.c|ble/ble_services/ble_hts.c|ble/ble_services/ble_hids.c|ble/ble_services/ble_gls.c|ble/ble_services/ble_gls_db.c|ble/ble_services/ble_dfu.c|ble/ble_services/ble_cscs.c|ble/ble_services/ble_bps.c|ble/ble_services/ble_ans_c.c|ble/rpc|twi_master|spi_master|simple_uart|nrf_nvmc|nrf_ecb|gzp|ext_sensors|console|templates" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="nordic_sdk/Source"/>
+						<entry excluding="app_common/app_uart.c|app_common/app_uart_fifo.c|app_common/hci_transport.c|app_common/hci_slip.c|app_common/hci_mem_pool.c|ble/ble_racp.c|ble/ble_services/ble_sc_ctrlpt.c|ble/ble_services/ble_rscs.c|ble/ble_services/ble_hts.c|ble/ble_services/ble_hids.c|ble/ble_services/ble_gls.c|ble/ble_services/ble_gls_db.c|ble/ble_services/ble_dfu.c|ble/ble_services/ble_cscs.c|ble/ble_services/ble_bps.c|ble/ble_services/ble_ans_c.c|ble/rpc|twi_master|spi_master|nrf_nvmc|nrf_ecb|gzp|ext_sensors|console|templates" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="nordic_sdk/Source"/>
 						<entry excluding="battery.c|main_voice.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
@@ -294,8 +323,9 @@
 							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1956161494" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 						</tool>
 					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.2008690463.1077295995" name="EasyVR.cpp" rcbsApplicability="disable" resourcePath="src/EasyVR.c" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="battery.c|main_voice.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="main.c|battery.c|main_voice.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -306,7 +336,14 @@
 		<project id="ble_app_voice4.ilg.gnuarmeclipse.managedbuild.cross.target.elf.2086171076" name="Executable" projectType="ilg.gnuarmeclipse.managedbuild.cross.target.elf"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/ble_app_voice4"/>
+		</configuration>
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/ble_app_voice4"/>
+		</configuration>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.2008690463;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.2008690463.;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1547388057;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.713057194">

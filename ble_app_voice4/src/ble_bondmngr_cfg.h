@@ -27,7 +27,7 @@
 #define BLE_BONDMNGR_CCCD_COUNT           1
 
 /**@brief Maximum number of bonded masters. */
-#define BLE_BONDMNGR_MAX_BONDED_MASTERS   7
+#define BLE_BONDMNGR_MAX_BONDED_MASTERS   3
 
 #endif // BLE_BONDMNGR_CFG_H__
 
