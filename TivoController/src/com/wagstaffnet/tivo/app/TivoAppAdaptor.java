@@ -93,10 +93,10 @@ public class TivoAppAdaptor {
 	        em = emf.createEntityManager();
        
 			// First open the sample file
-			InputStream inps= TivoAppAdaptor.class.getResourceAsStream("TivoMasterList.xml");
-			System.out.println("inps= " + inps.toString());
+//			InputStream inps= TivoAppAdaptor.class.getResourceAsStream("TivoMasterList.xml");
+//			System.out.println("inps= " + inps.toString());
 
-			parseTivoMasterList(inps);
+//			parseTivoMasterList(inps);
 			
 			// Get Items, SHOW_CHUNK_SIZE at a time
 			log.info("Starting Tivo read ...");
@@ -122,7 +122,6 @@ public class TivoAppAdaptor {
 					// See if we have a know about this already
 					ShowInfo showFound= em.find(ShowInfo.class, item.getLinks().getContent().getUrl());
 					if(  showFound ==  null ) {
-						em.getTransaction().begin();
 						newShows++;
 						ShowInfo show= new ShowInfo();
 						show.setId(item.getLinks().getContent().getUrl());
