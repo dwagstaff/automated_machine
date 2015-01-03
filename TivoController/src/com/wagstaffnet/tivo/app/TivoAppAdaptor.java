@@ -3,10 +3,14 @@
  */
 package com.wagstaffnet.tivo.app;
 
+import com.wagstaffnet.tivo.app.model.ShowInfo;
+import com.wagstaffnet.tivo.app.model.TvBusEnvelope;
 import com.wagstaffnet.tivo.masterlist.TiVoContainer;
+import com.wagstaffnet.tivo.masterlist.TiVoContainer.Item.Links.TiVoVideoDetails;
 
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -19,6 +23,7 @@ import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringWriter;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -30,8 +35,12 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.net.ssl.SSLContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 /**
@@ -48,6 +57,8 @@ public class TivoAppAdaptor {
 	 */
 	private static final int SHOW_CHUNK_SIZE = 50;
 	private static Logger log= Logger.getLogger(TivoAppAdaptor.class.getCanonicalName());
+	private EntityManagerFactory emf;
+	private EntityManager em;
 
 	/**
 	 * 
@@ -64,30 +75,121 @@ public class TivoAppAdaptor {
 	 * @throws NoSuchAlgorithmException 
 	 * @throws KeyManagementException 
 	 */
-	public static void main(String[] args) throws JAXBException, IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
-		log.info("Starting Operation");
-		
-		// First open the sample file
-		InputStream inps= TivoAppAdaptor.class.getResourceAsStream("TivoMasterList.xml");
-		System.out.println("inps= " + inps.toString());
-
-		parseTivoMasterList(inps);
-		
-		// Get Items, SHOW_CHUNK_SIZE at a time
-		List<TiVoContainer.Item> shows= new ArrayList<TiVoContainer.Item>();
-		{
-			int startItem= 0;
-			List<TiVoContainer.Item> items;
-			do {
-				items= getTivoDetails(startItem, SHOW_CHUNK_SIZE);
-				shows.addAll(items);
-				startItem+= items.size();
-			} while(items.size() > 0 );
-		}
-		log.info(String.format("Total shows loaded: %d\n", shows.size()));
+	public static void main(String[] args) {
+		TivoAppAdaptor app= new TivoAppAdaptor();
+		app.runLoop();
 	}
 
-	private static TiVoContainer parseTivoMasterList(InputStream inps)
+	/**
+	 * 
+	 */
+	public void runLoop() {
+		try {
+			log.info("Starting Operation");
+			
+			log.info("Connecting to DB");
+//			emf = Persistence.createEntityManagerFactory( "jpa" );
+			emf = Persistence.createEntityManagerFactory( "mongo" );
+	        em = emf.createEntityManager();
+       
+			// First open the sample file
+			InputStream inps= TivoAppAdaptor.class.getResourceAsStream("TivoMasterList.xml");
+			System.out.println("inps= " + inps.toString());
+
+			parseTivoMasterList(inps);
+			
+			// Get Items, SHOW_CHUNK_SIZE at a time
+			log.info("Starting Tivo read ...");
+			List<TiVoContainer.Item> shows= new ArrayList<TiVoContainer.Item>();
+			{
+				int startItem= 0;
+				List<TiVoContainer.Item> items;
+				do {
+					items= getTivoDetails(startItem, SHOW_CHUNK_SIZE);
+					shows.addAll(items);
+					startItem+= items.size();
+				} while(items.size() > 0 );
+				log.info(String.format("Total shows loaded: %d\n", shows.size()));
+
+				// Save the data to the database
+				int i= 0;
+				int newShows= 0;
+				int presentShows= 0;
+				for(TiVoContainer.Item item : shows) {
+					// Start Transaction
+					em.getTransaction().begin();
+					
+					// See if we have a know about this already
+					ShowInfo showFound= em.find(ShowInfo.class, item.getLinks().getContent().getUrl());
+					if(  showFound ==  null ) {
+						em.getTransaction().begin();
+						newShows++;
+						ShowInfo show= new ShowInfo();
+						show.setId(item.getLinks().getContent().getUrl());
+						show.setItemInfo(item);
+
+						// Add show info						
+						{
+							log.info("Getting show information");
+							TvBusEnvelope detail= getVideoDetail(item.getLinks().getTiVoVideoDetails().getUrl());
+							show.setItemDetail(detail);
+//							JAXBContext jc= JAXBContext.newInstance(TvBusEnvelope.class);
+//							Marshaller mash= jc.createMarshaller();
+//							StringWriter swrt= new StringWriter();
+//							mash.marshal(detail, swrt);
+//							show.setXmlInfo(swrt.toString());
+//							swrt.close();
+//							em.getTransaction().begin();
+//							em.persist(show);
+//							em.getTransaction().commit();
+						}
+
+//						item.setId(item.getId());
+	//					item.id= item.getLinks().getContent().getUrl();
+//						em.persist(item.getDetails());
+//						em.persist(item.getLinks());
+//						em.persist(item.getLinks().getContent());
+//						em.persist(item.getLinks().getTiVoVideoDetails());
+//						if( item.getLinks().getCustomIcon() != null )
+//							em.persist(item.getLinks().getCustomIcon());
+						log.info("Saving data");
+						em.persist(show);
+						log.info("Saved item " + (i++) + " of " + shows.size());
+					} else {
+						showFound.getItemInfo().getDetails().setInProgress(item.getDetails().getInProgress());
+						presentShows++;
+						log.info("Item skipped " + i++);
+					}
+	 				em.getTransaction().commit();
+				}
+				log.info("DB save completed");
+				log.info("New Shows: " + newShows);
+				log.info("Existing: " + presentShows);
+			}
+		} catch (KeyManagementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (KeyStoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		em.close();
+		emf.close();
+	}
+
+	private  TiVoContainer parseTivoMasterList(InputStream inps)
 			throws JAXBException {
 		JAXBContext jc= JAXBContext.newInstance(TiVoContainer.class);
 		Unmarshaller unmarshaller= jc.createUnmarshaller();
@@ -97,8 +199,19 @@ public class TivoAppAdaptor {
 			System.out.println("Unable to parse xml");
 		return tiVoContainer;
 	}
-	
-	public static List<TiVoContainer.Item> getTivoDetails(int itemStart, int itemCount) throws IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IllegalStateException, JAXBException {
+
+	private  TvBusEnvelope parseTivoVideoDetail(InputStream inps)
+			throws JAXBException {
+		JAXBContext jc= JAXBContext.newInstance(TvBusEnvelope.class);
+		Unmarshaller unmarshaller= jc.createUnmarshaller();
+		
+		TvBusEnvelope tiVoVideoDetail= (TvBusEnvelope) unmarshaller.unmarshal(inps);
+		if( tiVoVideoDetail == null )
+			System.out.println("Unable to parse xml");
+		return tiVoVideoDetail;
+	}
+
+	public  List<TiVoContainer.Item> getTivoDetails(int itemStart, int itemCount) throws IOException, KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IllegalStateException, JAXBException {
 		TiVoContainer container= null;
 		log.info(String.format("Loading items %d - %d\n", itemStart, itemStart+itemCount));
 		
@@ -147,8 +260,54 @@ public class TivoAppAdaptor {
         else
         	return null;
 	}
+
+	private TvBusEnvelope getVideoDetail(String url) throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException, ClientProtocolException, IOException, IllegalStateException, JAXBException {
+		TvBusEnvelope details;
+
+		
+		// Generate the URL that we are going to be using
+		String urlText= url.replace(":443/", ":4443/");
+		
+		// Trust all certs
+		   // Trust all certs
+	    SSLContext sslcontext = buildSSLContext();
+
+	    // Allow TLSv1 protocol only
+	    SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
+	            sslcontext,
+	            new String[] { "TLSv1" },
+	            null,
+	            SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+
+        CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(
+                new AuthScope("wagstaffgw.dyndns.org", 4443),
+                new UsernamePasswordCredentials("tivo", "6641492404"));
+        CloseableHttpClient httpclient = HttpClients.custom()
+                .setDefaultCredentialsProvider(credsProvider)
+//                .setHostnameVerifier(new AllowAllHostnameVerifier())
+                .setSSLSocketFactory(sslsf)
+                .build();
+        try {
+            HttpGet httpget = new HttpGet(urlText);
+
+            log.fine("Executing request " + httpget.getRequestLine());
+            CloseableHttpResponse response = httpclient.execute(httpget);
+            try {
+                log.fine("----------------------------------------");
+                log.fine("HTTP Status: " + response.getStatusLine());
+                details= parseTivoVideoDetail(response.getEntity().getContent());
+                //EntityUtils.consume(response.getEntity());
+            } finally {
+                response.close();
+            }
+        } finally {
+            httpclient.close();
+        }
+        return details;
+	}
 	
-	private static SSLContext buildSSLContext()
+	private  SSLContext buildSSLContext()
 	        throws NoSuchAlgorithmException, KeyManagementException,
 	        KeyStoreException {
 	    SSLContext sslcontext = SSLContexts.custom()
