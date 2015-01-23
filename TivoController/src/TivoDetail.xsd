@@ -1,4 +1,7 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:TvBusMarshalledStruct="http://tivo.com/developer/xml/idl/TvBusMarshalledStruct">
+  <xs:element name="TvBusEnvelope" xmlns:TvBusMarshalledStruct="http://tivo.com/developer/xml/idl/TvBusMarshalledStruct">
+    <xs:complexType>
+      <xs:sequence>
   <xs:element name="recordedDuration" type="xs:duration"/>
   <xs:element name="vActualShowing">
     <xs:complexType>
@@ -10,7 +13,7 @@
                 <xs:complexType>
                   <xs:simpleContent>
                     <xs:extension base="xs:string">
-                      <xs:attribute type="xs:short" name="value" use="optional"/>
+                      <xs:attribute type="xs:short" name="value1" use="optional"/>
                     </xs:extension>
                   </xs:simpleContent>
                 </xs:complexType>
@@ -32,7 +35,7 @@
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:string">
-                            <xs:attribute type="xs:byte" name="value" use="optional"/>
+                            <xs:attribute type="xs:byte" name="value2" use="optional"/>
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
@@ -42,7 +45,7 @@
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:string">
-                            <xs:attribute type="xs:byte" name="value" use="optional"/>
+                            <xs:attribute type="xs:byte" name="value3" use="optional"/>
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
@@ -87,7 +90,7 @@
                       <xs:complexType>
                         <xs:simpleContent>
                           <xs:extension base="xs:string">
-                            <xs:attribute type="xs:byte" name="value" use="optional"/>
+                            <xs:attribute type="xs:byte" name="value4" use="optional"/>
                           </xs:extension>
                         </xs:simpleContent>
                       </xs:complexType>
@@ -108,7 +111,7 @@
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:string">
-          <xs:attribute type="xs:byte" name="value"/>
+          <xs:attribute type="xs:byte" name="value5"/>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
@@ -120,7 +123,7 @@
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="xs:string">
-                <xs:attribute type="xs:short" name="value"/>
+                <xs:attribute type="xs:short" name="value6"/>
               </xs:extension>
             </xs:simpleContent>
           </xs:complexType>
@@ -136,7 +139,7 @@
                 <xs:complexType>
                   <xs:simpleContent>
                     <xs:extension base="xs:string">
-                      <xs:attribute type="xs:byte" name="value"/>
+                      <xs:attribute type="xs:byte" name="value7"/>
                     </xs:extension>
                   </xs:simpleContent>
                 </xs:complexType>
@@ -146,7 +149,7 @@
                 <xs:complexType>
                   <xs:simpleContent>
                     <xs:extension base="xs:string">
-                      <xs:attribute type="xs:byte" name="value"/>
+                      <xs:attribute type="xs:byte" name="value8"/>
                     </xs:extension>
                   </xs:simpleContent>
                 </xs:complexType>
@@ -185,7 +188,7 @@
                 <xs:complexType>
                   <xs:simpleContent>
                     <xs:extension base="xs:string">
-                      <xs:attribute type="xs:byte" name="value"/>
+                      <xs:attribute type="xs:byte" name="value9"/>
                     </xs:extension>
                   </xs:simpleContent>
                 </xs:complexType>
@@ -226,4 +229,7 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="expirationTime" type="xs:dateTime"/>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
 </xs:schema>

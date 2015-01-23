@@ -10,12 +10,25 @@ package com.wagstaffnet.tivo.masterlist;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+
+import org.hibernate.type.TextType;
 
 
 /**
@@ -162,8 +175,9 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlRootElement(name = "TiVoContainer")
 public class TiVoContainer {
-
+	
     @XmlElement(name = "Details", required = true)
+    @OneToOne
     protected TiVoContainer.Details details;
     @XmlElement(name = "SortOrder", required = true)
     protected String sortOrder;
@@ -174,6 +188,7 @@ public class TiVoContainer {
     @XmlElement(name = "ItemCount")
     protected byte itemCount;
     @XmlElement(name = "Item")
+    @OneToMany
     protected List<TiVoContainer.Item> item;
 
     /**
@@ -336,6 +351,7 @@ public class TiVoContainer {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
+    		"id",
         "contentType",
         "sourceFormat",
         "title",
@@ -344,7 +360,10 @@ public class TiVoContainer {
         "uniqueId"
     })
     public static class Details {
-
+    	@Id @GeneratedValue
+        @XmlElement(name = "id", required = false)
+    	Long id;
+    	
         @XmlElement(name = "ContentType", required = true)
         protected String contentType;
         @XmlElement(name = "SourceFormat", required = true)
@@ -354,7 +373,7 @@ public class TiVoContainer {
         @XmlElement(name = "LastChangeDate", required = true)
         protected String lastChangeDate;
         @XmlElement(name = "TotalItems")
-        protected short totalItems;
+        protected int totalItems;
         @XmlElement(name = "UniqueId", required = true)
         protected String uniqueId;
 
@@ -458,7 +477,7 @@ public class TiVoContainer {
          * Gets the value of the totalItems property.
          * 
          */
-        public short getTotalItems() {
+        public int getTotalItems() {
             return totalItems;
         }
 
@@ -466,7 +485,7 @@ public class TiVoContainer {
          * Sets the value of the totalItems property.
          * 
          */
-        public void setTotalItems(short value) {
+        public void setTotalItems(int value) {
             this.totalItems = value;
         }
 
@@ -605,11 +624,13 @@ public class TiVoContainer {
         "details",
         "links"
     })
+    @Embeddable
     public static class Item {
-
         @XmlElement(name = "Details", required = true)
+        @Embedded
         protected TiVoContainer.Item.Details details;
         @XmlElement(name = "Links", required = true)
+        @Embedded
         protected TiVoContainer.Item.Links links;
 
         /**
@@ -734,8 +755,8 @@ public class TiVoContainer {
             "sourceType",
             "idGuideSource"
         })
+        @Embeddable
         public static class Details {
-
             @XmlElement(name = "ContentType", required = true)
             protected String contentType;
             @XmlElement(name = "SourceFormat", required = true)
@@ -761,9 +782,10 @@ public class TiVoContainer {
             @XmlElement(name = "EpisodeTitle")
             protected String episodeTitle;
             @XmlElement(name = "Description")
+            @Column(columnDefinition="text")
             protected String description;
             @XmlElement(name = "SourceChannel")
-            protected Short sourceChannel;
+            protected int sourceChannel;
             @XmlElement(name = "SourceStation")
             protected String sourceStation;
             @XmlElement(name = "InProgress")
@@ -775,7 +797,7 @@ public class TiVoContainer {
             @XmlElement(name = "SeriesId", required = true)
             protected String seriesId;
             @XmlElement(name = "EpisodeNumber")
-            protected Short episodeNumber;
+            protected int episodeNumber;
             @XmlElement(name = "RecordingQuality")
             protected Byte recordingQuality;
             @XmlElement(name = "StreamingPermission", required = true)
@@ -1069,7 +1091,7 @@ public class TiVoContainer {
              *     {@link Short }
              *     
              */
-            public Short getSourceChannel() {
+            public int getSourceChannel() {
                 return sourceChannel;
             }
 
@@ -1081,7 +1103,7 @@ public class TiVoContainer {
              *     {@link Short }
              *     
              */
-            public void setSourceChannel(Short value) {
+            public void setSourceChannel(int value) {
                 this.sourceChannel = value;
             }
 
@@ -1213,7 +1235,7 @@ public class TiVoContainer {
              *     {@link Short }
              *     
              */
-            public Short getEpisodeNumber() {
+            public int getEpisodeNumber() {
                 return episodeNumber;
             }
 
@@ -1225,7 +1247,7 @@ public class TiVoContainer {
              *     {@link Short }
              *     
              */
-            public void setEpisodeNumber(Short value) {
+            public void setEpisodeNumber(int value) {
                 this.episodeNumber = value;
             }
 
@@ -1431,13 +1453,16 @@ public class TiVoContainer {
             "customIcon",
             "tiVoVideoDetails"
         })
+        @Embeddable
         public static class Links {
-
             @XmlElement(name = "Content", required = true)
+            @Embedded
             protected TiVoContainer.Item.Links.Content content;
             @XmlElement(name = "CustomIcon")
+            @Embedded
             protected TiVoContainer.Item.Links.CustomIcon customIcon;
             @XmlElement(name = "TiVoVideoDetails", required = true)
+            @Embedded
             protected TiVoContainer.Item.Links.TiVoVideoDetails tiVoVideoDetails;
 
             /**
@@ -1540,8 +1565,8 @@ public class TiVoContainer {
                 "contentType",
                 "available"
             })
+            @Embeddable
             public static class Content {
-
                 @XmlElement(name = "Url", required = true)
                 @XmlSchemaType(name = "anyURI")
                 protected String url;
@@ -1652,8 +1677,8 @@ public class TiVoContainer {
                 "contentType",
                 "acceptsParams"
             })
+            @Embeddable
             public static class CustomIcon {
-
                 @XmlElement(name = "Url", required = true)
                 protected String url;
                 @XmlElement(name = "ContentType", required = true)
@@ -1763,8 +1788,8 @@ public class TiVoContainer {
                 "contentType",
                 "acceptsParams"
             })
+            @Embeddable
             public static class TiVoVideoDetails {
-
                 @XmlElement(name = "Url", required = true)
                 protected String url;
                 @XmlElement(name = "ContentType", required = true)
@@ -1847,7 +1872,6 @@ public class TiVoContainer {
             }
 
         }
-
     }
 
 }
