@@ -40,7 +40,7 @@
 #include "app_scheduler.h"
 #include "ble_stack_handler.h"
 #include "app_timer.h"
-#include "ble_error_log.h"
+//#include "ble_error_log.h"
 #include "app_gpiote.h"
 #include "app_button.h"
 #include "ble_debug_assert_handler.h"
@@ -60,6 +60,7 @@
 #define WAKEUP_BUTTON_PIN                EVAL_BOARD_BUTTON_0                     /**< Button used to wake up the application. */
 // YOUR_JOB: Define any other buttons to be used by the applications:
 // #define MY_BUTTON_PIN                   NRF6310_BUTTON_1
+#define ASSERT_LED_PIN_NO EVAL_BOARD_LED_1
 
 #define DEVICE_NAME                     "WAGER ONE"                           /**< Name of device. Will be included in the advertising data. */
 
