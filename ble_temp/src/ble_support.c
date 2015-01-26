@@ -50,7 +50,10 @@
 #include "srv_DeviceInfo.h"			// Device Information Service
 #include "srv_Battery.h"			// Battery Service
 #include "srv_Therm.h"				// Thermometer Service
+#include "srv_TempSensor.h"			// Temp Sensor Service
 
+
+#define CLEAR(x) memset(&x, 0, sizeof(x))
 
 
 
@@ -100,6 +103,8 @@ static uint16_t                         m_conn_handle = BLE_CONN_HANDLE_INVALID;
 
 
 app_timer_id_t tmrOneSecondID;				// One Second Timer
+
+static srv_TempSensor_t  m_tss;			// Temp. Sensor Service
 
 
 /**
@@ -278,6 +283,18 @@ static void services_init(void)
 	dis_init();
 	bas_init();
 	therm_init();
+
+	// Configure the Temp. Sensor Service
+	{
+		srv_TempSensor_init_t tss_init;
+		CLEAR(tss_init);
+		tss_init.support_notification= true;
+	    // Here the sec level for the Battery Service can be changed/increased.
+	    BLE_GAP_CONN_SEC_MODE_SET_OPEN(&tss_init.battery_level_char_attr_md.cccd_write_perm);
+	    BLE_GAP_CONN_SEC_MODE_SET_OPEN(&tss_init.battery_level_char_attr_md.read_perm);
+	    BLE_GAP_CONN_SEC_MODE_SET_NO_ACCESS(&tss_init.battery_level_char_attr_md.write_perm);
+	    srv_TempSensor_init(&m_tss, &tss_init);
+	}
 }
 
 
@@ -486,6 +503,7 @@ static void ble_evt_dispatch(ble_evt_t * p_ble_evt)
     ble_conn_params_on_ble_evt(p_ble_evt);
     handle_ble_bas_event(p_ble_evt);
     handle_ble_hts_event(p_ble_evt);
+    srv_TempSensor_on_ble_evt(&m_tss, p_ble_evt);
 
     //TODO: Add interested BLE services
     /* 
@@ -581,6 +599,9 @@ static void power_manage(void)
 }
 
 
+void registerTemp(uint8_t sensorNumber, int16_t temp) {
+	srv_TempSensor_temp_level_update(&m_tss, temp);
+}
 
 
 
