@@ -18,6 +18,7 @@ public:
 	uint8_t endTransmission(void);
 	uint8_t requestFrom(uint8_t addr, uint8_t len);
 	uint8_t read(void);
+	uint16_t available(void);
 };
 
 
