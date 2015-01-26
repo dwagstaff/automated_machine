@@ -43,6 +43,7 @@
 #include "ble_lls.h"
 #include "ble_bas.h"
 #include "ble_lbs.h"
+#include "ble_hts.h"
 #include "ble_conn_params.h"
 #include "ble_eval_board_pins.h"
 #include "ble_sensorsim.h"
@@ -59,7 +60,10 @@
 #include "boards.h"
 #include "nrf_delay.h"
 #include "EasyVR.h"
+#include "OneWire.h"
 
+#define MAX_TEMP_SENSORS	16			// Max number of DS18B20 sensors
+#define ONEWIRE_ADDR_LEN	 8			// Size of an OneWire device address
 
 #define SIGNAL_ALERT_BUTTON               EVAL_BOARD_BUTTON_0                               /**< Button used for send or cancel High Alert to the peer. */
 #define STOP_ALERTING_BUTTON              EVAL_BOARD_BUTTON_1                               /**< Button used for clearing the Alert LED that may be blinking or turned ON because of alerts from the master. */
@@ -77,17 +81,26 @@
 #define KEYPAD_YELLOW_KEY  3
 #define KEYPAD_BLUE_KEY    2
 
-#define DEVICE_NAME                       "DataV_HMI"                                     /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                       "DataV_HMI2"                                     /**< Name of device. Will be included in the advertising data. */
 #define APP_ADV_INTERVAL_FAST             0x0028                                            /**< Fast advertising interval (in units of 0.625 ms. This value corresponds to 25 ms.). */
 #define APP_ADV_INTERVAL_SLOW             0x0C80                                            /**< Slow advertising interval (in units of 0.625 ms. This value corresponds to 2 seconds). */
 #define APP_SLOW_ADV_TIMEOUT              180                                               /**< The duration of the slow advertising period (in seconds). */
 #define APP_FAST_ADV_TIMEOUT              30                                                /**< The duration of the fast advertising period (in seconds). */
 
 #define APP_TIMER_PRESCALER               0                                                 /**< Value of the RTC1 PRESCALER register. */
-#define APP_TIMER_MAX_TIMERS              5                                                 /**< Maximum number of simultaneously created timers. 1 for Battery measurement, 2 for flashing Advertising LED and Alert LED, 1 for connection parameters module, 1 for button polling timer needed by the app_button module,  */
-#define APP_TIMER_OP_QUEUE_SIZE           6                                                 /**< Size of timer operation queues. */
+#define APP_TIMER_MAX_TIMERS              6                                                 /**< Maximum number of simultaneously created timers. 1 for Battery measurement, 2 for flashing Advertising LED and Alert LED, 1 for connection parameters module, 1 for button polling timer needed by the app_button module,  */
+#define APP_TIMER_OP_QUEUE_SIZE           7                                                 /**< Size of timer operation queues. */
+
+#define TEMP_TYPE_AS_CHARACTERISTIC          0                                          /**< Determines if temperature type is given as characteristic (1) or as a field of measurement (0). */
+
+#define MIN_CELCIUS_DEGREES                  3688                                       /**< Minimum temperature in celcius for use in the simulated measurement function (multiplied by 100 to avoid floating point arithmetic). */
+#define MAX_CELCIUS_DEGRESS                  3972                                       /**< Maximum temperature in celcius for use in the simulated measurement function (multiplied by 100 to avoid floating point arithmetic). */
+#define CELCIUS_DEGREES_INCREMENT            36                                         /**< Value by which temperature is incremented/decremented for each call to the simulated measurement function (multiplied by 100 to avoid floating point arithmetic). */
+
+
 
 #define BATTERY_LEVEL_MEAS_INTERVAL       APP_TIMER_TICKS(120000, APP_TIMER_PRESCALER)      /**< Battery level measurement interval (ticks). This value corresponds to 120 seconds. */
+#define TEMP_MEAS_INTERVAL				  APP_TIMER_TICKS(5 * 1000, APP_TIMER_PRESCALER)
 
 #define ADV_LED_ON_TIME                   APP_TIMER_TICKS(100, APP_TIMER_PRESCALER)         /**< Advertisement LED ON period when in blinking state. */
 #define ADV_LED_OFF_TIME                  APP_TIMER_TICKS(900, APP_TIMER_PRESCALER)         /**< Advertisement LED OFF period when in blinking state. */
@@ -157,6 +170,8 @@ static bool                               m_is_adv_led_blinking;                
 
 static ble_bas_t                          m_bas;                                            /**< Structure used to identify the battery service. */
 static ble_ias_c_t                        m_ias_c;                                          /**< Structure used to identify the client to the Immediate Alert Service at peer. */
+static ble_hts_t                          m_hts;                                     /**< Structure used to identify the health thermometer service. */
+
 
 static ble_gap_sec_params_t               m_sec_params;                                     /**< Security requirements for this application. */
 static ble_advertising_mode_t             m_advertising_mode;                               /**< Variable to keep track of when we are advertising. */
@@ -166,12 +181,22 @@ static volatile bool                      m_is_high_alert_signalled;            
 static app_timer_id_t                     m_battery_timer_id;                               /**< Battery measurement timer. */
 static app_timer_id_t                     m_alert_led_blink_timer_id;                       /**< Timer to realize the blinking of Alert LED. */
 static app_timer_id_t                     m_adv_led_blink_timer_id;                         /**< Timer to realize the blinking of Advertisement LED. */
+static app_timer_id_t					  m_temp_meas_id;				// Temp Measurement
+
+static struct OneWire owTemp;					// One Wire Controller
 
 static void on_ias_evt(ble_ias_t * p_ias, ble_ias_evt_t * p_evt);
 static void on_lls_evt(ble_lls_t * p_lls, ble_lls_evt_t * p_evt);
 static void on_ias_c_evt(ble_ias_c_t * p_lls, ble_ias_c_evt_t * p_evt);
 static void on_bas_evt(ble_bas_t * p_bas, ble_bas_evt_t * p_evt);
 static void advertising_init(uint8_t adv_flags);
+
+static uint8_t ow_addrs[MAX_TEMP_SENSORS][ONEWIRE_ADDR_LEN];	// Address array
+static uint8_t sensorCount;										// Count of sensors found
+static bool                                  m_hts_meas_ind_conf_pending = false;       /**< Flag to keep track of when an indication confirmation is pending. */
+static ble_sensorsim_cfg_t                   m_temp_celcius_sim_cfg;                    /**< Temperature simulator configuration. */
+static ble_sensorsim_state_t                 m_temp_celcius_sim_state;                  /**< Temperature simulator state. */
+
 
 /**
  * Init the UART for communciations to the EZ-VR module
@@ -469,6 +494,30 @@ static void battery_level_meas_timeout_handler(void * p_context)
     adc_start();
 }
 
+static void temp_meas_timeout_handler(void * p_context) {
+    uint8_t i, j, data[9], crc;
+	UNUSED_PARAMETER(p_context);
+
+    // Read all sensor values
+    for(i= 0; i < sensorCount; i++) {
+    	OneWire_reset(&owTemp);
+    	OneWire_select(&owTemp, ow_addrs[i]);
+    	OneWire_write(&owTemp, 0xBE, 0);
+    	for(j= 0; j < 9; j++)
+    		data[j]= OneWire_read(&owTemp);
+
+		{
+			static int16_t tempc, tempr;
+			tempc= (data[1] << 8) | data[0];
+			tempc= (tempc * 100) / 16;
+			crc= OneWire_crc8(data, 8);
+		}
+    }
+    OneWire_reset(&owTemp);
+    OneWire_write(&owTemp, 0xCC, 0);
+    OneWire_write(&owTemp, 0x44, 0);
+}
+
 
 /**@brief Function for handling the timeout that is responsible for toggling the Alert LED.
  *
@@ -611,6 +660,14 @@ static void timers_init(void)
     err_code = app_timer_create(&m_adv_led_blink_timer_id,
                                 APP_TIMER_MODE_SINGLE_SHOT,
                                 adv_led_blink_timeout_handler);
+    APP_ERROR_CHECK(err_code);
+
+    // Create Temp Measurement timer
+    err_code = app_timer_create(&m_temp_meas_id,
+                                APP_TIMER_MODE_REPEATED,
+                                temp_meas_timeout_handler);
+    APP_ERROR_CHECK(err_code);
+    err_code= app_timer_start(m_temp_meas_id, TEMP_MEAS_INTERVAL, NULL);
     APP_ERROR_CHECK(err_code);
 }
 
@@ -828,6 +885,125 @@ void lbs_init(void)
     APP_ERROR_CHECK(err_code);
 }
 
+/**@brief Function for populating simulated health thermometer measurement.
+ */
+static void hts_sim_measurement(ble_hts_meas_t * p_meas)
+{
+    static ble_date_time_t time_stamp = { 2012, 12, 5, 11, 50, 0 };
+
+    uint32_t celciusX100;
+
+    p_meas->temp_in_fahr_units = false;
+    p_meas->time_stamp_present = true;
+    p_meas->temp_type_present  = TEMP_TYPE_AS_CHARACTERISTIC ? false : true;
+
+    celciusX100 = ble_sensorsim_measure(&m_temp_celcius_sim_state, &m_temp_celcius_sim_cfg);
+
+    p_meas->temp_in_celcius.exponent = -2;
+    p_meas->temp_in_celcius.mantissa = celciusX100;
+    p_meas->temp_in_fahr.exponent    = -2;
+    p_meas->temp_in_fahr.mantissa    = (32 * 100) + ((celciusX100 * 9) / 5);
+    p_meas->time_stamp               = time_stamp;
+    p_meas->temp_type                = BLE_HTS_TEMP_TYPE_FINGER;
+
+    // update simulated time stamp
+    time_stamp.seconds += 27;
+    if (time_stamp.seconds > 59)
+    {
+        time_stamp.seconds -= 60;
+        time_stamp.minutes++;
+        if (time_stamp.minutes > 59)
+        {
+            time_stamp.minutes = 0;
+        }
+    }
+}
+
+
+
+
+/**@brief Function for simulating and sending one Temperature Measurement.
+ */
+static void temperature_measurement_send(void)
+{
+    ble_hts_meas_t simulated_meas;
+    uint32_t       err_code;
+
+    if (!m_hts_meas_ind_conf_pending)
+    {
+        hts_sim_measurement(&simulated_meas);
+
+        err_code = ble_hts_measurement_send(&m_hts, &simulated_meas);
+        switch (err_code)
+        {
+            case NRF_SUCCESS:
+                // Measurement was successfully sent, wait for confirmation.
+                m_hts_meas_ind_conf_pending = true;
+                break;
+
+            case NRF_ERROR_INVALID_STATE:
+                // Ignore error.
+                break;
+
+            default:
+                APP_ERROR_HANDLER(err_code);
+        }
+    }
+}
+
+
+/**@brief Function for handling the Health Thermometer Service events.
+ *
+ * @details This function will be called for all Health Thermometer Service events which are passed
+ *          to the application.
+ *
+ * @param[in]   p_hts   Health Thermometer Service stucture.
+ * @param[in]   p_evt   Event received from the Health Thermometer Service.
+ */
+static void on_hts_evt(ble_hts_t * p_hts, ble_hts_evt_t *p_evt)
+{
+    switch (p_evt->evt_type)
+    {
+        case BLE_HTS_EVT_INDICATION_ENABLED:
+            // Indication has been enabled, send a single temperature measurement
+            temperature_measurement_send();
+            break;
+
+        case BLE_HTS_EVT_INDICATION_CONFIRMED:
+            m_hts_meas_ind_conf_pending = false;
+            break;
+
+        default:
+            break;
+    }
+}
+
+
+
+
+static void hts_init(void) {
+	uint32_t         err_code;
+	ble_hts_init_t   hts_init;
+
+	// Initialize Health Thermometer Service
+	memset(&hts_init, 0, sizeof(hts_init));
+
+	hts_init.evt_handler                 = on_hts_evt;
+	hts_init.temp_type_as_characteristic = TEMP_TYPE_AS_CHARACTERISTIC;
+	hts_init.temp_type                   = BLE_HTS_TEMP_TYPE_EAR;
+
+	// Here the sec level for the Health Thermometer Service can be changed/increased.
+	BLE_GAP_CONN_SEC_MODE_SET_ENC_NO_MITM(&hts_init.hts_meas_attr_md.cccd_write_perm);
+	BLE_GAP_CONN_SEC_MODE_SET_NO_ACCESS(&hts_init.hts_meas_attr_md.read_perm);
+	BLE_GAP_CONN_SEC_MODE_SET_NO_ACCESS(&hts_init.hts_meas_attr_md.write_perm);
+
+	BLE_GAP_CONN_SEC_MODE_SET_OPEN(&hts_init.hts_temp_type_attr_md.read_perm);
+	BLE_GAP_CONN_SEC_MODE_SET_NO_ACCESS(&hts_init.hts_temp_type_attr_md.write_perm);
+
+	err_code = ble_hts_init(&m_hts, &hts_init);
+	APP_ERROR_CHECK(err_code);
+}
+
 /**@brief Function for initializing the services that will be used by the application.
  */
 static void services_init(void)
@@ -838,6 +1014,7 @@ static void services_init(void)
     bas_init();
     lbs_init();
     ias_client_init();
+    hts_init();
 }
 
 /**@brief Function for handling a Connection Parameters error.
@@ -1293,39 +1470,64 @@ static void power_manage(void)
 }
 
 
+static void locate_temp_sensors(struct OneWire *ow) {
+	sensorCount= 0;
+	while(OneWire_search(ow, ow_addrs[sensorCount] ))
+		sensorCount++;
+}
+
+
 /**@brief Function for application main entry.
  */
 int main(void)
 {
+	static uint8_t addr[8];
+	static uint8_t data[9];
+	static uint8_t temp;
+	static uint8_t crc;
+	int i;
     // Initialize
     leds_init();
     timers_init();
     gpiote_init();
     buttons_init();
+    // Config Ow
+    OneWire_create(&owTemp, 25);
+    locate_temp_sensors(&owTemp);
+
+//    for(;;) {
+//    	i++;
+//    }
+
 	static uint8_t c;
     uart_init();
-    {
-    	EasyVR_setLanguage(ENGLISH);
-    	EasyVR_setKnob(STRICT);
-    	EasyVR_setLevel(NORMAL);
-    	EasyVR_playSound(BEEP,VOL_DOUBLE);
-    	EasyVR_setTimeout(10);
-//    	EasyVR_recognizeWord(3);
-//    	EasyVR_hasFinished();
-    	c= EasyVR_getWord();
-    	for(int i= 0; i < 16; i++)
-    		EasyVR_playPhoneTone(i,4);
-//    	simple_uart_putstring("w@@B");
-//    	c= simple_uart_get();
-//    	nrf_delay_ms(100);
-//    	simple_uart_putstring("w@B_");
-//    	c= simple_uart_get();
-//    	nrf_delay_ms(100);
-//    	simple_uart_putstring("w@C_");
-//    	c= simple_uart_get();
-    }
+//    {
+//    	EasyVR_setLanguage(ENGLISH);
+//    	EasyVR_setKnob(STRICT);
+//    	EasyVR_setLevel(NORMAL);
+//    	EasyVR_playSound(BEEP,VOL_DOUBLE);
+//    	EasyVR_setTimeout(10);
+////    	EasyVR_recognizeWord(3);
+////    	EasyVR_hasFinished();
+//    	c= EasyVR_getWord();
+//    	for(int i= 0; i < 16; i++)
+//    		EasyVR_playPhoneTone(i,4);
+////    	simple_uart_putstring("w@@B");
+////    	c= simple_uart_get();
+////    	nrf_delay_ms(100);
+////    	simple_uart_putstring("w@B_");
+////    	c= simple_uart_get();
+////    	nrf_delay_ms(100);
+////    	simple_uart_putstring("w@C_");
+////    	c= simple_uart_get();
+//    }
+
+
     bond_manager_init();
     ble_stack_init();
+
+
+
     gap_params_init();
     advertising_init(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);
     services_init();

@@ -99,9 +99,9 @@ static uint32_t led_char_add(ble_lbs_t * p_lbs, const ble_lbs_init_t * p_lbs_ini
     
     char_md.char_props.read   = 1;
     char_md.char_props.write  = 1;
-    char_md.p_char_user_desc  = (uint8_t *)&i;
-    char_md.char_user_desc_max_size= sizeof(i);
-    char_md.char_user_desc_size= sizeof(i);
+    char_md.p_char_user_desc  = (uint8_t *)"LED Service";
+    char_md.char_user_desc_max_size= sizeof("LED Service");
+    char_md.char_user_desc_size= sizeof("LED Service");
     char_md.p_char_pf         = &pf;
     char_md.p_user_desc_md    = NULL;
     char_md.p_cccd_md         = NULL;
