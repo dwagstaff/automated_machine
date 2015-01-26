@@ -1,0 +1,1871 @@
+Archive member included because of file (symbol)
+
+c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_udivsi3.o)
+                              _build/main.o (__aeabi_uidiv)
+c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_dvmd_tls.o)
+                              c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o)
+                              c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (exit)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                              C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o) (_global_impure_ptr)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+                              c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcmp.o)
+                              _build/ble_bondmngr.o (memcmp)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy-stub.o)
+                              _build/main.o (memcpy)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+                              _build/ble_hrs.o (memmove)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+                              c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+                              _build/ble_srv_common.o (strlen)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strncpy.o)
+                              _build/ble_error_log.o (strncpy)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+                              C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o) (__call_exitprocs)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+                              C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o) (atexit)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+                              C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o) (__libc_fini_array)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+                              C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o) (__register_exitproc)
+C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libnosys.a(_exit.o)
+                              C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o) (_exit)
+
+Discarded input sections
+
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/main.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_bas.o
+ .debug_macro   0x00000000      0x82c _build/ble_bas.o
+ .debug_macro   0x00000000       0x52 _build/ble_bas.o
+ .debug_macro   0x00000000       0x16 _build/ble_bas.o
+ .debug_macro   0x00000000       0x35 _build/ble_bas.o
+ .debug_macro   0x00000000       0xa3 _build/ble_bas.o
+ .debug_macro   0x00000000      0x20e _build/ble_bas.o
+ .debug_macro   0x00000000       0x22 _build/ble_bas.o
+ .debug_macro   0x00000000       0x94 _build/ble_bas.o
+ .debug_macro   0x00000000      0x1aa _build/ble_bas.o
+ .debug_macro   0x00000000       0x10 _build/ble_bas.o
+ .debug_macro   0x00000000      0x2b8 _build/ble_bas.o
+ .debug_macro   0x00000000       0x8e _build/ble_bas.o
+ .debug_macro   0x00000000       0x2e _build/ble_bas.o
+ .debug_macro   0x00000000       0x22 _build/ble_bas.o
+ .debug_macro   0x00000000      0x1c8 _build/ble_bas.o
+ .debug_macro   0x00000000       0x16 _build/ble_bas.o
+ .debug_macro   0x00000000       0xa6 _build/ble_bas.o
+ .debug_macro   0x00000000       0x1c _build/ble_bas.o
+ .debug_macro   0x00000000       0x22 _build/ble_bas.o
+ .debug_macro   0x00000000       0x3a _build/ble_bas.o
+ .debug_macro   0x00000000       0x1f _build/ble_bas.o
+ .debug_macro   0x00000000      0x242 _build/ble_bas.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_bas.o
+ .debug_macro   0x00000000       0x16 _build/ble_bas.o
+ .debug_macro   0x00000000       0x7a _build/ble_bas.o
+ .debug_macro   0x00000000      0x253 _build/ble_bas.o
+ .debug_macro   0x00000000      0x166 _build/ble_bas.o
+ .debug_macro   0x00000000       0x3a _build/ble_bas.o
+ .debug_macro   0x00000000       0x52 _build/ble_bas.o
+ .debug_macro   0x00000000       0x16 _build/ble_bas.o
+ .debug_macro   0x00000000       0x43 _build/ble_bas.o
+ .debug_macro   0x00000000      0x180 _build/ble_bas.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_bas.o
+ .debug_macro   0x00000000       0x10 _build/ble_bas.o
+ .debug_macro   0x00000000       0x35 _build/ble_bas.o
+ .debug_macro   0x00000000       0x1f _build/ble_bas.o
+ .debug_macro   0x00000000       0xf4 _build/ble_bas.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_dis.o
+ .debug_macro   0x00000000      0x82c _build/ble_dis.o
+ .debug_macro   0x00000000       0x52 _build/ble_dis.o
+ .debug_macro   0x00000000       0x16 _build/ble_dis.o
+ .debug_macro   0x00000000       0x35 _build/ble_dis.o
+ .debug_macro   0x00000000       0xa3 _build/ble_dis.o
+ .debug_macro   0x00000000      0x20e _build/ble_dis.o
+ .debug_macro   0x00000000       0x22 _build/ble_dis.o
+ .debug_macro   0x00000000      0x1aa _build/ble_dis.o
+ .debug_macro   0x00000000       0x1c _build/ble_dis.o
+ .debug_macro   0x00000000       0x22 _build/ble_dis.o
+ .debug_macro   0x00000000       0x3a _build/ble_dis.o
+ .debug_macro   0x00000000       0x1f _build/ble_dis.o
+ .debug_macro   0x00000000      0x242 _build/ble_dis.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_dis.o
+ .debug_macro   0x00000000       0x8e _build/ble_dis.o
+ .debug_macro   0x00000000       0x16 _build/ble_dis.o
+ .debug_macro   0x00000000       0x7a _build/ble_dis.o
+ .debug_macro   0x00000000       0x94 _build/ble_dis.o
+ .debug_macro   0x00000000       0x10 _build/ble_dis.o
+ .debug_macro   0x00000000      0x2b8 _build/ble_dis.o
+ .debug_macro   0x00000000      0x253 _build/ble_dis.o
+ .debug_macro   0x00000000       0x16 _build/ble_dis.o
+ .debug_macro   0x00000000       0x3a _build/ble_dis.o
+ .debug_macro   0x00000000       0x52 _build/ble_dis.o
+ .debug_macro   0x00000000       0x16 _build/ble_dis.o
+ .debug_macro   0x00000000       0x43 _build/ble_dis.o
+ .debug_macro   0x00000000      0x180 _build/ble_dis.o
+ .debug_macro   0x00000000       0x16 _build/ble_dis.o
+ .debug_macro   0x00000000       0x29 _build/ble_dis.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_dis.o
+ .debug_macro   0x00000000       0x10 _build/ble_dis.o
+ .debug_macro   0x00000000       0x35 _build/ble_dis.o
+ .debug_macro   0x00000000       0x1f _build/ble_dis.o
+ .debug_macro   0x00000000       0x2e _build/ble_dis.o
+ .debug_macro   0x00000000       0x22 _build/ble_dis.o
+ .debug_macro   0x00000000      0x1c8 _build/ble_dis.o
+ .debug_macro   0x00000000       0xf4 _build/ble_dis.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x82c _build/ble_hrs.o
+ .debug_macro   0x00000000       0x52 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x16 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x35 _build/ble_hrs.o
+ .debug_macro   0x00000000       0xa3 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x20e _build/ble_hrs.o
+ .debug_macro   0x00000000       0x22 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x94 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x1aa _build/ble_hrs.o
+ .debug_macro   0x00000000       0x10 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x2b8 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x8e _build/ble_hrs.o
+ .debug_macro   0x00000000       0x2e _build/ble_hrs.o
+ .debug_macro   0x00000000       0x22 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x1c8 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x16 _build/ble_hrs.o
+ .debug_macro   0x00000000       0xa6 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x1c _build/ble_hrs.o
+ .debug_macro   0x00000000       0x22 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x3a _build/ble_hrs.o
+ .debug_macro   0x00000000       0x1f _build/ble_hrs.o
+ .debug_macro   0x00000000      0x242 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x16 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x7a _build/ble_hrs.o
+ .debug_macro   0x00000000      0x253 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x166 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x3a _build/ble_hrs.o
+ .debug_macro   0x00000000       0x52 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x16 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x43 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x180 _build/ble_hrs.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x10 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x35 _build/ble_hrs.o
+ .debug_macro   0x00000000       0x1f _build/ble_hrs.o
+ .debug_macro   0x00000000       0xf4 _build/ble_hrs.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x82c _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x52 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x16 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x35 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0xa3 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x20e _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x22 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x1aa _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x1c _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x22 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x3a _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x1f _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x242 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x8e _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x16 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x7a _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x94 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x10 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x2b8 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x253 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x166 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x3a _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x52 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x16 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x43 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x180 _build/ble_srv_common.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x10 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x35 _build/ble_srv_common.o
+ .debug_macro   0x00000000       0x1f _build/ble_srv_common.o
+ .debug_macro   0x00000000       0xf4 _build/ble_srv_common.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_error_log.o
+ .debug_macro   0x00000000      0x82c _build/ble_error_log.o
+ .debug_macro   0x00000000       0x52 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x16 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x35 _build/ble_error_log.o
+ .debug_macro   0x00000000       0xa3 _build/ble_error_log.o
+ .debug_macro   0x00000000      0x166 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x3a _build/ble_error_log.o
+ .debug_macro   0x00000000       0x52 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x16 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x43 _build/ble_error_log.o
+ .debug_macro   0x00000000      0x180 _build/ble_error_log.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x10 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x35 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x1f _build/ble_error_log.o
+ .debug_macro   0x00000000       0x22 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x22 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x3a _build/ble_error_log.o
+ .debug_macro   0x00000000       0x1f _build/ble_error_log.o
+ .debug_macro   0x00000000      0x242 _build/ble_error_log.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x7c _build/ble_error_log.o
+ .debug_macro   0x00000000       0x22 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x1c _build/ble_error_log.o
+ .debug_macro   0x00000000       0x1c _build/ble_error_log.o
+ .debug_macro   0x00000000       0x8e _build/ble_error_log.o
+ .debug_macro   0x00000000       0x16 _build/ble_error_log.o
+ .debug_macro   0x00000000       0x7a _build/ble_error_log.o
+ .debug_macro   0x00000000     0x69ef _build/ble_error_log.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x82c _build/ble_advdata.o
+ .debug_macro   0x00000000       0x52 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x16 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x35 _build/ble_advdata.o
+ .debug_macro   0x00000000       0xa3 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x20e _build/ble_advdata.o
+ .debug_macro   0x00000000       0x22 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x166 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x3a _build/ble_advdata.o
+ .debug_macro   0x00000000       0x52 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x16 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x43 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x180 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x10 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x35 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x1f _build/ble_advdata.o
+ .debug_macro   0x00000000       0x94 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x1aa _build/ble_advdata.o
+ .debug_macro   0x00000000       0x10 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x2b8 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x8e _build/ble_advdata.o
+ .debug_macro   0x00000000       0x2e _build/ble_advdata.o
+ .debug_macro   0x00000000       0x22 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x1c8 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x16 _build/ble_advdata.o
+ .debug_macro   0x00000000       0xa6 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x1c _build/ble_advdata.o
+ .debug_macro   0x00000000       0x22 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x3a _build/ble_advdata.o
+ .debug_macro   0x00000000       0x1f _build/ble_advdata.o
+ .debug_macro   0x00000000      0x242 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x16 _build/ble_advdata.o
+ .debug_macro   0x00000000       0x7a _build/ble_advdata.o
+ .debug_macro   0x00000000       0xf4 _build/ble_advdata.o
+ .debug_macro   0x00000000      0x253 _build/ble_advdata.o
+ .group         0x00000000        0x8 _build/ble_sensorsim.o
+ .group         0x00000000        0x8 _build/ble_sensorsim.o
+ .group         0x00000000        0x8 _build/ble_sensorsim.o
+ .group         0x00000000        0x8 _build/ble_sensorsim.o
+ .group         0x00000000        0x8 _build/ble_sensorsim.o
+ .group         0x00000000        0x8 _build/ble_sensorsim.o
+ .group         0x00000000        0x8 _build/ble_sensorsim.o
+ .debug_macro   0x00000000      0x82c _build/ble_sensorsim.o
+ .debug_macro   0x00000000       0x52 _build/ble_sensorsim.o
+ .debug_macro   0x00000000       0x16 _build/ble_sensorsim.o
+ .debug_macro   0x00000000       0x35 _build/ble_sensorsim.o
+ .debug_macro   0x00000000       0xa3 _build/ble_sensorsim.o
+ .debug_macro   0x00000000      0x20e _build/ble_sensorsim.o
+ .debug_macro   0x00000000       0x22 _build/ble_sensorsim.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_stack_handler.o
+ .debug_macro   0x00000000      0x82c _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x52 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x16 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x35 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0xa3 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x16 _build/ble_stack_handler.o
+ .debug_macro   0x00000000      0x10e _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x7f _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x3a _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x52 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x16 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x43 _build/ble_stack_handler.o
+ .debug_macro   0x00000000      0x180 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x16 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x29 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x94 _build/ble_stack_handler.o
+ .debug_macro   0x00000000      0x214 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x10 _build/ble_stack_handler.o
+ .debug_macro   0x00000000      0x2b8 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x8e _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x2e _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x22 _build/ble_stack_handler.o
+ .debug_macro   0x00000000      0x1c8 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x16 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0xa6 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x22 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x3a _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x1f _build/ble_stack_handler.o
+ .debug_macro   0x00000000      0x242 _build/ble_stack_handler.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x22 _build/ble_stack_handler.o
+ .debug_macro   0x00000000     0x69ef _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x46 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x3a _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x1c _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x16 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x1c _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x7a _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0x10 _build/ble_stack_handler.o
+ .debug_macro   0x00000000       0xf4 _build/ble_stack_handler.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x82c _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x52 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x16 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x35 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0xa3 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x20e _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x94 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x1aa _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x10 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x2b8 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x8e _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x2e _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x22 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x1c8 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x16 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0xa6 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x22 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x1c _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x22 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x3a _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x1f _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x242 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x16 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x7a _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x253 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x16 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x10e _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x7f _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x3a _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x52 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x16 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x43 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x180 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x16 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x29 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0xf4 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0xa6 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x1c _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x35 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x10 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x10 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x22 _build/ble_conn_params.o
+ .debug_macro   0x00000000       0xbd _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x16 _build/ble_conn_params.o
+ .debug_macro   0x00000000      0x16c _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x1c _build/ble_conn_params.o
+ .debug_macro   0x00000000       0x41 _build/ble_conn_params.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x82c _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x52 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x16 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x35 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0xa3 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x20e _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x94 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x1aa _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x10 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x2b8 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x8e _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x2e _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x22 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x1c8 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x16 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0xa6 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x22 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x1c _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x22 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x3a _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x1f _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x242 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x16 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x7a _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x253 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x16 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x10e _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x7f _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x3a _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x52 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x16 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x43 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x180 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x16 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x29 _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x10 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x35 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x1f _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0xf4 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x10 _build/ble_bondmngr.o
+ .debug_macro   0x00000000     0x69ef _build/ble_bondmngr.o
+ .debug_macro   0x00000000      0x855 _build/ble_bondmngr.o
+ .debug_macro   0x00000000       0x22 _build/ble_bondmngr.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_flash.o
+ .debug_macro   0x00000000      0x82c _build/ble_flash.o
+ .debug_macro   0x00000000       0x52 _build/ble_flash.o
+ .debug_macro   0x00000000       0x16 _build/ble_flash.o
+ .debug_macro   0x00000000       0x35 _build/ble_flash.o
+ .debug_macro   0x00000000       0xa3 _build/ble_flash.o
+ .debug_macro   0x00000000      0x20e _build/ble_flash.o
+ .debug_macro   0x00000000       0x22 _build/ble_flash.o
+ .debug_macro   0x00000000       0x22 _build/ble_flash.o
+ .debug_macro   0x00000000       0x3a _build/ble_flash.o
+ .debug_macro   0x00000000       0x1f _build/ble_flash.o
+ .debug_macro   0x00000000      0x242 _build/ble_flash.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_flash.o
+ .debug_macro   0x00000000       0x16 _build/ble_flash.o
+ .debug_macro   0x00000000      0x10e _build/ble_flash.o
+ .debug_macro   0x00000000       0x7f _build/ble_flash.o
+ .debug_macro   0x00000000       0x3a _build/ble_flash.o
+ .debug_macro   0x00000000       0x52 _build/ble_flash.o
+ .debug_macro   0x00000000       0x16 _build/ble_flash.o
+ .debug_macro   0x00000000       0x43 _build/ble_flash.o
+ .debug_macro   0x00000000      0x180 _build/ble_flash.o
+ .debug_macro   0x00000000       0x16 _build/ble_flash.o
+ .debug_macro   0x00000000       0x29 _build/ble_flash.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_flash.o
+ .debug_macro   0x00000000       0x10 _build/ble_flash.o
+ .debug_macro   0x00000000       0x35 _build/ble_flash.o
+ .debug_macro   0x00000000       0x1f _build/ble_flash.o
+ .debug_macro   0x00000000       0x10 _build/ble_flash.o
+ .debug_macro   0x00000000     0x69ef _build/ble_flash.o
+ .debug_macro   0x00000000       0x8e _build/ble_flash.o
+ .debug_macro   0x00000000       0x3a _build/ble_flash.o
+ .debug_macro   0x00000000       0xf4 _build/ble_flash.o
+ .debug_macro   0x00000000       0x1c _build/ble_flash.o
+ .debug_macro   0x00000000      0x855 _build/ble_flash.o
+ .debug_macro   0x00000000       0x7a _build/ble_flash.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_radio_notification.o
+ .debug_macro   0x00000000      0x82c _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x52 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x16 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x35 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0xa3 _build/ble_radio_notification.o
+ .debug_macro   0x00000000      0x20e _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x22 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x10 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x22 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x3a _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x1f _build/ble_radio_notification.o
+ .debug_macro   0x00000000      0x242 _build/ble_radio_notification.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_radio_notification.o
+ .debug_macro   0x00000000     0x69ef _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x8e _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x40 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x3a _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x16 _build/ble_radio_notification.o
+ .debug_macro   0x00000000      0x10e _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x7f _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x3a _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x52 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x16 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x43 _build/ble_radio_notification.o
+ .debug_macro   0x00000000      0x180 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x16 _build/ble_radio_notification.o
+ .debug_macro   0x00000000       0x29 _build/ble_radio_notification.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000      0x82c _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x52 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x16 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x35 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0xa3 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000      0x20e _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000      0x166 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x3a _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x52 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x16 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x43 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000      0x180 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000      0x2a6 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x10 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x35 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x1f _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x22 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x3a _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x1f _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000      0x242 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000      0x1e0 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x22 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x7c _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x22 _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0x1c _build/ble_debug_assert_handler.o
+ .debug_macro   0x00000000       0xf4 _build/ble_debug_assert_handler.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .group         0x00000000        0x8 _build/app_timer.o
+ .debug_macro   0x00000000      0x82c _build/app_timer.o
+ .debug_macro   0x00000000       0x52 _build/app_timer.o
+ .debug_macro   0x00000000       0x16 _build/app_timer.o
+ .debug_macro   0x00000000       0x35 _build/app_timer.o
+ .debug_macro   0x00000000       0xa3 _build/app_timer.o
+ .debug_macro   0x00000000      0x20e _build/app_timer.o
+ .debug_macro   0x00000000       0x22 _build/app_timer.o
+ .debug_macro   0x00000000       0x10 _build/app_timer.o
+ .debug_macro   0x00000000       0x3a _build/app_timer.o
+ .debug_macro   0x00000000       0x52 _build/app_timer.o
+ .debug_macro   0x00000000       0x16 _build/app_timer.o
+ .debug_macro   0x00000000       0x43 _build/app_timer.o
+ .debug_macro   0x00000000      0x180 _build/app_timer.o
+ .debug_macro   0x00000000       0x10 _build/app_timer.o
+ .debug_macro   0x00000000       0x22 _build/app_timer.o
+ .debug_macro   0x00000000       0xbd _build/app_timer.o
+ .debug_macro   0x00000000       0x16 _build/app_timer.o
+ .debug_macro   0x00000000      0x16c _build/app_timer.o
+ .debug_macro   0x00000000       0x8e _build/app_timer.o
+ .debug_macro   0x00000000       0x16 _build/app_timer.o
+ .debug_macro   0x00000000       0x1c _build/app_timer.o
+ .debug_macro   0x00000000       0x22 _build/app_timer.o
+ .debug_macro   0x00000000       0x3a _build/app_timer.o
+ .debug_macro   0x00000000       0x1f _build/app_timer.o
+ .debug_macro   0x00000000      0x242 _build/app_timer.o
+ .debug_macro   0x00000000      0x1e0 _build/app_timer.o
+ .debug_macro   0x00000000       0x7a _build/app_timer.o
+ .debug_macro   0x00000000       0x1c _build/app_timer.o
+ .debug_macro   0x00000000       0x41 _build/app_timer.o
+ .debug_macro   0x00000000       0x16 _build/app_timer.o
+ .debug_macro   0x00000000       0x35 _build/app_timer.o
+ .debug_macro   0x00000000       0x16 _build/app_timer.o
+ .debug_macro   0x00000000       0x29 _build/app_timer.o
+ .debug_macro   0x00000000     0x69ef _build/app_timer.o
+ .debug_macro   0x00000000       0x10 _build/app_timer.o
+ .debug_macro   0x00000000       0x40 _build/app_timer.o
+ .debug_macro   0x00000000       0x3a _build/app_timer.o
+ .debug_macro   0x00000000      0x855 _build/app_timer.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .group         0x00000000        0x8 _build/system_nrf51.o
+ .debug_macro   0x00000000      0x82c _build/system_nrf51.o
+ .debug_macro   0x00000000       0x52 _build/system_nrf51.o
+ .debug_macro   0x00000000       0x16 _build/system_nrf51.o
+ .debug_macro   0x00000000       0x35 _build/system_nrf51.o
+ .debug_macro   0x00000000       0xa3 _build/system_nrf51.o
+ .debug_macro   0x00000000      0x20e _build/system_nrf51.o
+ .debug_macro   0x00000000       0x22 _build/system_nrf51.o
+ .debug_macro   0x00000000       0x1c _build/system_nrf51.o
+ .debug_macro   0x00000000       0x22 _build/system_nrf51.o
+ .debug_macro   0x00000000       0x3a _build/system_nrf51.o
+ .debug_macro   0x00000000       0x1f _build/system_nrf51.o
+ .debug_macro   0x00000000      0x242 _build/system_nrf51.o
+ .debug_macro   0x00000000      0x1e0 _build/system_nrf51.o
+ .debug_macro   0x00000000     0x69ef _build/system_nrf51.o
+ .debug_macro   0x00000000      0x855 _build/system_nrf51.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x00014000         0x0002c000         xr
+RAM              0x20002000         0x00002000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+LOAD _build/main.o
+LOAD _build/ble_bas.o
+LOAD _build/ble_dis.o
+LOAD _build/ble_hrs.o
+LOAD _build/ble_srv_common.o
+LOAD _build/ble_error_log.o
+LOAD _build/ble_advdata.o
+LOAD _build/ble_sensorsim.o
+LOAD _build/ble_stack_handler.o
+LOAD _build/ble_conn_params.o
+LOAD _build/ble_bondmngr.o
+LOAD _build/ble_flash.o
+LOAD _build/ble_radio_notification.o
+LOAD _build/ble_debug_assert_handler.o
+LOAD _build/app_timer.o
+LOAD _build/system_nrf51.o
+LOAD _build/gcc_startup_nrf51.o
+START GROUP
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a
+LOAD C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a
+END GROUP
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+START GROUP
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a
+LOAD C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a
+LOAD C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libnosys.a
+END GROUP
+
+.text           0x00014000     0x84e8
+ *(.Vectors)
+ .Vectors       0x00014000       0xc0 _build/gcc_startup_nrf51.o
+                0x00014000                __Vectors
+ *(.text*)
+ .text          0x000140c0        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .text          0x000140c0       0x60 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .text          0x00014120       0x78 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+                0x00014120                _start
+                0x00014120                _mainCRTStartup
+ .text          0x00014198     0x1158 _build/main.o
+                0x00014528                app_error_handler
+                0x00014544                assert_nrf_callback
+                0x000152a8                main
+ .text          0x000152f0      0x6d0 _build/ble_bas.o
+                0x00015574                ble_bas_on_ble_evt
+                0x00015880                ble_bas_init
+                0x000158f4                ble_bas_battery_level_update
+ .text          0x000159c0      0x7b0 _build/ble_dis.o
+                0x00015f28                ble_dis_init
+ .text          0x00016170      0x9a0 _build/ble_hrs.o
+                0x00016440                ble_hrs_on_ble_evt
+                0x00016898                ble_hrs_init
+                0x00016944                ble_hrs_heart_rate_measurement_send
+                0x00016a08                ble_hrs_rr_interval_add
+                0x00016a68                ble_hrs_rr_interval_buffer_is_full
+                0x00016a88                ble_hrs_sensor_contact_supported_set
+                0x00016abc                ble_hrs_sensor_contact_detected_update
+                0x00016adc                ble_hrs_body_sensor_location_set
+ .text          0x00016b10      0x154 _build/ble_srv_common.o
+                0x00016bb8                ble_srv_report_ref_encode
+                0x00016c3c                ble_srv_ascii_to_utf8
+ .text          0x00016c64      0x294 _build/ble_error_log.o
+                0x00016cf8                ble_error_log_write
+                0x00016d98                ble_error_log_read
+                0x00016e7c                ble_error_log_clear
+                0x00016e90                ble_error_log_init
+ .text          0x00016ef8      0xbc8 _build/ble_advdata.o
+                0x000179f4                ble_advdata_set
+ .text          0x00017ac0       0xb8 _build/ble_sensorsim.o
+                0x00017ac0                ble_sensorsim_init
+                0x00017af8                ble_sensorsim_measure
+ .text          0x00017b78      0x488 _build/ble_stack_handler.o
+                0x00017ecc                ble_stack_handler_init
+                0x00017f58                intern_ble_stack_events_execute
+                0x00017fb8                SWI2_IRQHandler
+ .text          0x00018000      0x690 _build/ble_conn_params.o
+                0x000182e0                ble_conn_params_init
+                0x0001838c                ble_conn_params_stop
+                0x0001859c                ble_conn_params_on_ble_evt
+                0x000185ec                ble_conn_params_change_conn_params
+ .text          0x00018690     0x18b0 _build/ble_bondmngr.o
+                0x0001970c                ble_bondmngr_on_ble_evt
+                0x000197a0                ble_bondmngr_bonded_masters_store
+                0x0001992c                ble_bondmngr_sys_attr_store
+                0x000199c0                ble_bondmngr_bonded_masters_delete
+                0x00019a04                ble_bondmngr_master_addr_get
+                0x00019a84                ble_bondmngr_whitelist_get
+                0x00019b3c                ble_bondmngr_init
+                0x00019c00                ble_bondmngr_master_ids_get
+                0x00019c98                ble_bondmngr_bonded_master_delete
+                0x00019f00                ble_bondmngr_is_link_encrypted
+ .text          0x00019f40      0x604 _build/ble_flash.o
+                0x0001a0a0                ble_flash_crc16_compute
+                0x0001a2b4                ble_flash_word_write
+                0x0001a2d4                ble_flash_block_write
+                0x0001a330                ble_flash_page_erase
+                0x0001a360                ble_flash_page_write
+                0x0001a440                ble_flash_page_read
+                0x0001a4f8                ble_flash_page_addr
+                0x0001a524                ble_flash_on_radio_active_evt
+ .text          0x0001a544      0x218 _build/ble_radio_notification.o
+                0x0001a6a4                SWI1_IRQHandler
+                0x0001a6e4                ble_radio_notification_init
+ .text          0x0001a75c       0x5c _build/ble_debug_assert_handler.o
+                0x0001a75c                ble_debug_assert_handler
+ .text          0x0001a7b8     0x136c _build/app_timer.o
+                0x0001b714                RTC1_IRQHandler
+                0x0001b760                SWI0_IRQHandler
+                0x0001b76c                app_timer_init
+                0x0001b8dc                app_timer_create
+                0x0001b9cc                app_timer_start
+                0x0001ba58                app_timer_stop
+                0x0001bab8                app_timer_stop_all
+                0x0001bae0                app_timer_cnt_get
+                0x0001bafc                app_timer_cnt_diff_compute
+ .text          0x0001bb24      0x128 _build/system_nrf51.o
+                0x0001bb24                SystemCoreClockUpdate
+                0x0001bb3c                SystemInit
+ .text          0x0001bc4c       0x48 _build/gcc_startup_nrf51.o
+                0x0001bc4c                Reset_Handler
+                0x0001bc88                NMI_Handler
+                0x0001bc8a                HardFault_Handler
+                0x0001bc8c                SVC_Handler
+                0x0001bc8e                PendSV_Handler
+                0x0001bc90                SysTick_Handler
+                0x0001bc92                GPIOTE_IRQHandler
+                0x0001bc92                RTC0_IRQHandler
+                0x0001bc92                SPI0_TWI0_IRQHandler
+                0x0001bc92                RADIO_IRQHandler
+                0x0001bc92                SWI4_IRQHandler
+                0x0001bc92                TEMP_IRQHandler
+                0x0001bc92                QDEC_IRQHandler
+                0x0001bc92                UART0_IRQHandler
+                0x0001bc92                SWI5_IRQHandler
+                0x0001bc92                TIMER0_IRQHandler
+                0x0001bc92                POWER_CLOCK_IRQHandler
+                0x0001bc92                TIMER1_IRQHandler
+                0x0001bc92                ECB_IRQHandler
+                0x0001bc92                Default_Handler
+                0x0001bc92                ADC_IRQHandler
+                0x0001bc92                LPCOMP_COMP_IRQHandler
+                0x0001bc92                SWI3_IRQHandler
+                0x0001bc92                CCM_AAR_IRQHandler
+                0x0001bc92                WDT_IRQHandler
+                0x0001bc92                TIMER2_IRQHandler
+                0x0001bc92                RNG_IRQHandler
+                0x0001bc92                SPI1_TWI1_IRQHandler
+ .text          0x0001bc94       0x9c c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_udivsi3.o)
+                0x0001bc94                __aeabi_uidiv
+                0x0001bc94                __udivsi3
+                0x0001bd1c                __aeabi_uidivmod
+ .text          0x0001bd30        0x4 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x0001bd30                __aeabi_idiv0
+                0x0001bd30                __aeabi_ldiv0
+ .text          0x0001bd34        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o)
+ .text.exit     0x0001bd34       0x20 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o)
+                0x0001bd34                exit
+ .text          0x0001bd54        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+ .text          0x0001bd54        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+ .text.__libc_init_array
+                0x0001bd54       0x48 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+                0x0001bd54                __libc_init_array
+ .text          0x0001bd9c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcmp.o)
+ .text.memcmp   0x0001bd9c       0x4c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcmp.o)
+                0x0001bd9c                memcmp
+ .text          0x0001bde8        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy-stub.o)
+ .text.memcpy   0x0001bde8       0x84 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy-stub.o)
+                0x0001bde8                memcpy
+ .text          0x0001be6c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+ .text.memmove  0x0001be6c       0xa4 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+                0x0001be6c                memmove
+ .text          0x0001bf10        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+ .text.memset   0x0001bf10       0xbc C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+                0x0001bf10                memset
+ .text          0x0001bfcc        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+ .text.strlen   0x0001bfcc       0x10 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+                0x0001bfcc                strlen
+ .text          0x0001bfdc        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strncpy.o)
+ .text.strncpy  0x0001bfdc       0x74 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strncpy.o)
+                0x0001bfdc                strncpy
+ .text          0x0001c050        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .text.startup.register_fini
+                0x0001c050       0x18 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x0001c068      0x118 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+                0x0001c068                __call_exitprocs
+ .text          0x0001c180        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+ .text.atexit   0x0001c180       0x10 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+                0x0001c180                atexit
+ .text          0x0001c190        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+ .text.__libc_fini_array
+                0x0001c190       0x30 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+                0x0001c190                __libc_fini_array
+ .text          0x0001c1c0        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+ .text.__register_exitproc
+                0x0001c1c0       0xc0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+                0x0001c1c0                __register_exitproc
+ .text          0x0001c280        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .text          0x0001c280        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ .text          0x0001c280        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libnosys.a(_exit.o)
+ .text._exit    0x0001c280        0x4 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libnosys.a(_exit.o)
+                0x0001c280                _exit
+ *(.init)
+ .init          0x0001c284        0x4 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+                0x0001c284                _init
+ .init          0x0001c288        0x8 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ *(.fini)
+ .fini          0x0001c290        0x4 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+                0x0001c290                _fini
+ .fini          0x0001c294        0x8 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+ *(.rodata*)
+ .rodata        0x0001c29c       0x38 _build/main.o
+ .rodata        0x0001c2d4       0x34 _build/ble_dis.o
+ .rodata        0x0001c308       0x3c _build/ble_srv_common.o
+ .rodata        0x0001c344       0x2c _build/ble_error_log.o
+ .rodata        0x0001c370       0x30 _build/ble_stack_handler.o
+ .rodata        0x0001c3a0      0x10c _build/ble_bondmngr.o
+ .rodata        0x0001c4ac       0x30 _build/app_timer.o
+ .rodata.str1.4
+                0x0001c4dc        0x4 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x0001c4e0        0x4 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                0x0001c4e0                _global_impure_ptr
+ *(.eh_frame*)
+ .eh_frame      0x0001c4e4        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .eh_frame      0x0001c4e4        0x4 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+
+.glue_7         0x0001c4e8        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x0001c4e8        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x0001c4e8        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x0001c4e8        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x0001c4e8        0x0
+ .iplt          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.ARM.extab      0x0001c4e8        0x0
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ .ARM.extab     0x0001c4e8        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.extab     0x0001c4e8        0x0 _build/gcc_startup_nrf51.o
+                0x0001c4e8                __exidx_start = .
+
+.ARM.exidx      0x0001c4e8        0x8
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx     0x0001c4e8        0x8 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.exidx     0x0001c4f0        0x0 _build/gcc_startup_nrf51.o
+                                  0x8 (size before relaxing)
+                0x0001c4f0                __exidx_end = .
+                0x0001c4f0                __etext = .
+
+.rel.dyn        0x0001c4f0        0x0
+ .rel.iplt      0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.data           0x20002000      0x44c load address 0x0001c4f0
+                0x20002000                __data_start__ = .
+ *(vtable)
+ *(.data*)
+ .data          0x20002000        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .data          0x20002000        0x4 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+                0x20002000                __dso_handle
+ .data          0x20002004        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .data          0x20002004        0x4 _build/main.o
+ .data          0x20002008        0x0 _build/ble_bas.o
+ .data          0x20002008        0x0 _build/ble_dis.o
+ .data          0x20002008        0x0 _build/ble_hrs.o
+ .data          0x20002008        0x0 _build/ble_srv_common.o
+ .data          0x20002008        0x0 _build/ble_error_log.o
+ .data          0x20002008        0x0 _build/ble_advdata.o
+ .data          0x20002008        0x0 _build/ble_sensorsim.o
+ .data          0x20002008        0x0 _build/ble_stack_handler.o
+ .data          0x20002008        0x0 _build/ble_conn_params.o
+ .data          0x20002008        0x0 _build/ble_bondmngr.o
+ .data          0x20002008        0x0 _build/ble_flash.o
+ .data          0x20002008        0x0 _build/ble_radio_notification.o
+ .data          0x20002008        0x0 _build/ble_debug_assert_handler.o
+ .data          0x20002008        0x0 _build/app_timer.o
+ .data          0x20002008        0x4 _build/system_nrf51.o
+                0x20002008                SystemCoreClock
+ .data          0x2000200c        0x0 _build/gcc_startup_nrf51.o
+ .data          0x2000200c        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_udivsi3.o)
+ .data          0x2000200c        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .data          0x2000200c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o)
+ .data          0x2000200c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+ *fill*         0x2000200c        0x4 
+ .data.impure_data
+                0x20002010      0x428 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x20002438        0x4 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+                0x20002438                _impure_ptr
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcmp.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy-stub.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strncpy.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+ .data          0x2000243c        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .data          0x2000243c        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ .data          0x2000243c        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libnosys.a(_exit.o)
+                0x2000243c                . = ALIGN (0x4)
+                0x2000243c                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x2000243c                PROVIDE (__preinit_array_end, .)
+                0x2000243c                . = ALIGN (0x4)
+                0x2000243c                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ .init_array.00000
+                0x2000243c        0x4 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ *(.init_array)
+ .init_array    0x20002440        0x4 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+                0x20002444                PROVIDE (__init_array_end, .)
+                0x20002444                . = ALIGN (0x4)
+                0x20002444                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x20002444        0x4 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+                0x20002448                PROVIDE (__fini_array_end, .)
+ *(.jcr)
+ .jcr           0x20002448        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .jcr           0x20002448        0x4 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+                0x2000244c                . = ALIGN (0x4)
+                0x2000244c                __data_end__ = .
+
+.igot.plt       0x2000244c        0x0 load address 0x0001c93c
+ .igot.plt      0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.bss            0x2000244c      0xad4 load address 0x0001c93c
+                0x2000244c                . = ALIGN (0x4)
+                0x2000244c                __bss_start__ = .
+ *(.bss*)
+ .bss           0x2000244c        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .bss           0x2000244c       0x1c c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .bss           0x20002468        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .bss           0x20002468      0x3c4 _build/main.o
+ .bss           0x2000282c        0x0 _build/ble_bas.o
+ .bss           0x2000282c       0x4c _build/ble_dis.o
+ .bss           0x20002878        0x0 _build/ble_hrs.o
+ .bss           0x20002878        0x0 _build/ble_srv_common.o
+ .bss           0x20002878      0x18c _build/ble_error_log.o
+ .bss           0x20002a04        0x0 _build/ble_advdata.o
+ .bss           0x20002a04        0x0 _build/ble_sensorsim.o
+ .bss           0x20002a04       0x10 _build/ble_stack_handler.o
+ .bss           0x20002a14       0x38 _build/ble_conn_params.o
+ .bss           0x20002a4c      0x418 _build/ble_bondmngr.o
+ .bss           0x20002e64        0x1 _build/ble_flash.o
+ *fill*         0x20002e65        0x3 
+ .bss           0x20002e68        0x8 _build/ble_radio_notification.o
+ .bss           0x20002e70       0x88 _build/ble_debug_assert_handler.o
+ .bss           0x20002ef8       0x28 _build/app_timer.o
+ .bss           0x20002f20        0x0 _build/system_nrf51.o
+ .bss           0x20002f20        0x0 _build/gcc_startup_nrf51.o
+ .bss           0x20002f20        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_udivsi3.o)
+ .bss           0x20002f20        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcmp.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy-stub.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strncpy.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+ .bss           0x20002f20        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .bss           0x20002f20        0x0 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ .bss           0x20002f20        0x0 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libnosys.a(_exit.o)
+ *(COMMON)
+                0x20002f20                . = ALIGN (0x4)
+                0x20002f20                __bss_end__ = .
+
+.heap           0x20002f20      0x800
+                0x20002f20                __end__ = .
+                0x20002f20                end = __end__
+ *(.heap*)
+ .heap          0x20002f20      0x800 _build/gcc_startup_nrf51.o
+                0x20002f20                __HeapBase
+                0x20003720                __HeapLimit = .
+
+.stack_dummy    0x20002f20      0x800
+ *(.stack*)
+ .stack         0x20002f20      0x800 _build/gcc_startup_nrf51.o
+                0x20004000                __StackTop = (ORIGIN (RAM) + 0x2000)
+                0x20003800                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
+                0x20004000                PROVIDE (__stack, __StackTop)
+                0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region RAM overflowed with stack)
+OUTPUT(_build/ble_hrs_gcc_s110_xxaa.out elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x28
+ .ARM.attributes
+                0x00000000       0x1e c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .ARM.attributes
+                0x0000001e       0x2c c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.attributes
+                0x00000065       0x31 _build/main.o
+ .ARM.attributes
+                0x00000096       0x31 _build/ble_bas.o
+ .ARM.attributes
+                0x000000c7       0x31 _build/ble_dis.o
+ .ARM.attributes
+                0x000000f8       0x31 _build/ble_hrs.o
+ .ARM.attributes
+                0x00000129       0x31 _build/ble_srv_common.o
+ .ARM.attributes
+                0x0000015a       0x31 _build/ble_error_log.o
+ .ARM.attributes
+                0x0000018b       0x31 _build/ble_advdata.o
+ .ARM.attributes
+                0x000001bc       0x31 _build/ble_sensorsim.o
+ .ARM.attributes
+                0x000001ed       0x31 _build/ble_stack_handler.o
+ .ARM.attributes
+                0x0000021e       0x31 _build/ble_conn_params.o
+ .ARM.attributes
+                0x0000024f       0x31 _build/ble_bondmngr.o
+ .ARM.attributes
+                0x00000280       0x31 _build/ble_flash.o
+ .ARM.attributes
+                0x000002b1       0x31 _build/ble_radio_notification.o
+ .ARM.attributes
+                0x000002e2       0x31 _build/ble_debug_assert_handler.o
+ .ARM.attributes
+                0x00000313       0x31 _build/app_timer.o
+ .ARM.attributes
+                0x00000344       0x31 _build/system_nrf51.o
+ .ARM.attributes
+                0x00000375       0x1b _build/gcc_startup_nrf51.o
+ .ARM.attributes
+                0x00000390       0x1e c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000003ae       0x1e c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x000003cc       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x000003f8       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000424       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000450       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcmp.o)
+ .ARM.attributes
+                0x0000047c       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x000004a8       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x000004d4       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000500       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+ .ARM.attributes
+                0x0000052c       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strncpy.o)
+ .ARM.attributes
+                0x00000558       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x00000584       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x000005b0       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x000005dc       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x00000608       0x2c c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .ARM.attributes
+                0x00000634       0x1e c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ .ARM.attributes
+                0x00000652       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libnosys.a(_exit.o)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 _build/main.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 _build/ble_bas.o
+ .comment       0x00000000       0x71 _build/ble_dis.o
+ .comment       0x00000000       0x71 _build/ble_hrs.o
+ .comment       0x00000000       0x71 _build/ble_srv_common.o
+ .comment       0x00000000       0x71 _build/ble_error_log.o
+ .comment       0x00000000       0x71 _build/ble_advdata.o
+ .comment       0x00000000       0x71 _build/ble_sensorsim.o
+ .comment       0x00000000       0x71 _build/ble_stack_handler.o
+ .comment       0x00000000       0x71 _build/ble_conn_params.o
+ .comment       0x00000000       0x71 _build/ble_bondmngr.o
+ .comment       0x00000000       0x71 _build/ble_flash.o
+ .comment       0x00000000       0x71 _build/ble_radio_notification.o
+ .comment       0x00000000       0x71 _build/ble_debug_assert_handler.o
+ .comment       0x00000000       0x71 _build/app_timer.o
+ .comment       0x00000000       0x71 _build/system_nrf51.o
+
+.debug_info     0x00000000    0x19da2
+ .debug_info    0x00000000     0x4479 _build/main.o
+ .debug_info    0x00004479     0x274a _build/ble_bas.o
+ .debug_info    0x00006bc3     0x1693 _build/ble_dis.o
+ .debug_info    0x00008256     0x29be _build/ble_hrs.o
+ .debug_info    0x0000ac14      0xa0a _build/ble_srv_common.o
+ .debug_info    0x0000b61e      0x647 _build/ble_error_log.o
+ .debug_info    0x0000bc65     0x1e04 _build/ble_advdata.o
+ .debug_info    0x0000da69      0x167 _build/ble_sensorsim.o
+ .debug_info    0x0000dbd0     0x2ea9 _build/ble_stack_handler.o
+ .debug_info    0x00010a79     0x273b _build/ble_conn_params.o
+ .debug_info    0x000131b4     0x30ab _build/ble_bondmngr.o
+ .debug_info    0x0001625f     0x1083 _build/ble_flash.o
+ .debug_info    0x000172e2      0xb44 _build/ble_radio_notification.o
+ .debug_info    0x00017e26      0x154 _build/ble_debug_assert_handler.o
+ .debug_info    0x00017f7a     0x1bee _build/app_timer.o
+ .debug_info    0x00019b68      0x18f _build/system_nrf51.o
+ .debug_info    0x00019cf7       0xab _build/gcc_startup_nrf51.o
+
+.debug_abbrev   0x00000000     0x24c2
+ .debug_abbrev  0x00000000      0x3b4 _build/main.o
+ .debug_abbrev  0x000003b4      0x306 _build/ble_bas.o
+ .debug_abbrev  0x000006ba      0x247 _build/ble_dis.o
+ .debug_abbrev  0x00000901      0x365 _build/ble_hrs.o
+ .debug_abbrev  0x00000c66      0x1ae _build/ble_srv_common.o
+ .debug_abbrev  0x00000e14      0x1ca _build/ble_error_log.o
+ .debug_abbrev  0x00000fde      0x261 _build/ble_advdata.o
+ .debug_abbrev  0x0000123f       0xb8 _build/ble_sensorsim.o
+ .debug_abbrev  0x000012f7      0x2b2 _build/ble_stack_handler.o
+ .debug_abbrev  0x000015a9      0x33d _build/ble_conn_params.o
+ .debug_abbrev  0x000018e6      0x34c _build/ble_bondmngr.o
+ .debug_abbrev  0x00001c32      0x225 _build/ble_flash.o
+ .debug_abbrev  0x00001e57      0x175 _build/ble_radio_notification.o
+ .debug_abbrev  0x00001fcc       0xb9 _build/ble_debug_assert_handler.o
+ .debug_abbrev  0x00002085      0x342 _build/app_timer.o
+ .debug_abbrev  0x000023c7       0xe7 _build/system_nrf51.o
+ .debug_abbrev  0x000024ae       0x14 _build/gcc_startup_nrf51.o
+
+.debug_aranges  0x00000000      0x220
+ .debug_aranges
+                0x00000000       0x20 _build/main.o
+ .debug_aranges
+                0x00000020       0x20 _build/ble_bas.o
+ .debug_aranges
+                0x00000040       0x20 _build/ble_dis.o
+ .debug_aranges
+                0x00000060       0x20 _build/ble_hrs.o
+ .debug_aranges
+                0x00000080       0x20 _build/ble_srv_common.o
+ .debug_aranges
+                0x000000a0       0x20 _build/ble_error_log.o
+ .debug_aranges
+                0x000000c0       0x20 _build/ble_advdata.o
+ .debug_aranges
+                0x000000e0       0x20 _build/ble_sensorsim.o
+ .debug_aranges
+                0x00000100       0x20 _build/ble_stack_handler.o
+ .debug_aranges
+                0x00000120       0x20 _build/ble_conn_params.o
+ .debug_aranges
+                0x00000140       0x20 _build/ble_bondmngr.o
+ .debug_aranges
+                0x00000160       0x20 _build/ble_flash.o
+ .debug_aranges
+                0x00000180       0x20 _build/ble_radio_notification.o
+ .debug_aranges
+                0x000001a0       0x20 _build/ble_debug_assert_handler.o
+ .debug_aranges
+                0x000001c0       0x20 _build/app_timer.o
+ .debug_aranges
+                0x000001e0       0x20 _build/system_nrf51.o
+ .debug_aranges
+                0x00000200       0x20 _build/gcc_startup_nrf51.o
+
+.debug_macro    0x00000000     0xc469
+ .debug_macro   0x00000000      0x48c _build/main.o
+ .debug_macro   0x0000048c      0x82c _build/main.o
+ .debug_macro   0x00000cb8       0x52 _build/main.o
+ .debug_macro   0x00000d0a       0x16 _build/main.o
+ .debug_macro   0x00000d20       0x35 _build/main.o
+ .debug_macro   0x00000d55       0xa3 _build/main.o
+ .debug_macro   0x00000df8      0x20e _build/main.o
+ .debug_macro   0x00001006      0x166 _build/main.o
+ .debug_macro   0x0000116c       0x3a _build/main.o
+ .debug_macro   0x000011a6       0x52 _build/main.o
+ .debug_macro   0x000011f8       0x16 _build/main.o
+ .debug_macro   0x0000120e       0x43 _build/main.o
+ .debug_macro   0x00001251      0x180 _build/main.o
+ .debug_macro   0x000013d1      0x2a6 _build/main.o
+ .debug_macro   0x00001677       0x10 _build/main.o
+ .debug_macro   0x00001687       0x35 _build/main.o
+ .debug_macro   0x000016bc       0x1f _build/main.o
+ .debug_macro   0x000016db       0xf4 _build/main.o
+ .debug_macro   0x000017cf       0x1c _build/main.o
+ .debug_macro   0x000017eb       0x22 _build/main.o
+ .debug_macro   0x0000180d       0x3a _build/main.o
+ .debug_macro   0x00001847       0x1f _build/main.o
+ .debug_macro   0x00001866      0x242 _build/main.o
+ .debug_macro   0x00001aa8      0x1e0 _build/main.o
+ .debug_macro   0x00001c88     0x69ef _build/main.o
+ .debug_macro   0x00008677      0x855 _build/main.o
+ .debug_macro   0x00008ecc       0x22 _build/main.o
+ .debug_macro   0x00008eee       0x8e _build/main.o
+ .debug_macro   0x00008f7c       0x16 _build/main.o
+ .debug_macro   0x00008f92       0x94 _build/main.o
+ .debug_macro   0x00009026      0x1aa _build/main.o
+ .debug_macro   0x000091d0       0x10 _build/main.o
+ .debug_macro   0x000091e0      0x2b8 _build/main.o
+ .debug_macro   0x00009498       0x2e _build/main.o
+ .debug_macro   0x000094c6       0x22 _build/main.o
+ .debug_macro   0x000094e8      0x1c8 _build/main.o
+ .debug_macro   0x000096b0       0x16 _build/main.o
+ .debug_macro   0x000096c6       0xa6 _build/main.o
+ .debug_macro   0x0000976c       0xa6 _build/main.o
+ .debug_macro   0x00009812       0x7a _build/main.o
+ .debug_macro   0x0000988c      0x253 _build/main.o
+ .debug_macro   0x00009adf       0x3a _build/main.o
+ .debug_macro   0x00009b19       0x16 _build/main.o
+ .debug_macro   0x00009b2f       0x7c _build/main.o
+ .debug_macro   0x00009bab       0x16 _build/main.o
+ .debug_macro   0x00009bc1       0x16 _build/main.o
+ .debug_macro   0x00009bd7       0x29 _build/main.o
+ .debug_macro   0x00009c00       0x46 _build/main.o
+ .debug_macro   0x00009c46       0x3a _build/main.o
+ .debug_macro   0x00009c80       0x1c _build/main.o
+ .debug_macro   0x00009c9c       0x1c _build/main.o
+ .debug_macro   0x00009cb8       0x10 _build/main.o
+ .debug_macro   0x00009cc8       0x1c _build/main.o
+ .debug_macro   0x00009ce4       0x10 _build/main.o
+ .debug_macro   0x00009cf4       0x10 _build/main.o
+ .debug_macro   0x00009d04       0x22 _build/main.o
+ .debug_macro   0x00009d26       0xbd _build/main.o
+ .debug_macro   0x00009de3       0x16 _build/main.o
+ .debug_macro   0x00009df9      0x16c _build/main.o
+ .debug_macro   0x00009f65       0x41 _build/main.o
+ .debug_macro   0x00009fa6       0x22 _build/main.o
+ .debug_macro   0x00009fc8       0x1c _build/main.o
+ .debug_macro   0x00009fe4       0x10 _build/main.o
+ .debug_macro   0x00009ff4      0x207 _build/ble_bas.o
+ .debug_macro   0x0000a1fb      0x237 _build/ble_dis.o
+ .debug_macro   0x0000a432       0x10 _build/ble_dis.o
+ .debug_macro   0x0000a442      0x10e _build/ble_dis.o
+ .debug_macro   0x0000a550       0x7f _build/ble_dis.o
+ .debug_macro   0x0000a5cf       0xa0 _build/ble_dis.o
+ .debug_macro   0x0000a66f      0x240 _build/ble_hrs.o
+ .debug_macro   0x0000a8af       0x34 _build/ble_hrs.o
+ .debug_macro   0x0000a8e3      0x1a6 _build/ble_srv_common.o
+ .debug_macro   0x0000aa89      0x1a0 _build/ble_error_log.o
+ .debug_macro   0x0000ac29      0x214 _build/ble_error_log.o
+ .debug_macro   0x0000ae3d      0x1fd _build/ble_advdata.o
+ .debug_macro   0x0000b03a       0x77 _build/ble_sensorsim.o
+ .debug_macro   0x0000b0b1      0x24a _build/ble_stack_handler.o
+ .debug_macro   0x0000b2fb      0x1a4 _build/ble_stack_handler.o
+ .debug_macro   0x0000b49f       0x16 _build/ble_stack_handler.o
+ .debug_macro   0x0000b4b5       0x10 _build/ble_stack_handler.o
+ .debug_macro   0x0000b4c5      0x26b _build/ble_conn_params.o
+ .debug_macro   0x0000b730      0x2e4 _build/ble_bondmngr.o
+ .debug_macro   0x0000ba14       0x16 _build/ble_bondmngr.o
+ .debug_macro   0x0000ba2a      0x1ff _build/ble_flash.o
+ .debug_macro   0x0000bc29       0x1c _build/ble_flash.o
+ .debug_macro   0x0000bc45       0x40 _build/ble_flash.o
+ .debug_macro   0x0000bc85       0x1c _build/ble_flash.o
+ .debug_macro   0x0000bca1      0x178 _build/ble_radio_notification.o
+ .debug_macro   0x0000be19      0x166 _build/ble_debug_assert_handler.o
+ .debug_macro   0x0000bf7f      0x26e _build/app_timer.o
+ .debug_macro   0x0000c1ed       0x16 _build/app_timer.o
+ .debug_macro   0x0000c203       0x97 _build/app_timer.o
+ .debug_macro   0x0000c29a       0xef _build/app_timer.o
+ .debug_macro   0x0000c389       0xe0 _build/system_nrf51.o
+
+.debug_line     0x00000000     0x6287
+ .debug_line    0x00000000      0xa9c _build/main.o
+ .debug_line    0x00000a9c      0x6b9 _build/ble_bas.o
+ .debug_line    0x00001155      0x62b _build/ble_dis.o
+ .debug_line    0x00001780      0x6a2 _build/ble_hrs.o
+ .debug_line    0x00001e22      0x4f5 _build/ble_srv_common.o
+ .debug_line    0x00002317      0x512 _build/ble_error_log.o
+ .debug_line    0x00002829      0x70f _build/ble_advdata.o
+ .debug_line    0x00002f38      0x252 _build/ble_sensorsim.o
+ .debug_line    0x0000318a      0x683 _build/ble_stack_handler.o
+ .debug_line    0x0000380d      0x68c _build/ble_conn_params.o
+ .debug_line    0x00003e99      0x9d6 _build/ble_bondmngr.o
+ .debug_line    0x0000486f      0x653 _build/ble_flash.o
+ .debug_line    0x00004ec2      0x45f _build/ble_radio_notification.o
+ .debug_line    0x00005321      0x40f _build/ble_debug_assert_handler.o
+ .debug_line    0x00005730      0x79a _build/app_timer.o
+ .debug_line    0x00005eca      0x32a _build/system_nrf51.o
+ .debug_line    0x000061f4       0x93 _build/gcc_startup_nrf51.o
+
+.debug_str      0x00000000    0x39ce5
+ .debug_str     0x00000000    0x3771f _build/main.o
+                              0x384bc (size before relaxing)
+ .debug_str     0x0003771f      0x1ff _build/ble_bas.o
+                               0xdc4c (size before relaxing)
+ .debug_str     0x0003791e      0x198 _build/ble_dis.o
+                               0xcf69 (size before relaxing)
+ .debug_str     0x00037ab6      0x316 _build/ble_hrs.o
+                               0xdfe6 (size before relaxing)
+ .debug_str     0x00037dcc       0x78 _build/ble_srv_common.o
+                               0xb46d (size before relaxing)
+ .debug_str     0x00037e44      0x130 _build/ble_error_log.o
+                              0x2b982 (size before relaxing)
+ .debug_str     0x00037f74      0x23c _build/ble_advdata.o
+                               0xd415 (size before relaxing)
+ .debug_str     0x000381b0       0x62 _build/ble_sensorsim.o
+                               0x312f (size before relaxing)
+ .debug_str     0x00038212      0x144 _build/ble_stack_handler.o
+                              0x309a1 (size before relaxing)
+ .debug_str     0x00038356      0x17d _build/ble_conn_params.o
+                               0xe2f5 (size before relaxing)
+ .debug_str     0x000384d3      0x9cf _build/ble_bondmngr.o
+                              0x34c14 (size before relaxing)
+ .debug_str     0x00038ea2      0x1eb _build/ble_flash.o
+                              0x2f823 (size before relaxing)
+ .debug_str     0x0003908d      0x14e _build/ble_radio_notification.o
+                              0x2ab4d (size before relaxing)
+ .debug_str     0x000391db       0x99 _build/ble_debug_assert_handler.o
+                               0x7161 (size before relaxing)
+ .debug_str     0x00039274      0x977 _build/app_timer.o
+                              0x2fd3c (size before relaxing)
+ .debug_str     0x00039beb       0xfa _build/system_nrf51.o
+                              0x2ae79 (size before relaxing)
+
+.debug_frame    0x00000000     0x43d4
+ .debug_frame   0x00000000      0xa18 _build/main.o
+ .debug_frame   0x00000a18      0x450 _build/ble_bas.o
+ .debug_frame   0x00000e68      0x2e4 _build/ble_dis.o
+ .debug_frame   0x0000114c      0x570 _build/ble_hrs.o
+ .debug_frame   0x000016bc      0x1a0 _build/ble_srv_common.o
+ .debug_frame   0x0000185c      0x108 _build/ble_error_log.o
+ .debug_frame   0x00001964      0x510 _build/ble_advdata.o
+ .debug_frame   0x00001e74       0x50 _build/ble_sensorsim.o
+ .debug_frame   0x00001ec4      0x6d0 _build/ble_stack_handler.o
+ .debug_frame   0x00002594      0x4cc _build/ble_conn_params.o
+ .debug_frame   0x00002a60      0x70c _build/ble_bondmngr.o
+ .debug_frame   0x0000316c      0x430 _build/ble_flash.o
+ .debug_frame   0x0000359c      0x30c _build/ble_radio_notification.o
+ .debug_frame   0x000038a8       0x30 _build/ble_debug_assert_handler.o
+ .debug_frame   0x000038d8      0x7f4 _build/app_timer.o
+ .debug_frame   0x000040cc       0x80 _build/system_nrf51.o
+ .debug_frame   0x0000414c       0x20 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x0000416c       0x28 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-exit.o)
+ .debug_frame   0x00004194       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-init.o)
+ .debug_frame   0x000041c0       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcmp.o)
+ .debug_frame   0x000041ec       0x30 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x0000421c       0x30 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memmove.o)
+ .debug_frame   0x0000424c       0x38 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-memset.o)
+ .debug_frame   0x00004284       0x20 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strlen.o)
+ .debug_frame   0x000042a4       0x30 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-strncpy.o)
+ .debug_frame   0x000042d4       0x54 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00004328       0x28 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00004350       0x2c C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-fini.o)
+ .debug_frame   0x0000437c       0x38 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x000043b4       0x20 C:/Program Files (x86)/GNU Tools ARM Embedded/4.8 2013q4/arm-none-eabi/lib/armv6-m\libnosys.a(_exit.o)
+
+.debug_ranges   0x00000000       0x18
+ .debug_ranges  0x00000000       0x18 _build/ble_conn_params.o
