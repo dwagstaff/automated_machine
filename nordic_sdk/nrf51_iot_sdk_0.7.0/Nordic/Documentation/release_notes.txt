@@ -1,0 +1,84 @@
+nRF51 IoT SDK v. 0.7.0
+----------------------
+This is an experimental release, APIs are subject to change. This software is not designed or intended for commercialization.
+
+General:
+
+    The release package when unzipped has the following top-level structure. A brief explanation of the contents of each folder accompanies the structure below.
+
+    Nordic
+    |-- Documentation            // nRF51 IoT SDK HTML documentation.
+    `-- nrf51
+        |-- components
+        |   |-- ble              // BLE modules.
+        |   |-- drivers_nrf      // nRF51 peripheral drivers.
+        |   |-- iot              // IP stack and other IoT-related modules.
+        |   |-- libraries        // Common modules.
+        |   |-- softdevice       // The s1xx_iot SoftDevice and headers.
+        |   `-- toolchain        // Platform specific startup files and linker scripts.
+        |-- examples
+        |   |-- bsp              // Board headers.
+        |   `-- iot              // Various IPv6 example applications.
+        `-- external
+            `-- lwip             // Third-party lwIP TCP/IP implementation and porting for nRF51. 
+
+Key features:
+
+    6LoWPAN and IPSP library
+        - 6LoWPAN compression and decompression.
+        - 6LoWPAN Node role.
+        - Packet flow control.
+        - IPv6 prefix management.
+        - The possibility to integrate in any third-party IPv6 stack.
+        - Can be integrated with an RTOS.
+
+    Nordic's IPv6 stack
+        - Support for multiple IP addresses.
+        - ICMPv6 module that can be configured to respond automatically to echo requests or handle them in the application by registering a call back.
+        - UDP socket APIs to listen on a port and/or to be a client.
+        - Can be integrated with an RTOS.
+
+    Nordic's CoAP library
+        - CoAP message types CON, NON, ACK, and RESET.
+        - Token matching on responses to a local client generated request.
+        - Endpoint creation as resources.
+        - Automatic lookup of requested endpoint when receiving a remote request.
+        - Endpoint resource function callback to tune response message.
+        - Permission setting on endpoints to select methods to be handled by the endpoint resource callback function.
+        - Automatic generation of .well-known/core link-format discovery string.
+
+Following toolchains/devices have been used for testing and verification:
+    - ARM: MDK-ARM Version 4.74
+    - ARM: MDK-ARM Version 5.12 with MDK Version 5 - Legacy Support module that is available at: http://www2.keil.com/mdk5/legacy/
+    - GCC: gcc-arm-embedded 4.7 2013q1
+    - Windows 7 SP1 64-bit
+    - Examples that exceed the code size of 32kBytes cannot be compiled with the unlicensed version of MDK-ARM.
+
+Supported boards:
+
+    - New version of nRF51 Dev. Kit (PCA10028)
+        nRF51422-QFAC A0 (AA)
+        (Uses an nRF51422 variant to be able to run ANT examples.)
+    - Selected examples work with the old version of nRF51822 Evaluation Kit (PCA10001) and Development Kit (nRF6310)
+        nRF51822-QFAA G0 (GC)
+
+Supported SoftDevices:
+
+    - s1xx_iot : This software is a prototype version, please refer to the supplied license.
+
+Known issues, limitations:
+
+    - 6LoWPAN Router role and 6LoWPAN Border Router role are not supported. 
+    - Currently, received buffer size in the 6LoWPAN library is limited to 128 bytes.
+    - IPv6 Router role is not supported. 
+    - No analysis on radio, resource or other performance metrics has been performed as this is a technology prototype. 
+    - It may be observed certain times that the BLE link disconnects and this may appear random to the user. Most often this occurs when receive buffers are unavailable to receive more data from the peer. Current configuration of the library should minimize the frequency of disconnects resulting from this, but cannot be completely ruled out.
+    - Currently no timers are implemented in any of the modules and hence lifetimes of prefixes, contexts, IP addresses etc. are not maintained.
+    - TCP: if both server and client use the lwIP TCP implementation ported for nRF51, closing the port from the client may fail and result in an undefined connection state. 
+    - ICMP ping at interval 0.1 seconds with logs enabled results in disconnection due to inadequate receive buffers.
+    - Advertising start fails once disconnection occurs due to very fast sending of packets.
+    - After two graceful disconnections and normal sessions (validated with data exchange like ICMP ping), third connection succeeds, but no data can be exchanged. Disconnecting gracefully results in restarting advertisement, and connection can be established again but no data can be exchanged.
+    - Once BLE link is disconnected, lwIP example applications no longer get a global prefix. The only way to start using the examples with the global prefix again is to restart the application. 
+
+Changes:
+    - First public release.
