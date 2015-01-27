@@ -7,8 +7,11 @@
 
 #ifndef ARDUINO_H_
 #define ARDUINO_H_
+#include <stdint.h>
 
 class Arduino {
+private:
+public:
 	/**
 	 * Delay for xx milliseconds
 	 * @param ms - Milliseconds to delay for

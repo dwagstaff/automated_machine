@@ -7,6 +7,7 @@
 
 #ifndef WIRE_H_
 #define WIRE_H_
+#include <stdint.h>
 
 
 class Wire {

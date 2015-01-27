@@ -16,7 +16,7 @@
 
 #include <stdint.h>
 #include "Arduino.h"
-#include <Wire.h>
+#include "Wire.h"
 
 #define BMP085_ADDRESS 0x77  // I2C address of BMP085
 

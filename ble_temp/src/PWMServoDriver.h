@@ -18,6 +18,7 @@
 #ifndef _PWMServoDriver_H
 #define _PWMServoDriver_H
 #include <stdint.h>
+#include "Arduino.h"
 
 
 #define PCA9685_SUBADR1 0x2
@@ -38,7 +39,7 @@
 #define ALLLED_OFF_H 0xFD
 
 
-class PWMServoDriver {
+class PWMServoDriver: public Arduino {
  public:
   PWMServoDriver(uint8_t addr = 0x40);
   void begin(void);

@@ -15,9 +15,8 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-#include <PWMServoDriver.h>
+#include "PWMServoDriver.h"
 #include "Wire.h"
-#include "nrf_delay.h"
 #include <math.h>
 
 
@@ -61,7 +60,7 @@ void PWMServoDriver::setPWMFreq(float freq) {
   write8(PCA9685_MODE1, newmode); // go to sleep
   write8(PCA9685_PRESCALE, prescale); // set the prescaler
   write8(PCA9685_MODE1, oldmode);
-  nrf_delay_ms(5);
+  delay(5);
   write8(PCA9685_MODE1, oldmode | 0xa1);  //  This sets the MODE1 register to turn on auto increment.
                                           // This is why the beginTransmission below was not working.
   //  Serial.print("Mode now 0x"); Serial.println(read8(PCA9685_MODE1), HEX);
