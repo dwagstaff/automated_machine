@@ -17,8 +17,10 @@ file COPYING.txt or at this address: <http://www.opensource.org/licenses/MIT>
 
 void EasyVR::send(uint8_t c)
 {
+	// TODO: need to implement (EasyVR::send)
   delay(1);
 }
+
 
 /*
 inline void EasyVR::sendArg(int8_t c)
@@ -37,13 +39,15 @@ inline void EasyVR::sendGroup(int8_t c)
 
 int EasyVR::recv(int16_t timeout) // negative means forever
 {
-  while (timeout != 0 && _s->available() == 0)
-  {
-    delay(1);
-    if (timeout > 0)
-      --timeout;
-  }
-  return _s->read();
+	//TODO: Need to re-implement (EasyVR::recv)
+	//      - Right now, we are just going to map to read
+//  while (timeout != 0 && _s->available() == 0)
+//  {
+//    delay(1);
+//    if (timeout > 0)
+//      --timeout;
+//  }
+//  return _s->read();
 }
 
 bool EasyVR::recvArg(int8_t& c, int16_t timeout)
