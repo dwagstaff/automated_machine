@@ -153,7 +153,7 @@
 							</tool>
 							<tool command="${cross_prefix}${cross_size}${cross_suffix}" commandLinePattern="${COMMAND} ${FLAGS}" errorParsers="" id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1257108727" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format.1132398640" name="Size format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.totals.847085735" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.totals" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.totals.847085735" name="Show totals" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.totals" value="true" valueType="boolean"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
@@ -228,6 +228,9 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.576558314" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1257108727"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.90787806" name="BMP085.cpp" rcbsApplicability="disable" resourcePath="src/BMP085.cpp" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1439922898.240549214">
+						<tool command="${cross_prefix}${cross_cpp}${cross_suffix}" commandLinePattern="${COMMAND} ${cross_toolchain_flags} ${FLAGS} -c ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1439922898.240549214" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1439922898"/>
+					</fileInfo>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.1501814947" name="Wire.cpp" rcbsApplicability="disable" resourcePath="src/Wire.cpp" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1439922898.1756631681">
 						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1439922898.1756631681" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1439922898">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths.2066968695" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths" valueType="includePath">
@@ -298,6 +301,7 @@
 							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.314119876" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 						</tool>
 					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.1564936899" name="srv_Battery.h" rcbsApplicability="disable" resourcePath="src/srv_Battery.h" toolsToInvoke=""/>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.1721485457" name="srv_TempSensor.c" rcbsApplicability="disable" resourcePath="src/srv_TempSensor.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278.1395194948">
 						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278.1395194948" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.16607770" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
@@ -312,7 +316,6 @@
 							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.483243988" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 						</tool>
 					</fileInfo>
-					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.1564936899" name="srv_Battery.h" rcbsApplicability="disable" resourcePath="src/srv_Battery.h" toolsToInvoke=""/>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.1083457837" name="srv_Therm.c" rcbsApplicability="disable" resourcePath="src/srv_Therm.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278.270239001">
 						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278.270239001" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1039085869" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
@@ -325,20 +328,6 @@
 								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include}&quot;"/>
 							</option>
 							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.2008018066" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
-						</tool>
-					</fileInfo>
-					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.459171309" name="srv_Battery.c" rcbsApplicability="disable" resourcePath="src/srv_Battery.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278.1528205590">
-						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278.1528205590" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278">
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.829772596" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_temp/src}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/gcc}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/app_common}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble/softdevice}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble/ble_services}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include}&quot;"/>
-							</option>
-							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1786373443" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 						</tool>
 					</fileInfo>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.508838183" name="main.cpp" rcbsApplicability="disable" resourcePath="src/main.cpp" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1439922898.2074922955">
@@ -355,9 +344,23 @@
 							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.1557003081" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
 						</tool>
 					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.459171309" name="srv_Battery.c" rcbsApplicability="disable" resourcePath="src/srv_Battery.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278.1528205590">
+						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278.1528205590" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.1621169278">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.829772596" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_temp/src}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/gcc}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/app_common}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble/softdevice}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble/ble_services}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include}&quot;"/>
+							</option>
+							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1786373443" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
 						<entry excluding="twi_master/twi_sw_master.c|app_common/hci_transport.c|app_common/hci_slip.c|app_common/hci_mem_pool.c|app_common/crc16.c|app_common/app_uart.c|app_common/app_uart_fifo.c|app_common/app_fifo.c|ble/rpc|console/|ext_sensors/|gzp/|nrf_assert/|nrf_ecb/|nrf_nvmc/|simple_uart/|spi_master/|templates/|keil_arm_uv4.lnt" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="nrf_sdk_src"/>
-						<entry excluding="EasyVR.cpp|BMP085.cpp|DynamixelSerial.cpp|soc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="EasyVR.cpp|DynamixelSerial.cpp|soc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -510,7 +513,7 @@
 							</tool>
 							<tool errorParsers="" id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.2099527428" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format.1312306528" name="Size format" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.format"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.totals.2060299175" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.totals" value="true" valueType="boolean"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.totals.2060299175" name="Show totals" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.printsize.totals" value="true" valueType="boolean"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
@@ -587,6 +590,9 @@
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.1721219716" name="Cross ARM GNU Print Size" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.printsize.2099527428"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1222302584.1783332806" name="BMP085.cpp" rcbsApplicability="disable" resourcePath="src/BMP085.cpp" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1427560636.1427133981">
+						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1427560636.1427133981" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1427560636"/>
+					</fileInfo>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1222302584.1535267733" name="srv_DeviceInfo.c" rcbsApplicability="disable" resourcePath="src/srv_DeviceInfo.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984.1678483028">
 						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984.1678483028" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1605682361" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
@@ -643,20 +649,6 @@
 							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1631652312" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 						</tool>
 					</fileInfo>
-					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1222302584.372693170" name="srv_Battery.c" rcbsApplicability="disable" resourcePath="src/srv_Battery.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984.1010312600">
-						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984.1010312600" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984">
-							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1937227437" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_temp/src}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/gcc}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/app_common}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble/softdevice}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble/ble_services}&quot;"/>
-								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include}&quot;"/>
-							</option>
-							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1524872726" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
-						</tool>
-					</fileInfo>
 					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1222302584.897998233" name="main.cpp" rcbsApplicability="disable" resourcePath="src/main.cpp" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1427560636.626966105">
 						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1427560636.626966105" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1427560636">
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths.1897320659" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths" valueType="includePath">
@@ -671,8 +663,22 @@
 							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.708321770" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
 						</tool>
 					</fileInfo>
+					<fileInfo id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1222302584.372693170" name="srv_Battery.c" rcbsApplicability="disable" resourcePath="src/srv_Battery.c" toolsToInvoke="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984.1010312600">
+						<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984.1010312600" name="Cross ARM C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.532468984">
+							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1937227437" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ble_temp/src}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/gcc}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/app_common}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble/softdevice}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include/ble/ble_services}&quot;"/>
+								<listOptionValue builtIn="false" value="&quot;${workspace_loc:/nordic_sdk/nrf51_sdk_v4_4_2_33551/nrf51822/Include}&quot;"/>
+							</option>
+							<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1524872726" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
-						<entry excluding="EasyVR.cpp|BMP085.cpp|DynamixelSerial.cpp|soc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="EasyVR.cpp|DynamixelSerial.cpp|soc.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

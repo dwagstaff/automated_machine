@@ -23,7 +23,7 @@
 class BMP085: public Arduino {
 private:
 	const uint8_t OSS = 0;  // Oversampling Setting
-	Wire Wire;
+	class Wire Wire;
 
 
 // Calibration values
