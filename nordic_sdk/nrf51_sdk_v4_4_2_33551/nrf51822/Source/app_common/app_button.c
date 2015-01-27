@@ -115,7 +115,8 @@ static void gpiote_event_handler(uint32_t event_pins_low_to_high, uint32_t event
     // NOTE: Using the p_context parameter of app_timer_start() to transfer the pin states to the
     //       timeout handler (by casting event_pins_mask into the equally sized void * p_context
     //       parameter).
-    STATIC_ASSERT(sizeof(void *) == sizeof(uint32_t));
+    //TODO: Research, right now I have commented it out
+//    STATIC_ASSERT(sizeof(void *) == sizeof(uint32_t));
 
     err_code = app_timer_stop(m_detection_delay_timer_id);
     if (err_code != NRF_SUCCESS)

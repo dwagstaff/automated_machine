@@ -258,7 +258,7 @@ uint32_t srv_TempSensor_init(srv_TempSensor_t * p_tss, const srv_TempSensor_init
     p_tss->is_notification_supported = p_tss_init->support_notification;
     
     // Add service
-    ble_uuid128_t base_uuid = TSS_UUID_BASE;
+    ble_uuid128_t base_uuid = {TSS_UUID_BASE};
     err_code = sd_ble_uuid_vs_add(&base_uuid, &p_tss->uuid_type);
     if (err_code != NRF_SUCCESS)
     {
