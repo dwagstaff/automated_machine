@@ -26,7 +26,7 @@ void Wire::beginTransmission(uint8_t addr) {
 
 uint8_t Wire::write(uint8_t data) {
 	// Check for overflow
-	if( cursor == sizeof(data) )
+	if( cursor == sizeof(buffer) )
 		return 0;
 	else {
 		buffer[cursor++]= data;
@@ -60,7 +60,7 @@ uint8_t Wire::requestFrom(uint8_t addr, uint8_t len, bool sendStop) {
 }
 
 uint8_t Wire::read(void) {
-	if( cursor >= sizeof(buffer) )
+	if( cursor >= size )
 		return 0;
 	else
 		return buffer[cursor++];

@@ -31,7 +31,12 @@ extern "C" {
 #include "srv_Therm.h"
 }
 
+#include "PWMServoDriver.h"
+#include "BMP085.h"
+
 OneWire *pow;
+BMP085 bmp;
+
 uint8_t addr[8];
 
 
@@ -55,6 +60,20 @@ void oneSecondEvent(void) {
 int main()
 {
 	uint32_t err;
+	int16_t temp;
+	int32_t pres;
+	bmp.calibration();
+	for(;;) {
+		temp= 0;
+		temp= bmp.getTemperature();
+		pres= bmp.getPressure();
+	}
+
+	// Setup servo
+//	servo.begin();
+//	servo.setPWMFreq(60.0);
+
+
 	OneWire ow(25);
 	pow= &ow;
 	uint8_t data[9];
