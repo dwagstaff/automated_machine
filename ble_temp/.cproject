@@ -705,7 +705,7 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840;ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1775046840.;ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.485595316;ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.1620314172">
-			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile"/>
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1222302584;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1222302584.;ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.759385670;ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.1761206482">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
