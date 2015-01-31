@@ -17,17 +17,18 @@
 #include "BMP085.h"
 
 
-void BMP085::setup(void)
-{
+
+//void setup()
+//{
 //  Serial.begin(9600);
 //  Wire.begin();
-  bmp085Calibration();
-}
+//  bmp085Calibration();
+//}
 
-void BMP085::loop(void)
-{
-  temperature = bmp085GetTemperature(bmp085ReadUT());
-  pressure = bmp085GetPressure(bmp085ReadUP());
+//void loop()
+//{
+//  temperature = bmp085GetTemperature(bmp085ReadUT());
+//  pressure = bmp085GetPressure(bmp085ReadUP());
 //  Serial.print("Temperature: ");
 //  Serial.print(temperature, DEC);
 //  Serial.println(" *0.1 deg C");
@@ -36,12 +37,20 @@ void BMP085::loop(void)
 //  Serial.println(" Pa");
 //  Serial.println();
 //  delay(1000);
+//}
+
+int16_t BMP085::getTemperature(void) {
+	return bmp085GetTemperature(bmp085ReadUT());
+}
+
+int32_t BMP085::getPressure(void) {
+	return bmp085GetPressure(bmp085ReadUP());
 }
 
 // Stores all of the bmp085's calibration values into global variables
 // Calibration values are required to calculate temp and pressure
 // This function should be called at the beginning of the program
-void BMP085::bmp085Calibration(void)
+void BMP085::calibration(void)
 {
   ac1 = bmp085ReadInt(0xAA);
   ac2 = bmp085ReadInt(0xAC);
@@ -62,8 +71,8 @@ int16_t BMP085::bmp085GetTemperature(uint16_t ut)
 {
   int32_t x1, x2;
   
-  x1 = (((int32_t)ut - (int32_t)ac6)*(int32_t)ac5) >> 15;
-  x2 = ((int32_t)mc << 11)/(x1 + md);
+  x1 = (((long)ut - (long)ac6)*(long)ac5) >> 15;
+  x2 = ((long)mc << 11)/(x1 + md);
   b5 = x1 + x2;
 
   return ((b5 + 8)>>4);  
@@ -89,9 +98,9 @@ int32_t BMP085::bmp085GetPressure(uint32_t up)
   x1 = (ac3 * b6)>>13;
   x2 = (b1 * ((b6 * b6)>>12))>>16;
   x3 = ((x1 + x2) + 2)>>2;
-  b4 = (ac4 * (uint32_t)(x3 + 32768))>>15;
+  b4 = (ac4 * (uint32_t)(x3 + 32768U))>>15;
   
-  b7 = ((uint32_t)(up - b3) * (50000>>OSS));
+  b7 = ((uint32_t)(up - b3) * (50000U>>OSS));
   if (b7 < 0x80000000)
     p = (b7<<1)/b4;
   else
@@ -102,13 +111,14 @@ int32_t BMP085::bmp085GetPressure(uint32_t up)
   x2 = (-7357 * p)>>16;
   p += (x1 + x2 + 3791)>>4;
   
-  return p;
+  //TODO: Need to research why we need to divide by 2
+  return p/2;
 }
 
 // Read 1 byte from the BMP085 at 'address'
-int8_t BMP085::bmp085Read(uint8_t address)
+char BMP085::bmp085Read(unsigned char address)
 {
-  uint8_t data;
+  unsigned char data;
   
   Wire.beginTransmission(BMP085_ADDRESS);
   Wire.write(address);
@@ -124,9 +134,9 @@ int8_t BMP085::bmp085Read(uint8_t address)
 // Read 2 bytes from the BMP085
 // First byte will be from 'address'
 // Second byte will be from 'address'+1
-int16_t BMP085::bmp085ReadInt(uint8_t address)
+int16_t BMP085::bmp085ReadInt(unsigned char address)
 {
-  uint8_t msb, lsb;
+  unsigned char msb, lsb;
   
   Wire.beginTransmission(BMP085_ADDRESS);
   Wire.write(address);
@@ -138,13 +148,13 @@ int16_t BMP085::bmp085ReadInt(uint8_t address)
   msb = Wire.read();
   lsb = Wire.read();
   
-  return (int) msb<<8 | lsb;
+  return (int16_t) (msb<<8 | lsb);
 }
 
 // Read the uncompensated temperature value
 uint16_t BMP085::bmp085ReadUT()
 {
-  uint16_t ut;
+  unsigned int ut;
   
   // Write 0x2E into Register 0xF4
   // This requests a temperature reading
@@ -164,7 +174,7 @@ uint16_t BMP085::bmp085ReadUT()
 // Read the uncompensated pressure value
 uint32_t BMP085::bmp085ReadUP()
 {
-  uint8_t msb, lsb, xlsb;
+  unsigned char msb, lsb, xlsb;
   uint32_t up = 0;
   
   // Write 0x34+(OSS<<6) into register 0xF4

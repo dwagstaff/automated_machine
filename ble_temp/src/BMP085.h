@@ -22,11 +22,11 @@
 
 class BMP085: public Arduino {
 private:
-	const uint8_t OSS = 0;  // Oversampling Setting
+	const uint8_t OSS = 3;  // Oversampling Setting
 	class Wire Wire;
 
 
-// Calibration values
+	// Calibration values
 	int16_t ac1;
 	int16_t ac2;
 	int16_t ac3;
@@ -39,45 +39,51 @@ private:
 	int16_t mc;
 	int16_t md;
 
-// b5 is calculated in bmp085GetTemperature(...), this variable is also used in bmp085GetPressure(...)
-// so ...Temperature(...) must be called before ...Pressure(...).
+	// b5 is calculated in bmp085GetTemperature(...), this variable is also used in bmp085GetPressure(...)
+	// so ...Temperature(...) must be called before ...Pressure(...).
 	int32_t b5;
 
 	int16_t temperature;
 	int32_t pressure;
 
-public:
-	void setup(void);
-
-	void loop(void);
-
-// Stores all of the bmp085's calibration values into global variables
-// Calibration values are required to calculate temp and pressure
-// This function should be called at the beginning of the program
-	void bmp085Calibration(void);
-
-// Calculate temperature given ut.
-// Value returned will be in units of 0.1 deg C
+	// Calculate temperature given ut.
+	// Value returned will be in units of 0.1 deg C
 	int16_t bmp085GetTemperature(uint16_t ut);
 
-// Calculate pressure given up
-// calibration values must be known
-// b5 is also required so bmp085GetTemperature(...) must be called first.
-// Value returned will be pressure in units of Pa.
+	// Calculate pressure given up
+	// calibration values must be known
+	// b5 is also required so bmp085GetTemperature(...) must be called first.
+	// Value returned will be pressure in units of Pa.
 	int32_t bmp085GetPressure(uint32_t up);
 
-// Read 1 byte from the BMP085 at 'address'
-	int8_t bmp085Read(uint8_t address);
+	// Read 1 byte from the BMP085 at 'address'
+	char bmp085Read(unsigned char address);
 
-// Read 2 bytes from the BMP085
-// First byte will be from 'address'
-// Second byte will be from 'address'+1
-	int16_t bmp085ReadInt(uint8_t address);
+	// Read 2 bytes from the BMP085
+	// First byte will be from 'address'
+	// Second byte will be from 'address'+1
+	int16_t bmp085ReadInt(unsigned char address);
 
-// Read the uncompensated temperature value
+	// Read the uncompensated temperature value
 	uint16_t bmp085ReadUT();
 
-// Read the uncompensated pressure value
+	// Read the uncompensated pressure value
 	uint32_t bmp085ReadUP();
+
+public:
+	// Stores all of the bmp085's calibration values into global variables
+	// Calibration values are required to calculate temp and pressure
+	// This function should be called at the beginning of the program
+	void calibration(void);
+
+	// Return temperature
+	// Value returned will be in units of 0.1 deg C
+	int16_t getTemperature(void);
+
+	// Calculate pressure given up
+	// calibration values must be known
+	// b5 is also required so bmp085GetTemperature(...) must be called first.
+	// Value returned will be pressure in units of Pa.
+	int32_t getPressure(void);
 };
 
