@@ -55,9 +55,10 @@
 									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include"/>
 									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include/cmsis"/>
 									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include/stm32f4-hal"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/ObjectLibrary/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST SDK/STM32Cube_FW_F4_V1.4.0/Drivers/BSP/STM32F4-Discovery}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST SDK/STM32Cube_FW_F4_V1.4.0/Drivers/STM32F4xx_HAL_Driver/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/cmsis}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/stm32f4-hal}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1028742120" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG"/>
@@ -76,8 +77,10 @@
 									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include"/>
 									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include/cmsis"/>
 									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include/stm32f4-hal"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/ST SDK/STM32Cube_FW_F4_V1.4.0/Drivers/BSP/STM32F4-Discovery}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/ObjectLibrary/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/cmsis}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/stm32f4-hal}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.935796236" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG"/>
@@ -92,12 +95,10 @@
 							</tool>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.753348962" name="Cross ARM C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths.296733429" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/include"/>
-									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include"/>
-									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include/cmsis"/>
-									<listOptionValue builtIn="false" value="C:/Users/dwagstaff/git/automated_machine/InterfaceControlerV1/system/include/stm32f4-hal"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/ST SDK/STM32Cube_FW_F4_V1.4.0/Drivers/BSP/STM32F4-Discovery}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/ObjectLibrary/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/cmsis}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/stm32f4-hal}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.noexceptions.1577603681" name="Do not use exceptions (-fno-exceptions)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.noexceptions" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.nortti.68593350" name="Do not use RTTI (-fno-rtti)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.nortti" useByScannerDiscovery="true" value="true" valueType="boolean"/>
@@ -129,7 +130,7 @@
 							</tool>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker.1183780484" name="Cross ARM C++ Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.linker">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections.106989019" name="Remove unused sections (-Xlinker --gc-sections)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.gcsections" value="true" valueType="boolean"/>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths.1011991114" name="Library search path (-L)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths" valueType="libPaths"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths.1011991114" name="Library search path (-L)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.paths"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile.2111176900" name="Script files (-T)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.scriptfile" valueType="stringList">
 									<listOptionValue builtIn="false" value="mem.ld"/>
 									<listOptionValue builtIn="false" value="libs.ld"/>
@@ -228,8 +229,10 @@
 									<listOptionValue builtIn="false" value="&quot;../system/include/cmsis&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../system/include/stm32f4-hal&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ObjectLibrary/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST SDK/STM32Cube_FW_F4_V1.4.0/Drivers/BSP/STM32F4-Discovery}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST SDK/STM32Cube_FW_F4_V1.4.0/Drivers/STM32F4xx_HAL_Driver/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/cmsis}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/stm32f4-hal}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.1775055562" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="OS_USE_TRACE_SEMIHOSTING_STDOUT"/>
@@ -246,7 +249,10 @@
 									<listOptionValue builtIn="false" value="&quot;../system/include/cmsis&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../system/include/stm32f4-hal&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ObjectLibrary/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST SDK/STM32Cube_FW_F4_V1.4.0/Drivers/BSP/STM32F4-Discovery}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/cmsis}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/stm32f4-hal}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1435671490" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="OS_USE_TRACE_SEMIHOSTING_STDOUT"/>
@@ -263,7 +269,10 @@
 									<listOptionValue builtIn="false" value="&quot;../system/include/cmsis&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;../system/include/stm32f4-hal&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ObjectLibrary/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ST SDK/STM32Cube_FW_F4_V1.4.0/Drivers/BSP/STM32F4-Discovery}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/cmsis}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/InterfaceControlerV1/system/include/stm32f4-hal}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.noexceptions.1935380093" name="Do not use exceptions (-fno-exceptions)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.noexceptions" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.nortti.1859418504" name="Do not use RTTI (-fno-rtti)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.nortti" useByScannerDiscovery="true" value="true" valueType="boolean"/>
