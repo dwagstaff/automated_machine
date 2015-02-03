@@ -11,6 +11,11 @@
 #include "Timer.h"
 #include "BlinkLed.h"
 
+#include "PWMServoDriver.h"
+
+PWMServoDriver servo;
+
+
 // ----------------------------------------------------------------------------
 //
 // STM32F4 led blink sample (trace via STDOUT).
@@ -57,6 +62,7 @@ namespace
 int
 main(int argc, char* argv[])
 {
+
   // By customising __initialize_args() it is possible to pass arguments,
   // for example when running tests with semihosting you can pass various
   // options to the test.
@@ -64,6 +70,31 @@ main(int argc, char* argv[])
 
   // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
+
+  // Init the Servo Driver
+  servo.begin();
+  servo.setPWMFreq(60.0);
+#define PRESCALE_VALUE (25E6 / (4096 * 60.0)) -1
+#define RESOLUTION_SERVO  (( 1.0 / 60.0 ) / 4096.0)
+  	  for(;;) {
+  		  Timer::sleep(1000/3);
+//  		  servo.setPulseWidth(0, 0.5e-3);
+  		  servo.setDegree(0, 0);
+  		  Timer::sleep(1000/3);
+//  		  servo.setPulseWidth(0, 1.5e-3);
+  		  servo.setDegree(0, 90);
+  		  Timer::sleep(1000/3);
+//  		  servo.setPulseWidth(0, 2.5e-3);
+  		  servo.setDegree(0, 180);
+  		  Timer::sleep(1000/3);
+//  		  servo.setPulseWidth(0, 1.5e-3);
+  		  servo.setDegree(0, 90);
+  	  }
+
+//  servo.setPWM(0, 0, 0);
+//  servo.setPWM(0, 0, 2048);
+//  servo.setPWM(0, 0, 1.5E-3 / RESOLUTION_SERVO);
+
 
   // The standard output and the standard error should be forwarded to
   // the trace device. For this to work, a redirection in _write.c is
