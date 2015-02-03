@@ -18,6 +18,7 @@ extern "C" {
 #include "stm32f4xx_hal.h"
 }
 #include "Wire.h"
+#include "diag/Trace.h"
 
 
 
@@ -66,6 +67,9 @@ void I2Cx_Error(uint8_t Addr)
 
   /* Re-Initiaize the I2C comunication bus */
   I2Cx_Init();
+
+  // Display an error message
+  trace_printf("I2C ERROR: Addr: %x\n", Addr);
 }
 #pragma GCC diagnostic pop
 

@@ -76,7 +76,6 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="NORDIC_SDK_DIR|NORDIC_SDK_DIR/Board|NORDIC_SDK_DIR/Source" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="app_common/hci_transport.c|app_common/hci_slip.c|app_common/hci_mem_pool.c|app_common/app_uart.c|app_common/app_uart_fifo.c|sdk_soc|ble/device_manager|gzp|twi_master|spi_slave|spi_master|simple_uart|serialization|console|bootloader_dfu|ext_sensors" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="NORDIC_SDK_DIR/Source"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -127,7 +126,6 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="NORDIC_SDK_DIR|NORDIC_SDK_DIR/Board|NORDIC_SDK_DIR/Source" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="app_common/hci_transport.c|app_common/hci_slip.c|app_common/hci_mem_pool.c|app_common/app_uart.c|app_common/app_uart_fifo.c|sdk_soc|ble/device_manager|gzp|twi_master|spi_slave|spi_master|simple_uart|serialization|console|bootloader_dfu|ext_sensors" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="NORDIC_SDK_DIR/Source"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
