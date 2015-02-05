@@ -6,13 +6,6 @@
  */
 
 
-//#include "stm32f4xx_hal.h"
-//#include "stm32f4xx_hal_gpio.h"
-//#include "stm32f4xx_hal_i2c.h"
-//#include "stm32f4xx_hal_rcc.h"
-//#include "stm32f4xx_hal_cortex.h"
-//#include "stm32f4xx_hal_def.h"
-
 extern "C" {
 #include "stm32f4_discovery.h"
 #include "stm32f4xx_hal.h"
