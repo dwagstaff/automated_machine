@@ -75,6 +75,7 @@ main(int argc, char* argv[])
     static short acce[3];
     static short gryo[3];
 	  static int i;
+	  static long temp;
 
   // By customising __initialize_args() it is possible to pass arguments,
   // for example when running tests with semihosting you can pass various
@@ -87,6 +88,8 @@ main(int argc, char* argv[])
 
   result= mpu_init(&int_param);
   mpu_set_sensors(INV_XYZ_ACCEL | INV_XYZ_GYRO);
+  mpu_get_temperature(&temp, NULL);
+  trace_printf("Temp: %ld\n", temp);
   dmp_load_motion_driver_firmware();
 
   for(;;) {
