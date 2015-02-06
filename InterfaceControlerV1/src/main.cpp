@@ -13,6 +13,20 @@
 #include "BlinkLed.h"
 
 #include "PWMServoDriver.h"
+#include "Wire.h"
+
+
+extern "C" {
+#include "inv_mpu.h"
+#include "inv_mpu_dmp_motion_driver.h"
+#include "invensense.h"
+#include "invensense_adv.h"
+#include "eMPL_outputs.h"
+#include "mltypes.h"
+#include "mpu.h"
+#include "log.h"
+#include "packet.h"
+}
 
 PWMServoDriver servo;
 
@@ -63,6 +77,10 @@ namespace
 int
 main(int argc, char* argv[])
 {
+    struct int_param_s int_param;
+    inv_error_t result;
+    static short acce[3];
+	  static int i;
 
   // By customising __initialize_args() it is possible to pass arguments,
   // for example when running tests with semihosting you can pass various
@@ -71,6 +89,28 @@ main(int argc, char* argv[])
 
   // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
+
+
+  result= mpu_init(&int_param);
+  result= inv_init_mpl();
+  mpu_set_sensors(INV_XYZ_ACCEL);
+  i= mpu_get_accel_reg(acce, NULL);
+  trace_printf("Result=%d\n", i);
+  trace_printf("Value=%d\n", acce[0]);
+
+  // Test for Gyro
+  {
+	  static uint8_t data;
+	  Wire wire;
+	  wire.begin();
+	  wire.beginTransmission(0x68);
+	  wire.write(107);
+	  wire.endTransmission();
+	  wire.requestFrom(0x68, 1);
+	  data= wire.read();
+	  trace_printf("Value of whoami is %x\n", data);
+	  i= dmp_load_motion_driver_firmware();
+  }
 
   // Init the Servo Driver
   servo.begin();
