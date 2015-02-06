@@ -32,11 +32,10 @@
  * delay_ms(unsigned long num_ms)
  * get_ms(unsigned long *count)
  */
-   
-#define i2c_write   Sensors_I2C_WriteRegister
-#define i2c_read    Sensors_I2C_ReadRegister
-#define get_ms      get_tick_count
-
+#define delay_ms    stm32f4_delay_ms
+#define get_ms      stm32f4_get_clock_ms
+#define log_i(...)     do {} while (0)
+#define log_e(...)     do {} while (0)
 
 /* These defines are copied from dmpDefaultMPU6050.c in the general MPL
  * releases. These defines may change for each DMP image, so be sure to modify

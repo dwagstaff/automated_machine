@@ -19,13 +19,6 @@
 extern "C" {
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
-#include "invensense.h"
-#include "invensense_adv.h"
-#include "eMPL_outputs.h"
-#include "mltypes.h"
-#include "mpu.h"
-#include "log.h"
-#include "packet.h"
 }
 
 PWMServoDriver servo;
@@ -78,8 +71,9 @@ int
 main(int argc, char* argv[])
 {
     struct int_param_s int_param;
-    inv_error_t result;
+    int result;
     static short acce[3];
+    static short gryo[3];
 	  static int i;
 
   // By customising __initialize_args() it is possible to pass arguments,
@@ -92,11 +86,16 @@ main(int argc, char* argv[])
 
 
   result= mpu_init(&int_param);
-  result= inv_init_mpl();
-  mpu_set_sensors(INV_XYZ_ACCEL);
-  i= mpu_get_accel_reg(acce, NULL);
-  trace_printf("Result=%d\n", i);
-  trace_printf("Value=%d\n", acce[0]);
+  mpu_set_sensors(INV_XYZ_ACCEL | INV_XYZ_GYRO);
+  dmp_load_motion_driver_firmware();
+
+  for(;;) {
+	  i= mpu_get_accel_reg(acce, NULL);
+	  trace_printf("Result=%d\n", i);
+	  trace_printf("Value=%d\n", acce[2]);
+	  i= mpu_get_gyro_reg(gryo, NULL);
+	  trace_printf("G=%d\n", gryo[0]);
+  }
 
   // Test for Gyro
   {

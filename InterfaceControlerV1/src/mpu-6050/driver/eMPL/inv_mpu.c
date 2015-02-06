@@ -36,15 +36,24 @@
  * fabsf(float x)
  * min(int a, int b)
  */
-   
-#define i2c_write   Sensors_I2C_WriteRegister
-#define i2c_read    Sensors_I2C_ReadRegister 
-#define delay_ms    mdelay
-#define get_ms      get_tick_count
-#define log_i       MPL_LOGI
-#define log_e       MPL_LOGE
+#define i2c_write   stm32f4_i2c_write
+#define i2c_read    stm32f4_i2c_read
+#define delay_ms    stm32f4_delay_ms
+#define get_ms      stm32f4_get_clock_ms
+static inline int reg_int_cb(struct int_param_s *int_param)
+{
+	return NULL;
+}
+#define log_i(...)     do {} while (0)
+#define log_e(...)     do {} while (0)
+/* labs is already defined by TI's toolchain. */
+/* fabs is for doubles. fabsf is for floats. */
+#define fabs        fabsf
 #define min(a,b) ((a<b)?a:b)
-   
+
+#if !defined MPU6050 && !defined MPU9150 && !defined MPU6500 && !defined MPU9250
+#error  Which gyro are you using? Define MPUxxxx in your compiler options.
+#endif
 
 /* Time for some messy macro work. =]
  * #define MPU9150
@@ -694,6 +703,8 @@ int mpu_init(struct int_param_s *int_param)
     if (mpu_configure_fifo(0))
         return -1;
 
+    if (int_param)
+        reg_int_cb(int_param);
 
 #ifdef AK89xx_SECONDARY
     setup_compass();
@@ -724,7 +735,7 @@ int mpu_init(struct int_param_s *int_param)
  *                          accel mode.
  *  @return     0 if successful.
  */
-int mpu_lp_accel_mode(unsigned short rate)
+int mpu_lp_accel_mode(unsigned char rate)
 {
     unsigned char tmp[2];
 
@@ -968,23 +979,36 @@ int mpu_set_gyro_bias_reg(long *gyro_bias)
  *  @param[in]  accel_bias  New biases.
  *  @return     0 if successful.
  */
-int mpu_set_accel_bias_6050_reg(const long *accel_bias) {
+int mpu_set_accel_bias_6050_reg(const long *accel_bias)
+{
     unsigned char data[6] = {0, 0, 0, 0, 0, 0};
     long accel_reg_bias[3] = {0, 0, 0};
-
+    long mask = 0x0001;
+    unsigned char mask_bit[3] = {0, 0, 0};
+    unsigned char i = 0;
     if(mpu_read_6050_accel_bias(accel_reg_bias))
-        return -1;
+    	return -1;
 
-    accel_reg_bias[0] -= (accel_bias[0] & ~1);
-    accel_reg_bias[1] -= (accel_bias[1] & ~1);
-    accel_reg_bias[2] -= (accel_bias[2] & ~1);
+    //bit 0 of the 2 byte bias is for temp comp
+    //calculations need to compensate for this and not change it
+    for(i=0; i<3; i++) {
+    	if(accel_reg_bias[i]&mask)
+    		mask_bit[i] = 0x01;
+    }
+
+    accel_reg_bias[0] -= accel_bias[0];
+    accel_reg_bias[1] -= accel_bias[1];
+    accel_reg_bias[2] -= accel_bias[2];
 
     data[0] = (accel_reg_bias[0] >> 8) & 0xff;
     data[1] = (accel_reg_bias[0]) & 0xff;
+    data[1] = data[1]|mask_bit[0];
     data[2] = (accel_reg_bias[1] >> 8) & 0xff;
     data[3] = (accel_reg_bias[1]) & 0xff;
+    data[3] = data[3]|mask_bit[1];
     data[4] = (accel_reg_bias[2] >> 8) & 0xff;
     data[5] = (accel_reg_bias[2]) & 0xff;
+    data[5] = data[5]|mask_bit[2];
 
     if (i2c_write(st.hw->addr, 0x06, 2, &data[0]))
         return -1;
@@ -997,7 +1021,6 @@ int mpu_set_accel_bias_6050_reg(const long *accel_bias) {
 }
 
 
-
 /**
  *  @brief      Push biases to the accel bias 6500 registers.
  *  This function expects biases relative to the current sensor output, and
@@ -1006,24 +1029,37 @@ int mpu_set_accel_bias_6050_reg(const long *accel_bias) {
  *  @param[in]  accel_bias  New biases.
  *  @return     0 if successful.
  */
-int mpu_set_accel_bias_6500_reg(const long *accel_bias) {
+int mpu_set_accel_bias_6500_reg(const long *accel_bias)
+{
     unsigned char data[6] = {0, 0, 0, 0, 0, 0};
     long accel_reg_bias[3] = {0, 0, 0};
+    long mask = 0x0001;
+    unsigned char mask_bit[3] = {0, 0, 0};
+    unsigned char i = 0;
 
     if(mpu_read_6500_accel_bias(accel_reg_bias))
-        return -1;
+    	return -1;
 
-    // Preserve bit 0 of factory value (for temperature compensation)
-    accel_reg_bias[0] -= (accel_bias[0] & ~1);
-    accel_reg_bias[1] -= (accel_bias[1] & ~1);
-    accel_reg_bias[2] -= (accel_bias[2] & ~1);
+    //bit 0 of the 2 byte bias is for temp comp
+    //calculations need to compensate for this
+    for(i=0; i<3; i++) {
+    	if(accel_reg_bias[i]&mask)
+    		mask_bit[i] = 0x01;
+    }
+
+    accel_reg_bias[0] -= accel_bias[0];
+    accel_reg_bias[1] -= accel_bias[1];
+    accel_reg_bias[2] -= accel_bias[2];
 
     data[0] = (accel_reg_bias[0] >> 8) & 0xff;
     data[1] = (accel_reg_bias[0]) & 0xff;
+    data[1] = data[1]|mask_bit[0];
     data[2] = (accel_reg_bias[1] >> 8) & 0xff;
     data[3] = (accel_reg_bias[1]) & 0xff;
+    data[3] = data[3]|mask_bit[1];
     data[4] = (accel_reg_bias[2] >> 8) & 0xff;
     data[5] = (accel_reg_bias[2]) & 0xff;
+    data[5] = data[5]|mask_bit[2];
 
     if (i2c_write(st.hw->addr, 0x77, 2, &data[0]))
         return -1;
@@ -1034,7 +1070,6 @@ int mpu_set_accel_bias_6500_reg(const long *accel_bias) {
 
     return 0;
 }
-
 
 /**
  *  @brief  Reset FIFO read/write pointers.
@@ -1439,7 +1474,7 @@ int mpu_get_accel_sens(unsigned short *sens)
         sens[0] = 16384;
         break;
     case INV_FSR_4G:
-        sens[0] = 8192;
+        sens[0] = 8092;
         break;
     case INV_FSR_8G:
         sens[0] = 4096;
@@ -2226,7 +2261,7 @@ static int accel_6500_self_test(long *bias_regular, long *bias_st, int debug)
 		for (i = 0; i < 3; i++) {
 			if(fabs(bias_regular[i]) > accel_offset_max) {
 				if(debug)
-					log_i("FAILED: Accel axis:%d = %ld > 500mg\n", i, bias_regular[i]);
+					log_i("FAILED: Accel axis:%d = %d > 500mg\n", i, bias_regular[i]);
 				result |= 1 << i;	//Error condition
 			}
 		}
@@ -2320,7 +2355,7 @@ static int gyro_6500_self_test(long *bias_regular, long *bias_st, int debug)
 		for (i = 0; i < 3; i++) {
 			if(fabs(bias_regular[i]) > gyro_offset_max) {
 				if(debug)
-					log_i("FAILED: Gyro axis:%d = %ld > 20dps\n", i, bias_regular[i]);
+					log_i("FAILED: Gyro axis:%d = %d > 20dps\n", i, bias_regular[i]);
 				result |= 1 << i;	//Error condition
 			}
 		}
@@ -3058,7 +3093,7 @@ int mpu_get_compass_fsr(unsigned short *fsr)
  *  @return     0 if successful.
  */
 int mpu_lp_motion_interrupt(unsigned short thresh, unsigned char time,
-    unsigned short lpa_freq)
+    unsigned char lpa_freq)
 {
 
 #if defined MPU6500
@@ -3164,7 +3199,7 @@ int mpu_lp_motion_interrupt(unsigned short thresh, unsigned char time,
 #endif
     } else {
         /* Don't "restore" the previous state if no state has been saved. */
-        unsigned int ii;
+        int ii;
         char *cache_ptr = (char*)&st.chip_cfg.cache;
         for (ii = 0; ii < sizeof(st.chip_cfg.cache); ii++) {
             if (cache_ptr[ii] != 0)

@@ -14,7 +14,7 @@
 class Wire {
 private:
 	uint8_t addr;			// Address to send data to
-	uint8_t buffer[16];		// Buffer for read/write options
+	uint8_t buffer[32];		// Buffer for read/write options
 	uint8_t size;			// Pending read/write size
 	uint8_t cursor;			// Current position
 
