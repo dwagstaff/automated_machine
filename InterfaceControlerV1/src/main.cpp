@@ -96,6 +96,7 @@ main(int argc, char* argv[])
   mpu_set_sensors(INV_XYZ_ACCEL);
   i= mpu_get_accel_reg(acce, NULL);
   trace_printf("Result=%d\n", i);
+  trace_printf("Value=%d\n", acce[0]);
 
   // Test for Gyro
   {
