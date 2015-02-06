@@ -16,7 +16,7 @@ public:
 	 * Delay for xx milliseconds
 	 * @param ms - Milliseconds to delay for
 	 */
-	void delay(uint16_t ms);
+	static void delay(uint16_t ms);
 };
 
 
