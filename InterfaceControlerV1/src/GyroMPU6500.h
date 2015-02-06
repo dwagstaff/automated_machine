@@ -20,8 +20,8 @@ public:
 	GyroMPU6500();
 	virtual ~GyroMPU6500();
 
-	static void i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);
-	static void i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);
+	static uint8_t i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);
+	static uint8_t i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);
 };
 
 #endif /* GYROMPU6500_H_ */

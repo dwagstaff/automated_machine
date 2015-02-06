@@ -79,6 +79,8 @@ main(int argc, char* argv[])
 {
     struct int_param_s int_param;
     inv_error_t result;
+    static short acce[3];
+	  static int i;
 
   // By customising __initialize_args() it is possible to pass arguments,
   // for example when running tests with semihosting you can pass various
@@ -88,14 +90,16 @@ main(int argc, char* argv[])
   // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
 
+
   result= mpu_init(&int_param);
-
-
+  result= inv_init_mpl();
+  mpu_set_sensors(INV_XYZ_ACCEL);
+  i= mpu_get_accel_reg(acce, NULL);
+  trace_printf("Result=%d\n", i);
 
   // Test for Gyro
   {
 	  static uint8_t data;
-	  static int i;
 	  Wire wire;
 	  wire.begin();
 	  wire.beginTransmission(0x68);

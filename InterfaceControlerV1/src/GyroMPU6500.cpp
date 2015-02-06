@@ -8,6 +8,8 @@
 #include "GyroMPU6500.h"
 #include "Arduino.h"
 
+#include "diag/Trace.h"
+
 
  Wire *GyroMPU6500::_pWire= 0;
 
@@ -15,8 +17,12 @@
 GyroMPU6500::GyroMPU6500() {
 }
 
-void GyroMPU6500::i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,
+uint8_t GyroMPU6500::i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,
 		uint8_t* pData) {
+	trace_printf("I2C Write: %x:%x %d ", slaveAddr, regAddr, len);
+	for(int i= 0; i < len; i++)
+		trace_printf("%02x ", pData[i]);
+	trace_putchar('\n');
 	if( !_pWire ) {
 		_pWire= new Wire();
 		_pWire->begin();
@@ -25,21 +31,32 @@ void GyroMPU6500::i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,
 	_pWire->write(regAddr);
 	while(len--)
 		_pWire->write(*pData++);
-	_pWire->endTransmission();
+	return( _pWire->endTransmission() == 0);
+
 }
 
-void GyroMPU6500::i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,
+uint8_t GyroMPU6500::i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,
 		uint8_t* pData) {
+	trace_printf("I2C Read: %x:%x %d ", slaveAddr, regAddr, len);
 	if( !_pWire ) {
 		_pWire= new Wire();
 		_pWire->begin();
 	}
 	_pWire->beginTransmission(slaveAddr);
 	_pWire->write(regAddr);
-	_pWire->endTransmission();
+	if( _pWire->endTransmission() == 0)
+		return 1;
 	_pWire->requestFrom(slaveAddr, len);
-	while(len--)
-		*pData++= _pWire->read();
+	if( _pWire->available() == 0 )
+		return 1;
+	while(len--) {
+		uint8_t d;
+		d= _pWire->read();
+		trace_printf("%02x ", d);
+		*pData++= d;
+	}
+	trace_putchar('\n');
+	return 0;
 }
 
 GyroMPU6500::~GyroMPU6500() {
@@ -48,15 +65,19 @@ GyroMPU6500::~GyroMPU6500() {
 
 
 
-extern "C" void Sensors_I2C_WriteRegister(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData) {
-	GyroMPU6500::i2c_write(slaveAddr, regAddr, len, pData);
+extern "C" uint8_t Sensors_I2C_WriteRegister(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData) {
+	return GyroMPU6500::i2c_write(slaveAddr, regAddr, len, pData);
 }
 
-extern "C" void Sensors_I2C_ReadRegister(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData) {
-	GyroMPU6500::i2c_read(slaveAddr, regAddr, len, pData);
+extern "C" uint8_t Sensors_I2C_ReadRegister(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData) {
+	return GyroMPU6500::i2c_read(slaveAddr, regAddr, len, pData);
 }
 
 
 extern "C" void mdelay(uint32_t ms) {
 	Arduino::delay(ms);
+}
+
+extern "C" uint32_t get_tick_count(void) {
+	return 0;
 }
