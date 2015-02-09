@@ -33,7 +33,7 @@ static void I2Cx_Init(void)
   if(HAL_I2C_GetState(&I2cHandle) == HAL_I2C_STATE_RESET)
   {
     /* DISCOVERY_I2Cx peripheral configuration */
-    I2cHandle.Init.ClockSpeed = BSP_I2C_SPEED;
+    I2cHandle.Init.ClockSpeed = 400000;	// Changed to 400KHZ
     I2cHandle.Init.DutyCycle = I2C_DUTYCYCLE_2;
     I2cHandle.Init.OwnAddress1 = 0x33;
     I2cHandle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
