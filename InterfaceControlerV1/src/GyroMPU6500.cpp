@@ -198,25 +198,22 @@ bool GyroMPU6500::init(void) {
 	     uint16_t features= DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
 	    	        DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_SEND_CAL_GYRO |
 	    	        DMP_FEATURE_GYRO_CAL;
-	     features= DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_TAP | DMP_FEATURE_GYRO_CAL | DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_ANDROID_ORIENT;
+	     features= DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_TAP | DMP_FEATURE_GYRO_CAL | DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL;
 	     dmp_enable_feature(features);
 	     dmp_set_fifo_rate(100);
+	     dmp_set_interrupt_mode(DMP_INT_CONTINUOUS);
 	     mpu_set_dmp_state(1);
+
 
 	     // Wait for calibration to complete
 	     {
-	    	 short gyro[3], accel[3], sensors;
-	    	 unsigned long sensor_timestamp;
-	    	 long quat[4];
 	    	 int l= 0;
-	         unsigned char more;
 	    	 int status;
 	    	 do {
-				do {
-					status= dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors,
-							&more);
-				} while(status);
-	    	 } while (abs(gyro[0] > 5) || (l++ < 500));
+	    		 while( !getDataReady() )
+	    			 ;
+	    		 processData();
+	    	 } while (abs(_lastGyro[0] > 10) || (l++ < 100));
 	     }
 //	     servo.setPulseWidth(0, 1.035e-3);
 //	     {
@@ -261,6 +258,28 @@ bool GyroMPU6500::init(void) {
 //	     }
 
 	     return true;
+}
+
+bool GyroMPU6500::getDataReady(void) {
+    short s;
+  	 mpu_get_int_status(&s);
+
+  	 // Check for overflow
+  	 if( s & 0x10 )
+  		 trace_puts("FIFO Overflow");
+
+  	 return s & 0x02;
+}
+
+bool GyroMPU6500::processData(void) {
+	 short sensors;
+	 unsigned long sensor_timestamp;
+	 unsigned char more;
+	 int status;
+	 status= dmp_read_fifo(_lastGyro, _lastAccel, _lastQuat, &sensor_timestamp, &sensors, &more);
+	 if( status )
+		 return false;
+	 return true;
 }
 
 uint8_t GyroMPU6500::i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,
