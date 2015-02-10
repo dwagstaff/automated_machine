@@ -117,15 +117,19 @@ main(int argc, char* argv[])
   		  Timer::sleep(1000/3);
 //  		  servo.setPulseWidth(0, 0.5e-3);
   		  servo.setDegree(0, 0);
+  		  servo.setDegree(1, 0);
   		  Timer::sleep(1000/3);
 //  		  servo.setPulseWidth(0, 1.5e-3);
   		  servo.setDegree(0, 90);
+  		  servo.setDegree(1, 90);
   		  Timer::sleep(1000/3);
 //  		  servo.setPulseWidth(0, 2.5e-3);
   		  servo.setDegree(0, 180);
+  		  servo.setDegree(1, 180);
   		  Timer::sleep(1000/3);
 //  		  servo.setPulseWidth(0, 1.5e-3);
   		  servo.setDegree(0, 90);
+  		  servo.setDegree(1, 90);
   	  }
 
 //  servo.setPWM(0, 0, 0);

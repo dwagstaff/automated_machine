@@ -11,10 +11,13 @@
 #include "diag/Trace.h"
 
 #include "string.h"
+#include <cstdlib>
 extern "C" {
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
 }
+#include "PWMServoDriver.h"
+
 
 #define DEBUG_I2C 0
 
@@ -144,6 +147,7 @@ bool GyroMPU6500::init(void) {
 	    mpu_get_sample_rate(&gyro_rate);
 	    mpu_get_gyro_fsr(&gyro_fsr);
 	    mpu_get_accel_fsr(&accel_fsr);
+	    mpu_set_gyro_fsr(500);
 
 	    /* To initialize the DMP:
 	      * 1. Call dmp_load_motion_driver_firmware(). This pushes the DMP image in
@@ -191,27 +195,71 @@ bool GyroMPU6500::init(void) {
 	      * then the interrupts will be at 200Hz even if fifo rate
 	      * is set at a different rate. To avoid this issue include the DMP_FEATURE_TAP
 	      */
-	     dmp_enable_feature(DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
+	     uint16_t features= DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
 	    	        DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_SEND_CAL_GYRO |
-	    	        DMP_FEATURE_GYRO_CAL);
-	     dmp_set_fifo_rate(DEFAULT_MPU_HZ);
+	    	        DMP_FEATURE_GYRO_CAL;
+	     features= DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_TAP | DMP_FEATURE_GYRO_CAL | DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_ANDROID_ORIENT;
+	     dmp_enable_feature(features);
+	     dmp_set_fifo_rate(100);
 	     mpu_set_dmp_state(1);
 
+	     // Wait for calibration to complete
 	     {
-	            short gyro[3], accel[3], sensors;
-	            unsigned char more;
-	            long quat[4];
-	            unsigned long sensor_timestamp;
-	            int status;
-	            memset(gyro, 0, sizeof(gyro));
-	            Arduino::delay(100);
-	            status= dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors,
-	                &more);
-	            trace_printf("dmp_read_status=%d\n", status);
+	    	 short gyro[3], accel[3], sensors;
+	    	 unsigned long sensor_timestamp;
+	    	 long quat[4];
+	    	 int l= 0;
+	         unsigned char more;
+	    	 int status;
+	    	 do {
+				do {
+					status= dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors,
+							&more);
+				} while(status);
+	    	 } while (abs(gyro[0] > 5) || (l++ < 500));
 	     }
+//	     servo.setPulseWidth(0, 1.035e-3);
+//	     {
+//	            short gyro[3], accel[3], sensors;
+//	            unsigned char more;
+//	            long quat[4];
+//	            unsigned long sensor_timestamp;
+//	            static long values[100];
+//	            static short g[100];
+//
+//	            long temp;
+//	            int status;
+//	            memset(values, 0, sizeof(values));
+//	            for(int i= 0; i < 100; i++) {
+//					do {
+//			            memset(gyro, 0, sizeof(gyro));
+//			            memset(quat, 0, sizeof(quat));
+//						status= dmp_read_fifo(gyro, accel, quat, &sensor_timestamp, &sensors,
+//								&more);
+//					} while(status);
+//					values[i]= quat[0];
+//					g[i]= gyro[2];
+//	            }
+//	            {
+//	            	unsigned short fsr;
+//	            	float sens;
+//	            	float angle= 0.0f;
+//	            	mpu_get_gyro_fsr(&fsr);
+//	            	mpu_get_gyro_sens(&sens);
+//	            	trace_printf("FSR=%d\n", fsr);
+//	            	for(int i= 0; i < 100; i++) {
+//	            		angle+= ((float)(g[i]) / sens) / 100.0f;
+//	            		trace_printf("Angle[%d]= %d\n", i, (int)angle);
+//	            	}
+//	            }
+//	            trace_printf("dmp_read_status=%d\n", status);
+//	            status= mpu_get_gyro_reg(gyro, NULL);
+//	            trace_printf("reg status=%f\n", status);
+//	            mpu_get_temperature(&temp, NULL);
+//	            trace_printf("Temp: %ld\n", temp);
+//	            trace_printf("Temp: %f\n", temp / 65536.0f);
+//	     }
 
-//	  mpu_get_temperature(&temp, NULL);
-//	  trace_printf("Temp: %ld\n", temp);
 	     return true;
 }
 
