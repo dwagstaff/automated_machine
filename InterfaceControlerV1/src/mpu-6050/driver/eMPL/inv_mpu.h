@@ -128,5 +128,11 @@ int mpu_run_self_test(long *gyro, long *accel);
 int mpu_run_6500_self_test(long *gyro, long *accel, unsigned char debug);
 int mpu_register_tap_cb(void (*func)(unsigned char, unsigned char));
 
+// Interface Functions
+uint8_t stm32f4_i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);
+uint8_t stm32f4_i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);
+int stm32f4_delay_ms(uint32_t ms);
+int stm32f4_get_clock_ms(uint32_t *pMS);
+
 #endif  /* #ifndef _INV_MPU_H_ */
 

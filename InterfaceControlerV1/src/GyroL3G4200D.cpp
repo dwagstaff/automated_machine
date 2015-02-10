@@ -18,13 +18,9 @@ GyroL3G4200D::~GyroL3G4200D() {
 
 bool GyroL3G4200D::init(bool xEnable, bool yEnable, bool zEnable) {
 	// Compute the enable flag
-	uint8_t ctrl_reg1= (zEnable ? 0x04 : 0 ) |
-					   (yEnable ? 0x02 : 0 ) |
-					   (xEnable ? 0x01 : 0 ) |
-					   0x08;
-	uint8_t ctrl_reg2= 0;
-	uint8_t ctrl_reg3= 0;
-	uint8_t ctrl_reg4= 0;
-	uint8_t ctrl_reg5= 0;
+//	uint8_t ctrl_reg1= (zEnable ? 0x04 : 0 ) |
+//					   (yEnable ? 0x02 : 0 ) |
+//					   (xEnable ? 0x01 : 0 ) |
+//					   0x08;
 	return true;
 }

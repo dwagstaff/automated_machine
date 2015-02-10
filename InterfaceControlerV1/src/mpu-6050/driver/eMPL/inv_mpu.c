@@ -42,7 +42,7 @@
 #define get_ms      stm32f4_get_clock_ms
 static inline int reg_int_cb(struct int_param_s *int_param)
 {
-	return NULL;
+	return 0;
 }
 #define log_i(...)     do {} while (0)
 #define log_e(...)     do {} while (0)

@@ -14,14 +14,13 @@
 
 #include "PWMServoDriver.h"
 #include "Wire.h"
+#include "GyroMPU6500.h"
 
 
-extern "C" {
-#include "inv_mpu.h"
-#include "inv_mpu_dmp_motion_driver.h"
-}
 
 PWMServoDriver servo;
+GyroMPU6500 gyro;
+
 
 
 // ----------------------------------------------------------------------------
@@ -70,10 +69,8 @@ namespace
 int
 main(int argc, char* argv[])
 {
-    struct int_param_s int_param;
-    int result;
-    static short acce[3];
-    static short gryo[3];
+//    static short acce[3];
+//    static short gryo[3];
 	  static int i;
 	  static long temp;
 
@@ -85,34 +82,31 @@ main(int argc, char* argv[])
   // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
 
+  // Configure the Gyro
+  if( !gyro.init() )
+	  trace_puts("ERROR: Unable to init Gryo");
 
-  result= mpu_init(&int_param);
-  mpu_set_sensors(INV_XYZ_ACCEL | INV_XYZ_GYRO);
-  mpu_get_temperature(&temp, NULL);
-  trace_printf("Temp: %ld\n", temp);
-  dmp_load_motion_driver_firmware();
+//  for(;;) {
+//	  i= mpu_get_accel_reg(acce, NULL);
+//	  trace_printf("Result=%d\n", i);
+//	  trace_printf("Value=%d\n", acce[2]);
+//	  i= mpu_get_gyro_reg(gryo, NULL);
+//	  trace_printf("G=%d\n", gryo[0]);
+//  }
 
-  for(;;) {
-	  i= mpu_get_accel_reg(acce, NULL);
-	  trace_printf("Result=%d\n", i);
-	  trace_printf("Value=%d\n", acce[2]);
-	  i= mpu_get_gyro_reg(gryo, NULL);
-	  trace_printf("G=%d\n", gryo[0]);
-  }
-
-  // Test for Gyro
-  {
-	  static uint8_t data;
-	  Wire wire;
-	  wire.begin();
-	  wire.beginTransmission(0x68);
-	  wire.write(107);
-	  wire.endTransmission();
-	  wire.requestFrom(0x68, 1);
-	  data= wire.read();
-	  trace_printf("Value of whoami is %x\n", data);
-	  i= dmp_load_motion_driver_firmware();
-  }
+//  // Test for Gyro
+//  {
+//	  static uint8_t data;
+//	  Wire wire;
+//	  wire.begin();
+//	  wire.beginTransmission(0x68);
+//	  wire.write(107);
+//	  wire.endTransmission();
+//	  wire.requestFrom(0x68, 1);
+//	  data= wire.read();
+//	  trace_printf("Value of whoami is %x\n", data);
+//	  i= dmp_load_motion_driver_firmware();
+//  }
 
   // Init the Servo Driver
   servo.begin();
