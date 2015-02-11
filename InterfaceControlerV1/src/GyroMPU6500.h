@@ -11,6 +11,14 @@
 #include <stdint.h>
 #include "Wire.h"
 
+// Math used for Servo computations
+// Pulse vs. Travel=   90 deg / 0.5 ms
+// Speed= 60 deg / 0.14 s
+// Top Speed= 428.571 deg/s
+// Pulse/Degree= 5.6us / deg
+// Pulse Width= deg * 5.6us
+//
+
 class GyroMPU6500 {
 private:
 	static Wire *_pWire;
@@ -18,7 +26,11 @@ private:
 	int16_t _lastAccel[3];		// Last Accelerometer values
 	long _lastQuat[4];			// Last Quat
 	float _w, _x, _y, _z;		// Quaternion
+	bool _inMotion;				// True if inmotion
+	float _position[3];		// Current position for all axis
 
+	const int16_t ZeroMotion= 10;	// Zero motion threshold
+	const float SamplePeriod= 1.0/100.0;	// Sample Window Size
 
 public:
 	GyroMPU6500();
@@ -50,6 +62,24 @@ public:
 	 * @return
 	 */
 	bool getEuler(float *data);
+
+	/**
+	 * Determine if device is in motion
+	 * @return true - Device/Servo is moving
+	 *         false- Device/Servo is stopped
+	 */
+	bool getInMotion(void);
+
+	/**
+	 * Reset current position vectors
+	 */
+	void resetPosition(void);
+
+	/**
+	 * Return current positions
+	 * @param pPositions - float, three values
+	 */
+	void getPositions(float *pPositions);
 
 	static uint8_t i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);
 	static uint8_t i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);

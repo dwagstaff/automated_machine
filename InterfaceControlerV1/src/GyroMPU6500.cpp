@@ -45,7 +45,10 @@ extern "C" {
 
 
 
-GyroMPU6500::GyroMPU6500() {
+GyroMPU6500::GyroMPU6500()
+: _inMotion(false)
+{
+	resetPosition();
 }
 
 static void tap_cb(unsigned char direction, unsigned char count)
@@ -297,6 +300,20 @@ bool GyroMPU6500::processData(void) {
 	 status= dmp_read_fifo(_lastGyro, _lastAccel, _lastQuat, &sensor_timestamp, &sensors, &more);
 	 if( status )
 		 return false;
+
+	 // Compute the inMotion flag
+	 _inMotion=  (abs(_lastGyro[0]) <= ZeroMotion) &&
+			 	 (abs(_lastGyro[1]) <= ZeroMotion) &&
+			 	 (abs(_lastGyro[2]) <= ZeroMotion);
+
+	 // If inMotion, then increment position vectors
+	 if( _inMotion ) {
+		 for(int i= 0; i < 3; i++) {
+			 if( abs(_lastGyro[i]) > ZeroMotion ) {
+				 _position[i]+= ((float)_lastGyro[i]) / SamplePeriod;
+			 }
+		 }
+	 }
 	 return true;
 }
 
@@ -317,6 +334,18 @@ bool GyroMPU6500::getEuler(float* data) {
     data[1] = -asin(2*_x*_z + 2*_w*_y);                              // theta
     data[2] = atan2(2*_y*_z - 2*_w*_x, 2*_w*_w + 2*_z*_z - 1);   // phi
     return true;
+}
+
+bool GyroMPU6500::getInMotion(void) {
+	return _inMotion;
+}
+
+void GyroMPU6500::resetPosition(void) {
+	memset(_position, 0, sizeof(_position));
+}
+
+void GyroMPU6500::getPositions(float* pPositions) {
+	memcpy(pPositions, _position, sizeof(_position));
 }
 
 uint8_t GyroMPU6500::i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,
