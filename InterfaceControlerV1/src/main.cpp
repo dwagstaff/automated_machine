@@ -10,7 +10,7 @@
 #include "diag/Trace.h"
 
 #include "Timer.h"
-#include "BlinkLed.h"
+#include "Led.h"
 
 #include "PWMServoDriver.h"
 #include "Wire.h"
@@ -21,7 +21,11 @@
 PWMServoDriver servo;
 GyroMPU6500 gyro;
 
-
+// Define the LEDs on the board for later use
+Led orangeLED(Led::Ports::D, 13);
+Led greenLED(Led::Ports::D, 12);
+Led redLED(Led::Ports::D, 14);
+Led blueLED(Led::Ports::D, 15);
 
 // ----------------------------------------------------------------------------
 //
@@ -69,10 +73,8 @@ namespace
 int
 main(int argc, char* argv[])
 {
-//    static short acce[3];
-//    static short gryo[3];
-	  static int i;
-	  static long temp;
+	// Turn on the Orange LED to indicate in Init Mode
+	orangeLED.turnOn();
 
   // By customising __initialize_args() it is possible to pass arguments,
   // for example when running tests with semihosting you can pass various
@@ -85,6 +87,10 @@ main(int argc, char* argv[])
   // Configure the Gyro
   if( !gyro.init() )
 	  trace_puts("ERROR: Unable to init Gryo");
+
+  // Indicate out of Init mode and running
+  orangeLED.turnOff();
+  greenLED.turnOn();
 
 //  for(;;) {
 //	  i= mpu_get_accel_reg(acce, NULL);
@@ -146,34 +152,8 @@ main(int argc, char* argv[])
   // At this stage the system clock should have already been configured
   // at high speed.
   trace_printf("System clock: %uHz\n", SystemCoreClock);
-
-  Timer timer;
-  timer.start();
-
-  BlinkLed blinkLed;
-
-  // Perform all necessary initialisations for the LED.
-  blinkLed.powerUp();
-
-  uint32_t seconds = 0;
-
-  // Infinite loop
-  while (1)
-    {
-      blinkLed.turnOn();
-      timer.sleep(BLINK_ON_TICKS);
-
-      blinkLed.turnOff();
-      timer.sleep(BLINK_OFF_TICKS);
-
-      ++seconds;
-
-      // Count seconds on the trace device.
-      trace_printf("Second %u\n", seconds);
-    }
-  // Infinite loop, never return.
 }
 
-#pragma GCC diagnostic pop
+
 
 // ----------------------------------------------------------------------------

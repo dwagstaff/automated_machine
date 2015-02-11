@@ -6,6 +6,8 @@
  */
 
 #include "GyroMPU6500.h"
+
+#include <math.h>
 #include "Arduino.h"
 
 #include "diag/Trace.h"
@@ -202,6 +204,9 @@ bool GyroMPU6500::init(void) {
 	     dmp_enable_feature(features);
 	     dmp_set_fifo_rate(100);
 	     dmp_set_interrupt_mode(DMP_INT_CONTINUOUS);
+
+	     // Turn on motion detect mode
+	     mpu_lp_motion_interrupt(100, 5, 40);
 	     mpu_set_dmp_state(1);
 
 
@@ -215,6 +220,15 @@ bool GyroMPU6500::init(void) {
 	    		 processData();
 	    	 } while (abs(_lastGyro[0] > 10) || (l++ < 100));
 	     }
+
+	     //TODO: Debug
+	     {
+	    	 float angles[3];
+		     getQuaternion();
+		     getEuler(angles);
+		     trace_puts("Done with init of MPU-6050");
+	     }
+
 //	     servo.setPulseWidth(0, 1.035e-3);
 //	     {
 //	            short gyro[3], accel[3], sensors;
@@ -268,6 +282,10 @@ bool GyroMPU6500::getDataReady(void) {
   	 if( s & 0x10 )
   		 trace_puts("FIFO Overflow");
 
+  	 // Check for motion detect
+  	 if( s & 0x40 )
+  		 trace_puts("Motion Detected");
+
   	 return s & 0x02;
 }
 
@@ -280,6 +298,25 @@ bool GyroMPU6500::processData(void) {
 	 if( status )
 		 return false;
 	 return true;
+}
+
+bool GyroMPU6500::getQuaternion(void) {
+#define DIV  1073741824.0f
+	_w=  (float)_lastQuat[0] / DIV;
+	_x=  (float)_lastQuat[1] / DIV;
+	_y=  (float)_lastQuat[2] / DIV;
+	_z=  (float)_lastQuat[3] / DIV;
+	return true;
+}
+
+bool GyroMPU6500::getEuler(float* data) {
+	// PSI (alpha)= N an X  (rotation around z axis)
+	// PHI = x and N        (rotation around Z axis)
+	// Theta = z and Z      (rotation around N axis)
+    data[0] = atan2(2* _x* _y - 2*_w*_z, 2*_w*_w + 2*_x*_x - 1);   // psi
+    data[1] = -asin(2*_x*_z + 2*_w*_y);                              // theta
+    data[2] = atan2(2*_y*_z - 2*_w*_x, 2*_w*_w + 2*_z*_z - 1);   // phi
+    return true;
 }
 
 uint8_t GyroMPU6500::i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,

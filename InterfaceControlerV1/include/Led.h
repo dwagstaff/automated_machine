@@ -3,8 +3,8 @@
 // Copyright (c) 2014 Liviu Ionescu.
 //
 
-#ifndef BLINKLED_H_
-#define BLINKLED_H_
+#ifndef Led_H_
+#define Led_H_
 
 #include "stm32f4xx.h"
 #include "stm32f4xx_hal.h"
@@ -27,9 +27,9 @@
 // STM32F4DISCOVERY definitions (the GREEN led, D12, active high)
 // (SEGGER J-Link device name: STM32F407VG).
 
-#define BLINK_PORT_NUMBER               (3)
-#define BLINK_PIN_NUMBER                (12)
-#define BLINK_ACTIVE_LOW                (0)
+//#define BLINK_PORT_NUMBER               (3)
+//#define BLINK_PIN_NUMBER                (12)
+//#define BLINK_ACTIVE_LOW                (0)
 
 #endif
 
@@ -39,10 +39,16 @@
 
 // ----------------------------------------------------------------------------
 
-class BlinkLed
+class Led
 {
+private:
+//	GPIO_TypeDef *_pPort;
+	uint8_t _port;
+	uint8_t _pin;
+
 public:
-  BlinkLed() = default;
+	enum Ports  {A=0, B=1, C=2, D=3, E=4, F=5, G=6, H=7 };
+  Led(uint8_t port, uint8_t pin);
 
   void
   powerUp();
@@ -51,29 +57,19 @@ public:
   __attribute__((always_inline))
   turnOn()
   {
-#if (BLINK_ACTIVE_LOW)
-    HAL_GPIO_WritePin(BLINK_GPIOx(BLINK_PORT_NUMBER),
-        BLINK_PIN_MASK(BLINK_PIN_NUMBER), GPIO_PIN_RESET);
-#else
-    HAL_GPIO_WritePin(BLINK_GPIOx(BLINK_PORT_NUMBER),
-        BLINK_PIN_MASK(BLINK_PIN_NUMBER), GPIO_PIN_SET);
-#endif
+    HAL_GPIO_WritePin(BLINK_GPIOx(_port),
+        BLINK_PIN_MASK(_pin), GPIO_PIN_SET);
   }
 
   inline void
   __attribute__((always_inline))
   turnOff()
   {
-#if (BLINK_ACTIVE_LOW)
-    HAL_GPIO_WritePin(BLINK_GPIOx(BLINK_PORT_NUMBER),
-        BLINK_PIN_MASK(BLINK_PIN_NUMBER), GPIO_PIN_SET);
-#else
-    HAL_GPIO_WritePin(BLINK_GPIOx(BLINK_PORT_NUMBER),
-        BLINK_PIN_MASK(BLINK_PIN_NUMBER), GPIO_PIN_RESET);
-#endif
+    HAL_GPIO_WritePin(BLINK_GPIOx(_port),
+        BLINK_PIN_MASK(_pin), GPIO_PIN_RESET);
   }
 };
 
 // ----------------------------------------------------------------------------
 
-#endif // BLINKLED_H_
+#endif // Led_H_
