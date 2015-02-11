@@ -32,6 +32,29 @@ extern "C" {
  struct int_param_s int_param;
 
 
+
+
+ // Calibration Data
+ const float degPulse= 5.6e-6;
+
+static float calData[] __attribute__ ((section(".text"))) = {
+		0,
+		degPulse * 90,
+		degPulse * 10,
+		degPulse * 20,
+		degPulse * 30,
+		degPulse * 40,
+		degPulse * 30,
+		degPulse * 20,
+		degPulse * 10,
+		0};
+
+const size_t CAL_COUNT= sizeof(calData) / sizeof(calData[0]);
+
+static float calResult[CAL_COUNT][2];
+
+
+
  /* The sensors can be mounted onto the board in any orientation. The mounting
   * matrix seen below tells the MPL how to rotate the raw data from thei
   * driver(s).
@@ -203,34 +226,39 @@ bool GyroMPU6500::init(void) {
 	     uint16_t features= DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
 	    	        DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_SEND_CAL_GYRO |
 	    	        DMP_FEATURE_GYRO_CAL;
-	     features= DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_TAP | DMP_FEATURE_GYRO_CAL | DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL;
+	     features= DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_GYRO_CAL | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_TAP;
 	     dmp_enable_feature(features);
 	     dmp_set_fifo_rate(100);
 	     dmp_set_interrupt_mode(DMP_INT_CONTINUOUS);
 
+	     // Compute the intergral period
+	     float sens;
+	     mpu_get_gyro_sens(&sens);
+	     _integralPeriod= sens *  SampleRate;
+
+	     // Compute Zero Motion which is <= 0.5_deg/s
+	     _zeroMotion= int16_t(sens) / 2;
+
 	     // Turn on motion detect mode
-	     mpu_lp_motion_interrupt(100, 5, 40);
+//	     mpu_lp_motion_interrupt(100, 5, 40);
 	     mpu_set_dmp_state(1);
 
 
 	     // Wait for calibration to complete
-	     {
-	    	 int l= 0;
-	    	 int status;
-	    	 do {
-	    		 while( !getDataReady() )
-	    			 ;
-	    		 processData();
-	    	 } while (abs(_lastGyro[0] > 10) || (l++ < 100));
-	     }
+		 for(;;) {
+			 if( processData() )
+				 if( getTravelTime() > 100 )
+					 if( abs(_lastGyro[0] < _zeroMotion) )
+						 break;
+		 }
 
-	     //TODO: Debug
-	     {
-	    	 float angles[3];
-		     getQuaternion();
-		     getEuler(angles);
-		     trace_puts("Done with init of MPU-6050");
-	     }
+//	     //TODO: Debug
+//	     {
+//	    	 float angles[3];
+//		     getQuaternion();
+//		     getEuler(angles);
+//		     trace_puts("Done with init of MPU-6050");
+//	     }
 
 //	     servo.setPulseWidth(0, 1.035e-3);
 //	     {
@@ -297,22 +325,24 @@ bool GyroMPU6500::processData(void) {
 	 unsigned long sensor_timestamp;
 	 unsigned char more;
 	 int status;
+
+	 // See if we have data ready
+	 if( !getDataReady() )
+		 return false;			// Data is not ready
+
 	 status= dmp_read_fifo(_lastGyro, _lastAccel, _lastQuat, &sensor_timestamp, &sensors, &more);
 	 if( status )
 		 return false;
 
 	 // Compute the inMotion flag
-	 _inMotion=  (abs(_lastGyro[0]) <= ZeroMotion) &&
-			 	 (abs(_lastGyro[1]) <= ZeroMotion) &&
-			 	 (abs(_lastGyro[2]) <= ZeroMotion);
+//	 _inMotion= (abs(_lastGyro[2]) > _zeroMotion) ||
+//			 	(abs(_lastGyro[1]) > _zeroMotion) ||
+//			 	(abs(_lastGyro[2]) > _zeroMotion);
 
 	 // If inMotion, then increment position vectors
-	 if( _inMotion ) {
-		 for(int i= 0; i < 3; i++) {
-			 if( abs(_lastGyro[i]) > ZeroMotion ) {
-				 _position[i]+= ((float)_lastGyro[i]) / SamplePeriod;
-			 }
-		 }
+	 _travelTime++;
+	 for(int i= 0; i < 3; i++) {
+		 _position[i]+= ((float)_lastGyro[i]) / _integralPeriod;
 	 }
 	 return true;
 }
@@ -342,10 +372,35 @@ bool GyroMPU6500::getInMotion(void) {
 
 void GyroMPU6500::resetPosition(void) {
 	memset(_position, 0, sizeof(_position));
+	mpu_reset_fifo();
+	_travelTime= 0;
 }
 
 void GyroMPU6500::getPositions(float* pPositions) {
 	memcpy(pPositions, _position, sizeof(_position));
+}
+
+bool GyroMPU6500::calibrateServo(PWMServoDriver &servo) {
+	float lastPos= 0.0f;
+	// Position servo to zero position
+	servo.setPulseWidth(0, 1e-3 + lastPos);
+	Arduino::delay(1000);
+	for (uint16_t i = 0; i < CAL_COUNT; i++) {
+		// Position Servo
+		resetPosition();
+		servo.setPulseWidth(0, 1e-3 + calData[i]);
+
+		// Measure Servo travel
+		do {
+			processData();
+		} while( getTravelTime() < 100);
+
+		// Save off the results
+		calResult[i][0]= fabs(lastPos - calData[i]);
+		calResult[i][1]= fabs(_position[2]);
+		lastPos= calData[i];
+	}
+	return true;
 }
 
 uint8_t GyroMPU6500::i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,

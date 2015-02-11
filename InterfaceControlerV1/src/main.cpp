@@ -14,6 +14,8 @@
 
 #include "PWMServoDriver.h"
 #include "Wire.h"
+#include <cstdlib>
+
 #include "GyroMPU6500.h"
 
 
@@ -73,6 +75,12 @@ namespace
 int
 main(int argc, char* argv[])
 {
+	float a;
+	float b;
+	a= atof("323");
+	b= atof("123");
+	a= a+ b + atof("321");
+
 	// Turn on the Orange LED to indicate in Init Mode
 	orangeLED.turnOn();
 
@@ -84,6 +92,18 @@ main(int argc, char* argv[])
   // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
 
+  // Reset servo
+  servo.begin();
+  servo.setPWMFreq(60.0);
+//  servo.setPWM(1, 0, 1);
+//  servo.setPWM(1, 0, 2);
+//  servo.setPWM(1, 0, 3);
+//  servo.setPWM(1, 0, 4);
+
+  servo.setPulseWidth(1, 1.0e-3);
+  servo.setPulseWidth(1, 1.5e-3);
+  servo.setPulseWidth(1, 2.0e-3);
+
   // Configure the Gyro
   if( !gyro.init() )
 	  trace_puts("ERROR: Unable to init Gryo");
@@ -92,6 +112,14 @@ main(int argc, char* argv[])
   orangeLED.turnOff();
   greenLED.turnOn();
 
+// gyro.resetPosition();
+// servo.setPulseWidth(0, 1.318e-3);   // 27 degrees
+
+ blueLED.turnOn();
+ gyro.calibrateServo(servo);
+ blueLED.turnOff();
+
+  // Reset position and move servo
 //  for(;;) {
 //	  i= mpu_get_accel_reg(acce, NULL);
 //	  trace_printf("Result=%d\n", i);
@@ -115,8 +143,6 @@ main(int argc, char* argv[])
 //  }
 
   // Init the Servo Driver
-  servo.begin();
-  servo.setPWMFreq(60.0);
 #define PRESCALE_VALUE (25E6 / (4096 * 60.0)) -1
 #define RESOLUTION_SERVO  (( 1.0 / 60.0 ) / 4096.0)
   	  for(;;) {

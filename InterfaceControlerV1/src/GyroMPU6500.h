@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include "Wire.h"
 
+#include "PWMServoDriver.h"
+
 // Math used for Servo computations
 // Pulse vs. Travel=   90 deg / 0.5 ms
 // Speed= 60 deg / 0.14 s
@@ -28,9 +30,11 @@ private:
 	float _w, _x, _y, _z;		// Quaternion
 	bool _inMotion;				// True if inmotion
 	float _position[3];		// Current position for all axis
+	float _integralPeriod;		// Intergral period interval
+	uint32_t _travelTime;		// Measure of travel time
 
-	const int16_t ZeroMotion= 10;	// Zero motion threshold
-	const float SamplePeriod= 1.0/100.0;	// Sample Window Size
+	int16_t _zeroMotion;		// Zero motion threshold
+	const float SampleRate= 100.0;	// Sample Rate (FIFO)
 
 public:
 	GyroMPU6500();
@@ -80,6 +84,19 @@ public:
 	 * @param pPositions - float, three values
 	 */
 	void getPositions(float *pPositions);
+
+	/**
+	 * Get current travel time
+	 * @return
+	 */
+	int32_t getTravelTime(void) { return _travelTime;}
+
+	/**
+	 * Calibrate the servo
+	 * @return true: Calibration succesful
+	 *         false: Unable to calibrate
+	 */
+	bool calibrateServo(PWMServoDriver &servo);
 
 	static uint8_t i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);
 	static uint8_t i2c_read(uint8_t slaveAddr, uint8_t regAddr, uint8_t len, uint8_t *pData);

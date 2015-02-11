@@ -44,20 +44,28 @@ void PWMServoDriver::reset(void) {
 
 void PWMServoDriver::setPWMFreq(float freq) {
 	_period= 1.0f / freq;
+  // Compute the resolution and save it
+//  _resolution= (1.0f / freq) / 4096.0f;
+//	_resolution= 4.117e-3 / 1000.0;
+	_period= 1.0f / 59.31f;
+	_resolution= _period / 4096.0;
+
   //Serial.print("Attempting to set freq ");
   //Serial.println(freq);
-  freq *= 0.9;  // Correct for overshoot in the frequency setting (see issue #11).
-  float prescaleval = 25000000;
-  prescaleval /= 4096;
-  prescaleval /= freq;
-  prescaleval -= 1;
-  if (ENABLE_DEBUG_OUTPUT) {
+//  freq *= 0.9;  // Correct for overshoot in the frequency setting (see issue #11).
+//  float prescaleval = 25000000;
+//  prescaleval /= 4096;
+//  prescaleval /= freq;
+//  prescaleval -= 1;
+//  if (ENABLE_DEBUG_OUTPUT) {
 //    Serial.print("Estimated pre-scale: "); Serial.println(prescaleval);
-  }
-  uint8_t prescale = floor(prescaleval + 0.5);
-  if (ENABLE_DEBUG_OUTPUT) {
+//  }
+//  uint8_t prescale = floor(prescaleval + 0.5);
+//  if (ENABLE_DEBUG_OUTPUT) {
 //    Serial.print("Final pre-scale: "); Serial.println(prescale);
-  }
+//  }
+  float fPreScale= (25e6/(4096.0 * (freq * 0.90))) - 1.0;
+  uint8_t prescale= floor(fPreScale + 0.5);
   
   uint8_t oldmode = read8(PCA9685_MODE1);
   uint8_t newmode = (oldmode&0x7F) | 0x10; // sleep
@@ -69,8 +77,6 @@ void PWMServoDriver::setPWMFreq(float freq) {
                                           // This is why the beginTransmission below was not working.
   //  Serial.print("Mode now 0x"); Serial.println(read8(PCA9685_MODE1), HEX);
 
-  // Compute the resolution and save it
-  _resolution= (1.0f / freq) / 4096.0f;
 
   // Compute default low value to 0.5e-3
   _lowMark= uint16_t(0.5e-3 / _resolution);
