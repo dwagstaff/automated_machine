@@ -8,12 +8,14 @@
 #include "GyroMPU6500.h"
 
 #include <math.h>
-#include "Arduino.h"
 
+#include "Arduino.h"
 #include "diag/Trace.h"
 
 #include "string.h"
 #include <cstdlib>
+
+#include "Stats.h"
 extern "C" {
 #include "inv_mpu.h"
 #include "inv_mpu_dmp_motion_driver.h"
@@ -23,23 +25,15 @@ extern "C" {
 
 #define DEBUG_I2C 0
 
-/* Starting sampling rate. */
-#define DEFAULT_MPU_HZ  (100)
-
-
 
  Wire *GyroMPU6500::_pWire= 0;
  struct int_param_s int_param;
 
 
-
-
  // Calibration Data
- const float degPulse= 5.6e-6;
-
-static float calData[] __attribute__ ((section(".text"))) = {
+const float degPulse= 0.5e-3 / 90.0;
+const float calData[] = {
 		0,
-		degPulse * 90,
 		degPulse * 10,
 		degPulse * 20,
 		degPulse * 30,
@@ -51,11 +45,9 @@ static float calData[] __attribute__ ((section(".text"))) = {
 
 const size_t CAL_COUNT= sizeof(calData) / sizeof(calData[0]);
 
-static float calResult[CAL_COUNT][2];
 
 
-
- /* The sensors can be mounted onto the board in any orientation. The mounting
+ /* The sensors can be mounted onto the oard in any orientation. The mounting
   * matrix seen below tells the MPL how to rotate the raw data from thei
   * driver(s).
   * TODO: The following matrices refer to the configuration on an internal test
@@ -76,15 +68,10 @@ GyroMPU6500::GyroMPU6500()
 
 static void tap_cb(unsigned char direction, unsigned char count)
 {
-//    char data[2];
-//    data[0] = (char)direction;
-//    data[1] = (char)count;
-//    send_packet(PACKET_TYPE_TAP, data);
 }
 
 static void android_orient_cb(unsigned char orientation)
 {
-//    send_packet(PACKET_TYPE_ANDROID_ORIENT, &orientation);
 }
 
 /* These next two functions converts the orientation matrix (see
@@ -157,100 +144,110 @@ uint8_t GyroMPU6500::i2c_write(uint8_t slaveAddr, uint8_t regAddr, uint8_t len,
 }
 
 bool GyroMPU6500::init(void) {
-    int result;
-    uint8_t accel_fsr;
-    uint16_t gyro_rate, gyro_fsr;
+	int result;
 
-	  result= mpu_init(&int_param);
-	  if( result )
-		  return false;
+	result = mpu_init(&int_param);
+	if (result)
+		return false;
 
-	    /* Get/set hardware configuration. Start gyro. */
-	    /* Wake up all sensors. */
-	    mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL);
-	    /* Push both gyro and accel data into the FIFO. */
-	    mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL);
-	    mpu_set_sample_rate(DEFAULT_MPU_HZ);
-	    /* Read back configuration in case it was set improperly. */
-	    mpu_get_sample_rate(&gyro_rate);
-	    mpu_get_gyro_fsr(&gyro_fsr);
-	    mpu_get_accel_fsr(&accel_fsr);
-	    mpu_set_gyro_fsr(500);
+	/* Get/set hardware configuration. Start gyro. */
+	/* Wake up all sensors. */
+	mpu_set_sensors(INV_XYZ_GYRO | INV_XYZ_ACCEL);
 
-	    /* To initialize the DMP:
-	      * 1. Call dmp_load_motion_driver_firmware(). This pushes the DMP image in
-	      *    inv_mpu_dmp_motion_driver.h into the MPU memory.
-	      * 2. Push the gyro and accel orientation matrix to the DMP.
-	      * 3. Register gesture callbacks. Don't worry, these callbacks won't be
-	      *    executed unless the corresponding feature is enabled.
-	      * 4. Call dmp_enable_feature(mask) to enable different features.
-	      * 5. Call dmp_set_fifo_rate(freq) to select a DMP output rate.
-	      * 6. Call any feature-specific control functions.
-	      *
-	      * To enable the DMP, just call mpu_set_dmp_state(1). This function can
-	      * be called repeatedly to enable and disable the DMP at runtime.
-	      *
-	      * The following is a short summary of the features supported in the DMP
-	      * image provided in inv_mpu_dmp_motion_driver.c:
-	      * DMP_FEATURE_LP_QUAT: Generate a gyro-only quaternion on the DMP at
-	      * 200Hz. Integrating the gyro data at higher rates reduces numerical
-	      * errors (compared to integration on the MCU at a lower sampling rate).
-	      * DMP_FEATURE_6X_LP_QUAT: Generate a gyro/accel quaternion on the DMP at
-	      * 200Hz. Cannot be used in combination with DMP_FEATURE_LP_QUAT.
-	      * DMP_FEATURE_TAP: Detect taps along the X, Y, and Z axes.
-	      * DMP_FEATURE_ANDROID_ORIENT: Google's screen rotation algorithm. Triggers
-	      * an event at the four orientations where the screen should rotate.
-	      * DMP_FEATURE_GYRO_CAL: Calibrates the gyro data after eight seconds of
-	      * no motion.
-	      * DMP_FEATURE_SEND_RAW_ACCEL: Add raw accelerometer data to the FIFO.
-	      * DMP_FEATURE_SEND_RAW_GYRO: Add raw gyro data to the FIFO.
-	      * DMP_FEATURE_SEND_CAL_GYRO: Add calibrated gyro data to the FIFO. Cannot
-	      * be used in combination with DMP_FEATURE_SEND_RAW_GYRO.
-	      */
-	     dmp_load_motion_driver_firmware();
-	     dmp_set_orientation(
-	         inv_orientation_matrix_to_scalar(gyro_orientation));
-	     dmp_register_tap_cb(tap_cb);
-	     dmp_register_android_orient_cb(android_orient_cb);
-	     /*
-	      * Known Bug -
-	      * DMP when enabled will sample sensor data at 200Hz and output to FIFO at the rate
-	      * specified in the dmp_set_fifo_rate API. The DMP will then sent an interrupt once
-	      * a sample has been put into the FIFO. Therefore if the dmp_set_fifo_rate is at 25Hz
-	      * there will be a 25Hz interrupt from the MPU device.
-	      *
-	      * There is a known issue in which if you do not enable DMP_FEATURE_TAP
-	      * then the interrupts will be at 200Hz even if fifo rate
-	      * is set at a different rate. To avoid this issue include the DMP_FEATURE_TAP
-	      */
-	     uint16_t features= DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
-	    	        DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_SEND_CAL_GYRO |
-	    	        DMP_FEATURE_GYRO_CAL;
-	     features= DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_GYRO_CAL | DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_TAP;
-	     dmp_enable_feature(features);
-	     dmp_set_fifo_rate(100);
-	     dmp_set_interrupt_mode(DMP_INT_CONTINUOUS);
+	//TODO: Determine if we need to remove if using DMP
+	/* Push both gyro and accel data into the FIFO. */
+//	mpu_configure_fifo(INV_XYZ_GYRO | INV_XYZ_ACCEL);
 
-	     // Compute the intergral period
-	     float sens;
-	     mpu_get_gyro_sens(&sens);
-	     _integralPeriod= sens *  SampleRate;
+	//TODO: Determine if we need to entirely remove the following line
+	//      as it appears it is not needed if we are using dmp mode
+//	mpu_set_sample_rate(SampleRate);
 
-	     // Compute Zero Motion which is <= 0.5_deg/s
-	     _zeroMotion= int16_t(sens) / 2;
+	/* Read back configuration in case it was set improperly. */
+//	mpu_get_sample_rate(&gyro_rate);
+//	mpu_get_gyro_fsr(&gyro_fsr);
+//	mpu_get_accel_fsr(&accel_fsr);
 
-	     // Turn on motion detect mode
+	// Setup gyro FSR to 500 deg/s full scale
+	mpu_set_gyro_fsr(500);
+
+	// Set the LPF
+//	mpu_set_lpf(5);
+
+
+	/* To initialize the DMP:
+	 * 1. Call dmp_load_motion_driver_firmware(). This pushes the DMP image in
+	 *    inv_mpu_dmp_motion_driver.h into the MPU memory.
+	 * 2. Push the gyro and accel orientation matrix to the DMP.
+	 * 3. Register gesture callbacks. Don't worry, these callbacks won't be
+	 *    executed unless the corresponding feature is enabled.
+	 * 4. Call dmp_enable_feature(mask) to enable different features.
+	 * 5. Call dmp_set_fifo_rate(freq) to select a DMP output rate.
+	 * 6. Call any feature-specific control functions.
+	 *
+	 * To enable the DMP, just call mpu_set_dmp_state(1). This function can
+	 * be called repeatedly to enable and disable the DMP at runtime.
+	 *
+	 * The following is a short summary of the features supported in the DMP
+	 * image provided in inv_mpu_dmp_motion_driver.c:
+	 * DMP_FEATURE_LP_QUAT: Generate a gyro-only quaternion on the DMP at
+	 * 200Hz. Integrating the gyro data at higher rates reduces numerical
+	 * errors (compared to integration on the MCU at a lower sampling rate).
+	 * DMP_FEATURE_6X_LP_QUAT: Generate a gyro/accel quaternion on the DMP at
+	 * 200Hz. Cannot be used in combination with DMP_FEATURE_LP_QUAT.
+	 * DMP_FEATURE_TAP: Detect taps along the X, Y, and Z axes.
+	 * DMP_FEATURE_ANDROID_ORIENT: Google's screen rotation algorithm. Triggers
+	 * an event at the four orientations where the screen should rotate.
+	 * DMP_FEATURE_GYRO_CAL: Calibrates the gyro data after eight seconds of
+	 * no motion.
+	 * DMP_FEATURE_SEND_RAW_ACCEL: Add raw accelerometer data to the FIFO.
+	 * DMP_FEATURE_SEND_RAW_GYRO: Add raw gyro data to the FIFO.
+	 * DMP_FEATURE_SEND_CAL_GYRO: Add calibrated gyro data to the FIFO. Cannot
+	 * be used in combination with DMP_FEATURE_SEND_RAW_GYRO.
+	 */
+	dmp_load_motion_driver_firmware();
+	dmp_set_orientation(inv_orientation_matrix_to_scalar(gyro_orientation));
+	dmp_register_tap_cb(tap_cb);
+	dmp_register_android_orient_cb(android_orient_cb);
+	/*
+	 * Known Bug -
+	 * DMP when enabled will sample sensor data at 200Hz and output to FIFO at the rate
+	 * specified in the dmp_set_fifo_rate API. The DMP will then sent an interrupt once
+	 * a sample has been put into the FIFO. Therefore if the dmp_set_fifo_rate is at 25Hz
+	 * there will be a 25Hz interrupt from the MPU device.
+	 *
+	 * There is a known issue in which if you do not enable DMP_FEATURE_TAP
+	 * then the interrupts will be at 200Hz even if fifo rate
+	 * is set at a different rate. To avoid this issue include the DMP_FEATURE_TAP
+	 */
+	uint16_t features = DMP_FEATURE_6X_LP_QUAT | DMP_FEATURE_TAP |
+	DMP_FEATURE_ANDROID_ORIENT | DMP_FEATURE_SEND_RAW_ACCEL
+			| DMP_FEATURE_SEND_CAL_GYRO |
+			DMP_FEATURE_GYRO_CAL;
+	features = DMP_FEATURE_SEND_CAL_GYRO | DMP_FEATURE_GYRO_CAL
+			| DMP_FEATURE_SEND_RAW_ACCEL | DMP_FEATURE_TAP;
+	dmp_enable_feature(features);
+	dmp_set_fifo_rate(SampleRate);
+	dmp_set_interrupt_mode(DMP_INT_CONTINUOUS);
+
+	// Compute the intergral period
+	float sens;
+	mpu_get_gyro_sens(&sens);
+	_integralPeriod = sens * SampleRate;
+
+	// Compute Zero Motion which is <= 0.5_deg/s
+	_zeroMotion = int16_t(sens) / 2;
+
+	// Turn on motion detect mode
 //	     mpu_lp_motion_interrupt(100, 5, 40);
-	     mpu_set_dmp_state(1);
+	mpu_set_dmp_state(1);
 
-
-	     // Wait for calibration to complete
-		 for(;;) {
-			 if( processData() )
-				 if( getTravelTime() > 100 )
-					 if( abs(_lastGyro[0] < _zeroMotion) )
-						 break;
-		 }
+	// Wait for calibration to complete
+	for (;;) {
+		if (processData())
+			if (getTravelTime() > 0.100)
+				if (abs(_lastGyro[0] < _zeroMotion))
+					break;
+	}
 
 //	     //TODO: Debug
 //	     {
@@ -302,7 +299,7 @@ bool GyroMPU6500::init(void) {
 //	            trace_printf("Temp: %f\n", temp / 65536.0f);
 //	     }
 
-	     return true;
+	return true;
 }
 
 bool GyroMPU6500::getDataReady(void) {
@@ -312,10 +309,6 @@ bool GyroMPU6500::getDataReady(void) {
   	 // Check for overflow
   	 if( s & 0x10 )
   		 trace_puts("FIFO Overflow");
-
-  	 // Check for motion detect
-  	 if( s & 0x40 )
-  		 trace_puts("Motion Detected");
 
   	 return s & 0x02;
 }
@@ -331,16 +324,17 @@ bool GyroMPU6500::processData(void) {
 		 return false;			// Data is not ready
 
 	 status= dmp_read_fifo(_lastGyro, _lastAccel, _lastQuat, &sensor_timestamp, &sensors, &more);
-	 if( status )
+	 if( status ) {
 		 return false;
+	 }
 
 	 // Compute the inMotion flag
 //	 _inMotion= (abs(_lastGyro[2]) > _zeroMotion) ||
 //			 	(abs(_lastGyro[1]) > _zeroMotion) ||
 //			 	(abs(_lastGyro[2]) > _zeroMotion);
 
-	 // If inMotion, then increment position vectors
-	 _travelTime++;
+	 // Bump travel time and add deltas to position vector
+	 _travelTime+= (1.0 / SampleRate);
 	 for(int i= 0; i < 3; i++) {
 		 _position[i]+= ((float)_lastGyro[i]) / _integralPeriod;
 	 }
@@ -373,18 +367,26 @@ bool GyroMPU6500::getInMotion(void) {
 void GyroMPU6500::resetPosition(void) {
 	memset(_position, 0, sizeof(_position));
 	mpu_reset_fifo();
-	_travelTime= 0;
+	_travelTime= 0.0;
 }
 
 void GyroMPU6500::getPositions(float* pPositions) {
 	memcpy(pPositions, _position, sizeof(_position));
 }
 
+
 bool GyroMPU6500::calibrateServo(PWMServoDriver &servo) {
 	float lastPos= 0.0f;
+	Stats stats;
+	static float calResult[20][2];
+
 	// Position servo to zero position
 	servo.setPulseWidth(0, 1e-3 + lastPos);
-	Arduino::delay(1000);
+	resetPosition();
+	do {
+		processData();
+	} while( getTravelTime() < 1.0 );
+
 	for (uint16_t i = 0; i < CAL_COUNT; i++) {
 		// Position Servo
 		resetPosition();
@@ -393,13 +395,15 @@ bool GyroMPU6500::calibrateServo(PWMServoDriver &servo) {
 		// Measure Servo travel
 		do {
 			processData();
-		} while( getTravelTime() < 100);
+		} while( getTravelTime() < 1.0 );
 
 		// Save off the results
-		calResult[i][0]= fabs(lastPos - calData[i]);
-		calResult[i][1]= fabs(_position[2]);
+		calResult[i][0]= fabs(_position[2]);
+		calResult[i][1]= fabs(lastPos - calData[i]);
+		stats.addPoint(fabs(_position[2]), fabs(lastPos - calData[i]) );
 		lastPos= calData[i];
 	}
+	_positionSlope= stats.slope();
 	return true;
 }
 

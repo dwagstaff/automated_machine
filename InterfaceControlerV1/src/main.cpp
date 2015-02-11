@@ -15,8 +15,10 @@
 #include "PWMServoDriver.h"
 #include "Wire.h"
 #include <cstdlib>
+using namespace std;
 
 #include "GyroMPU6500.h"
+#include "Stats.h"
 
 
 
@@ -75,12 +77,6 @@ namespace
 int
 main(int argc, char* argv[])
 {
-	float a;
-	float b;
-	a= atof("323");
-	b= atof("123");
-	a= a+ b + atof("321");
-
 	// Turn on the Orange LED to indicate in Init Mode
 	orangeLED.turnOn();
 
@@ -119,54 +115,6 @@ main(int argc, char* argv[])
  gyro.calibrateServo(servo);
  blueLED.turnOff();
 
-  // Reset position and move servo
-//  for(;;) {
-//	  i= mpu_get_accel_reg(acce, NULL);
-//	  trace_printf("Result=%d\n", i);
-//	  trace_printf("Value=%d\n", acce[2]);
-//	  i= mpu_get_gyro_reg(gryo, NULL);
-//	  trace_printf("G=%d\n", gryo[0]);
-//  }
-
-//  // Test for Gyro
-//  {
-//	  static uint8_t data;
-//	  Wire wire;
-//	  wire.begin();
-//	  wire.beginTransmission(0x68);
-//	  wire.write(107);
-//	  wire.endTransmission();
-//	  wire.requestFrom(0x68, 1);
-//	  data= wire.read();
-//	  trace_printf("Value of whoami is %x\n", data);
-//	  i= dmp_load_motion_driver_firmware();
-//  }
-
-  // Init the Servo Driver
-#define PRESCALE_VALUE (25E6 / (4096 * 60.0)) -1
-#define RESOLUTION_SERVO  (( 1.0 / 60.0 ) / 4096.0)
-  	  for(;;) {
-  		  Timer::sleep(1000/3);
-//  		  servo.setPulseWidth(0, 0.5e-3);
-  		  servo.setDegree(0, 0);
-  		  servo.setDegree(1, 0);
-  		  Timer::sleep(1000/3);
-//  		  servo.setPulseWidth(0, 1.5e-3);
-  		  servo.setDegree(0, 90);
-  		  servo.setDegree(1, 90);
-  		  Timer::sleep(1000/3);
-//  		  servo.setPulseWidth(0, 2.5e-3);
-  		  servo.setDegree(0, 180);
-  		  servo.setDegree(1, 180);
-  		  Timer::sleep(1000/3);
-//  		  servo.setPulseWidth(0, 1.5e-3);
-  		  servo.setDegree(0, 90);
-  		  servo.setDegree(1, 90);
-  	  }
-
-//  servo.setPWM(0, 0, 0);
-//  servo.setPWM(0, 0, 2048);
-//  servo.setPWM(0, 0, 1.5E-3 / RESOLUTION_SERVO);
 
 
   // The standard output and the standard error should be forwarded to

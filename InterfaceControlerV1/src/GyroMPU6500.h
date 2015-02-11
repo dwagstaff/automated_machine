@@ -31,10 +31,13 @@ private:
 	bool _inMotion;				// True if inmotion
 	float _position[3];		// Current position for all axis
 	float _integralPeriod;		// Intergral period interval
-	uint32_t _travelTime;		// Measure of travel time
+	float _travelTime;		// Measure of travel time (in seconds)
+	float _positionSlope;		// Slope of degree vs PulseWidth slope
+								// Units y_pw = m_(pw/deg) * x_deg
+								// Should be close to 0.5e-3/90 or 5.56e-6
 
 	int16_t _zeroMotion;		// Zero motion threshold
-	const float SampleRate= 100.0;	// Sample Rate (FIFO)
+	const float SampleRate= 20.0;	// Sample Rate (FIFO)
 
 public:
 	GyroMPU6500();
@@ -89,7 +92,7 @@ public:
 	 * Get current travel time
 	 * @return
 	 */
-	int32_t getTravelTime(void) { return _travelTime;}
+	float getTravelTime(void) { return _travelTime;}
 
 	/**
 	 * Calibrate the servo
