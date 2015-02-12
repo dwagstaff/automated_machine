@@ -18,11 +18,14 @@
 using namespace std;
 
 #include "GyroMPU6500.h"
+#include "Servo.h"
 #include "Stats.h"
 
 
 
-PWMServoDriver servo;
+PWMServoDriver servoDriver;
+Servo servo(servoDriver, 0);
+
 GyroMPU6500 gyro;
 
 // Define the LEDs on the board for later use
@@ -77,6 +80,7 @@ namespace
 int
 main(int argc, char* argv[])
 {
+	Arduino::delay(1000);
 	// Turn on the Orange LED to indicate in Init Mode
 	orangeLED.turnOn();
 
@@ -88,17 +92,10 @@ main(int argc, char* argv[])
   // Send a greeting to the trace device (skipped on Release).
   trace_puts("Hello ARM World!");
 
-  // Reset servo
-  servo.begin();
-  servo.setPWMFreq(60.0);
-//  servo.setPWM(1, 0, 1);
-//  servo.setPWM(1, 0, 2);
-//  servo.setPWM(1, 0, 3);
-//  servo.setPWM(1, 0, 4);
-
-  servo.setPulseWidth(1, 1.0e-3);
-  servo.setPulseWidth(1, 1.5e-3);
-  servo.setPulseWidth(1, 2.0e-3);
+  // Configure Servo Driver
+  servoDriver.begin();
+  servoDriver.setPWMFreq(60.0);
+  servo.setPulseWidth(0);
 
   // Configure the Gyro
   if( !gyro.init() )
@@ -108,11 +105,13 @@ main(int argc, char* argv[])
   orangeLED.turnOff();
   greenLED.turnOn();
 
-// gyro.resetPosition();
-// servo.setPulseWidth(0, 1.318e-3);   // 27 degrees
 
  blueLED.turnOn();
  gyro.calibrateServo(servo);
+ blueLED.turnOff();
+
+ servo.setPosition(0);
+ servo.setPosition(135);
  blueLED.turnOff();
 
 

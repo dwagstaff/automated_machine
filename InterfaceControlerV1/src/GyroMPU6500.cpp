@@ -30,20 +30,6 @@ extern "C" {
  struct int_param_s int_param;
 
 
- // Calibration Data
-const float degPulse= 0.5e-3 / 90.0;
-const float calData[] = {
-		0,
-		degPulse * 10,
-		degPulse * 20,
-		degPulse * 30,
-		degPulse * 40,
-		degPulse * 30,
-		degPulse * 20,
-		degPulse * 10,
-		0};
-
-const size_t CAL_COUNT= sizeof(calData) / sizeof(calData[0]);
 
 
 
@@ -374,36 +360,60 @@ void GyroMPU6500::getPositions(float* pPositions) {
 	memcpy(pPositions, _position, sizeof(_position));
 }
 
-
-bool GyroMPU6500::calibrateServo(PWMServoDriver &servo) {
-	float lastPos= 0.0f;
-	Stats stats;
-	static float calResult[20][2];
-
-	// Position servo to zero position
-	servo.setPulseWidth(0, 1e-3 + lastPos);
+float GyroMPU6500::findLimit(Servo servo, float start, float delta) {
+	// Keep adding increment until the we don't step at least 0.5 degree
+	float ok= 0.50;
+	// Position to start
+	servo.setPulseWidth(start-delta);
 	resetPosition();
-	do {
+	while(getTravelTime() < 1.0 )
 		processData();
-	} while( getTravelTime() < 1.0 );
-
-	for (uint16_t i = 0; i < CAL_COUNT; i++) {
-		// Position Servo
+	for(float goal= start; true; goal+= delta) {
 		resetPosition();
-		servo.setPulseWidth(0, 1e-3 + calData[i]);
+		servo.setPulseWidth(goal);
+		while(getTravelTime() < 0.20 )
+			processData();
+		if( fabs(_position[2]) < ok ) {
+			servo.setPulseWidth(start);
+			return goal-delta;
+		}
+	}
+}
+
+bool GyroMPU6500::calibrateServo(Servo &servo) {
+	Stats stats;
+	const float degPulse= 0.5e-3 / 90.0;
+	const float waitTime= 0.30;
+
+	for(uint16_t deg= 1; deg < 45; deg++) {
+		// Find high Limit
+		// Position servo to zero position
+		servo.setPulseWidth(1e-3);
+		resetPosition();
+		do {
+			processData();
+		} while( getTravelTime() < waitTime );
+
+		// Position Servo
+		float pulseWidth= deg * degPulse;
+		resetPosition();
+		servo.setPulseWidth(1e-3 + pulseWidth);
 
 		// Measure Servo travel
 		do {
 			processData();
-		} while( getTravelTime() < 1.0 );
+		} while( getTravelTime() < waitTime );
 
 		// Save off the results
-		calResult[i][0]= fabs(_position[2]);
-		calResult[i][1]= fabs(lastPos - calData[i]);
-		stats.addPoint(fabs(_position[2]), fabs(lastPos - calData[i]) );
-		lastPos= calData[i];
+//			calResult[i][0]= fabs(_position[2]);
+//			calResult[i][1]= pulseWidth);
+			stats.addPoint(fabs(_position[2]), pulseWidth );
 	}
-	_positionSlope= stats.slope();
+	float slope= stats.slope();
+	servo.setPulseDegSlope( slope );
+	servo.setLowLimit( findLimit(servo, 1e-3, -2.0 * slope) );
+	servo.setHiLimit( findLimit(servo,  2e-3,  2.0 * slope) );
+
 	return true;
 }
 
