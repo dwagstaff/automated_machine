@@ -384,11 +384,12 @@ bool GyroMPU6500::calibrateServo(Servo &servo) {
 	Stats stats;
 	const float degPulse= 0.5e-3 / 90.0;
 	const float waitTime= 0.30;
+	const float midPoint= 1.5e-3;
 
 	for(uint16_t deg= 1; deg < 45; deg++) {
 		// Find high Limit
 		// Position servo to zero position
-		servo.setPulseWidth(1e-3);
+		servo.setPulseWidth(midPoint);
 		resetPosition();
 		do {
 			processData();
@@ -397,7 +398,7 @@ bool GyroMPU6500::calibrateServo(Servo &servo) {
 		// Position Servo
 		float pulseWidth= deg * degPulse;
 		resetPosition();
-		servo.setPulseWidth(1e-3 + pulseWidth);
+		servo.setPulseWidth(midPoint + pulseWidth);
 
 		// Measure Servo travel
 		do {
@@ -411,8 +412,8 @@ bool GyroMPU6500::calibrateServo(Servo &servo) {
 	}
 	float slope= stats.slope();
 	servo.setPulseDegSlope( slope );
-	servo.setLowLimit( findLimit(servo, 1e-3, -2.0 * slope) );
-	servo.setHiLimit( findLimit(servo,  2e-3,  2.0 * slope) );
+//	servo.setLowLimit( findLimit(servo, 1e-3, -2.0 * slope) );
+//	servo.setHiLimit( findLimit(servo,  2e-3,  2.0 * slope) );
 
 	return true;
 }

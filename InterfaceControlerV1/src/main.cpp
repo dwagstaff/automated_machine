@@ -20,7 +20,9 @@ using namespace std;
 #include "GyroMPU6500.h"
 #include "Servo.h"
 #include "Stats.h"
-
+#include "usart.h"
+#include <string.h>
+#include "stm32f4_discovery.h"
 
 
 PWMServoDriver servoDriver;
@@ -33,6 +35,10 @@ Led orangeLED(Led::Ports::D, 13);
 Led greenLED(Led::Ports::D, 12);
 Led redLED(Led::Ports::D, 14);
 Led blueLED(Led::Ports::D, 15);
+
+/* UART handler declaration */
+UART_HandleTypeDef UartHandle;
+
 
 // ----------------------------------------------------------------------------
 //
@@ -77,10 +83,88 @@ namespace
 #pragma GCC diagnostic ignored "-Wmissing-declarations"
 #pragma GCC diagnostic ignored "-Wreturn-type"
 
+static void processInput(uint8_t* buffer) {
+//#define MSG "GOT: "
+//	HAL_UART_Transmit(&UartHandle, (uint8_t *)MSG, strlen(MSG), 5000);
+//	HAL_UART_Transmit(&UartHandle, buffer, strlen((const char *)buffer), 5000);
+//	HAL_UART_Transmit(&UartHandle, (uint8_t *)"\n\r", 2, 5000);
+
+	if( buffer[0] == 'l' ) {
+		Led *pLed;
+		if( buffer[1] == '1' )
+			pLed= &orangeLED;
+		else if( buffer[1] == '2' ) pLed= &blueLED;
+		else if( buffer[1] == '3' ) pLed= &greenLED;
+		else pLed= &redLED;
+		if( buffer[2] == '1' )
+			pLed->turnOn();
+		else
+			pLed->turnOff();
+	}
+}
+
 int
 main(int argc, char* argv[])
 {
-	Arduino::delay(1000);
+//	Arduino::delay(1000);
+
+	// Init Serial Port
+	  /*##-1- Configure the UART peripheral ######################################*/
+	  /* Put the USART peripheral in the Asynchronous mode (UART Mode) */
+	  /* UART1 configured as follow:
+	      - Word Length = 8 Bits
+	      - Stop Bit = One Stop bit
+	      - Parity = None
+	      - BaudRate = 9600 baud
+	      - Hardware flow control disabled (RTS and CTS signals) */
+	  UartHandle.Instance          = USARTx;
+
+	  UartHandle.Init.BaudRate     = 9600;
+	  UartHandle.Init.WordLength   = UART_WORDLENGTH_8B;
+	  UartHandle.Init.StopBits     = UART_STOPBITS_1;
+	  UartHandle.Init.Parity       = UART_PARITY_NONE;
+	  UartHandle.Init.HwFlowCtl    = UART_HWCONTROL_NONE;
+	  UartHandle.Init.Mode         = UART_MODE_TX_RX;
+	  UartHandle.Init.OverSampling = UART_OVERSAMPLING_16;
+
+	  if(HAL_UART_Init(&UartHandle) != HAL_OK)
+	  {
+	    //Error_Handler();
+	  }
+
+	  /* Configure KEY Button */
+	  BSP_PB_Init(BUTTON_KEY, BUTTON_MODE_GPIO);
+
+//	  HAL_UART_Transmit(&UartHandle, (uint8_t*)"123\n\r", 5, 5000);
+	  {
+		  static int inp= 0;
+		  uint32_t lastPress= RESET;
+		  for(;;) {
+			  static uint8_t buffer[10];
+			  uint8_t c;
+			  // Handle switch
+			  if( BSP_PB_GetState(BUTTON_KEY) != lastPress ) {
+				  lastPress= BSP_PB_GetState(BUTTON_KEY);
+				  if( BSP_PB_GetState(BUTTON_KEY) == RESET ) {
+					  HAL_UART_Transmit(&UartHandle, (uint8_t*)"S0\r", 3, 5000);
+					  redLED.turnOff();
+				  } else {
+					  HAL_UART_Transmit(&UartHandle, (uint8_t*)"S1\r", 3, 5000);
+					  redLED.turnOn();
+				  }
+			  }
+			  if( HAL_UART_Receive(&UartHandle, &c, 1, 0) == HAL_OK ) {
+				  if( c == '\r' ) {
+					  buffer[inp]= 0;
+					  processInput(buffer);
+					  inp= 0;
+				  } else {
+					  buffer[inp++]= c;
+				  }
+			  }
+		  }
+	  }
+
 	// Turn on the Orange LED to indicate in Init Mode
 	orangeLED.turnOn();
 
@@ -95,7 +179,11 @@ main(int argc, char* argv[])
   // Configure Servo Driver
   servoDriver.begin();
   servoDriver.setPWMFreq(60.0);
-  servo.setPulseWidth(0);
+  servo.setPulseWidth(1.5e-3);
+  servo.setPulseWidth(1.3e-3);
+  servo.setPulseWidth(1.7e-3);
+  servo.setPulseWidth(1.0e-3);
+  servo.setPulseWidth(2.0e-3);
 
   // Configure the Gyro
   if( !gyro.init() )
